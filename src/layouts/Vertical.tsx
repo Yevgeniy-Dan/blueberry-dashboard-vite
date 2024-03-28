@@ -31,7 +31,7 @@ const Vertical = () => {
             <NavLink to={"dashboard/appoitments"}>
               {" "}
               <span className="nav-icon flex-shrink-0">
-                <i className="bi bi-speedometer fs-18"></i>
+                <i className="bi bi-calendar-check fs-18"></i>
               </span>{" "}
               <span className="nav-text">My Appoitments</span>
             </NavLink>
@@ -40,7 +40,7 @@ const Vertical = () => {
             <NavLink to={"dashboard/business-info"}>
               {" "}
               <span className="nav-icon flex-shrink-0">
-                <i className="bi bi-speedometer fs-18"></i>
+                <i className="bi bi-bank fs-18"></i>
               </span>{" "}
               <span className="nav-text">Business Info</span>
             </NavLink>

@@ -1,5 +1,6 @@
 import { Suspense, lazy } from "react";
 import Appoitments from "../pages/dashboards/Appoitments";
+import BusinessInfo from "../pages/dashboards/BusinessInfo";
 
 const SignIn = lazy(() => import("../pages/auth/SignIn"));
 const SignUp = lazy(() => import("../pages/auth/SignUp"));
@@ -39,6 +40,14 @@ const dashboardRoutes = [
     element: (
       <Suspense fallback={<div>Loading...</div>}>
         <Appoitments />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/dashboard/business-info",
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <BusinessInfo />
       </Suspense>
     ),
   },

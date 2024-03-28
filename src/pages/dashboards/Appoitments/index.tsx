@@ -13,7 +13,7 @@ const Appoitments = () => {
             <div className="col-xxl-4">
               <div className="page-header d-flex align-items-center justify-content-between mr-bottom-30">
                 <div className="left-part">
-                  <h2 className="text-dark">Calendar</h2>
+                  <h2 className="text-dark">My Appoitments</h2>
                   <p className="text-gray mb-0">Lorem ipsum dolor sit amet </p>
                 </div>
               </div>
