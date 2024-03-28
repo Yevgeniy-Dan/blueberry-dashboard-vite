@@ -7,8 +7,8 @@ const Vertical = () => {
     <div className="kleon-vertical-nav">
       {/* <!-- Logo  --> */}
       <div className="logo d-flex align-items-center justify-content-between">
-        <a
-          href="index.html"
+        <NavLink
+          to={"./"}
           className="d-flex align-items-center gap-3 flex-shrink-0"
         >
           <img src={logo} alt="logo" />
@@ -16,7 +16,7 @@ const Vertical = () => {
             <img src={logoText} alt="" className="logo-text" />
             <img src={logoTextWhite} alt="" className="logo-text-white" />
           </div> */}
-        </a>
+        </NavLink>
         <button type="button" className="kleon-vertical-nav-toggle">
           <i className="bi bi-list"></i>
         </button>
@@ -28,7 +28,7 @@ const Vertical = () => {
         </h6>
         <ul className="main-menu">
           <li className="menu-item menu-item-has-children">
-            <NavLink to={"dashboard/appoitments"}>
+            <NavLink to={"./../appoitments"}>
               {" "}
               <span className="nav-icon flex-shrink-0">
                 <i className="bi bi-calendar-check fs-18"></i>
@@ -37,7 +37,7 @@ const Vertical = () => {
             </NavLink>
           </li>
           <li className="menu-item menu-item-has-children">
-            <NavLink to={"dashboard/business-info"}>
+            <NavLink to={"./../business-info"}>
               {" "}
               <span className="nav-icon flex-shrink-0">
                 <i className="bi bi-bank fs-18"></i>

@@ -3,8 +3,9 @@ import sun from "../assets/images/sun.svg";
 import moon from "../assets/images/moon.svg";
 import bell from "../assets/images/bell.svg";
 import settings from "../assets/images/settings.svg";
-import logoIcon from "../assets/images/logo-icon.svg";
+import logo from "../assets/images/logo.jpg";
 import navAuthor from "../assets/images/nav_author.jpg";
+import { NavLink } from "react-router-dom";
 
 const Default = () => {
   return (
@@ -241,11 +242,12 @@ const Default = () => {
 
       <div className="small-header d-flex align-items-center justify-content-between d-xl-none">
         <div className="logo">
-          <a
-            href="index.html"
+          <NavLink
+            to={"./"}
             className="d-flex align-items-center gap-3 flex-shrink-0"
           >
-            <img src={logoIcon} alt="logo" />
+            {/* <img src={logoIcon} alt="logo" /> */}
+            <img src={logo} alt="logo" />
             <div className="position-relative flex-shrink-0">
               <img
                 src="assets/img/logo-text.svg"
@@ -258,7 +260,7 @@ const Default = () => {
                 className="logo-text-white"
               />
             </div>
-          </a>
+          </NavLink>
         </div>
         <div>
           <button type="button" className="kleon-header-expand-toggle">
