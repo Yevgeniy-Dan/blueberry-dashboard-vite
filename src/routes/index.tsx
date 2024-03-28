@@ -1,4 +1,5 @@
 import { Suspense, lazy } from "react";
+import Appoitments from "../pages/dashboards/Appoitments";
 
 const SignIn = lazy(() => import("../pages/auth/SignIn"));
 const SignUp = lazy(() => import("../pages/auth/SignUp"));
@@ -32,6 +33,17 @@ const authRoutes = [
   },
 ];
 
-const allRoutes = [...authRoutes];
+const dashboardRoutes = [
+  {
+    path: "/dashboard/appoitments",
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <Appoitments />
+      </Suspense>
+    ),
+  },
+];
+
+const allRoutes = [...authRoutes, ...dashboardRoutes];
 
 export { allRoutes };
