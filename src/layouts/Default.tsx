@@ -1,13 +1,17 @@
 import search from "../assets/images/search.svg";
-import sun from "../assets/images/sun.svg";
-import moon from "../assets/images/moon.svg";
-import bell from "../assets/images/bell.svg";
-import settings from "../assets/images/settings.svg";
-import logo from "../assets/images/logo.jpg";
+// import sun from "../assets/images/sun.svg";
+// import moon from "../assets/images/moon.svg";
+// import bell from "../assets/images/bell.svg";
+// import settings from "../assets/images/settings.svg";
+import logo from "../assets/images/logo.png";
 import navAuthor from "../assets/images/nav_author.jpg";
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
 
 const Default = () => {
+  const [showUserProfileDropdown, setShowUserProfileDropdown] =
+    useState<boolean>(false);
+
   return (
     // <!-- Default Nav -->
     <header className="header kleon-default-nav">
@@ -31,7 +35,7 @@ const Default = () => {
 
           <div className="header-right-part d-flex align-items-center flex-shrink-0">
             <ul className="nav-elements d-flex align-items-center list-unstyled m-0 p-0">
-              <li className="nav-item nav-color-switch d-flex align-items-center gap-3">
+              {/* <li className="nav-item nav-color-switch d-flex align-items-center gap-3">
                 <div className="sun">
                   <img src={sun} alt="img" />
                 </div>
@@ -155,14 +159,17 @@ const Default = () => {
                 <a href="#" className="nav-toggler">
                   <img src={settings} alt="img" />
                 </a>
-              </li>
+              </li> */}
 
               <li className="nav-item nav-author">
                 <a
                   href="#"
-                  className="nav-toggler"
+                  className={`nav-toggler ${showUserProfileDropdown && "show"}`}
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
+                  onClick={() =>
+                    setShowUserProfileDropdown(!showUserProfileDropdown)
+                  }
                 >
                   <img
                     src={navAuthor}
@@ -177,12 +184,17 @@ const Default = () => {
                     </div>
                   </div>
                 </a>
-                <div className="dropdown-widget dropdown-menu p-0 admin-card">
+                <div
+                  className={`dropdown-widget dropdown-menu p-0 admin-card ${
+                    showUserProfileDropdown &&
+                    "show position-absolute top-95 translate-middle-x  py-3 w-56 max-h-200  overflow-y-auto flex justify-center flex-wrap"
+                  }`}
+                >
                   <div className="dropdown-wrapper">
                     <div className="card mb-0">
                       <div className="card-header p-3 text-center">
                         <img
-                          src="assets/img/nav_author.jpg"
+                          src={navAuthor}
                           alt="img"
                           width="80"
                           className="rounded-circle avatar"
@@ -224,12 +236,12 @@ const Default = () => {
                         </ul>
                       </div>
                       <div className="card-footer p-3">
-                        <a
-                          href="login.html"
+                        <NavLink
+                          to={"../account/logout"}
                           className="btn btn-outline-gray bg-transparent w-100 py-1 rounded-1 text-dark fs-14 fw-medium"
                         >
                           <i className="bi bi-box-arrow-right"></i> Logout
-                        </a>
+                        </NavLink>
                       </div>
                     </div>
                   </div>

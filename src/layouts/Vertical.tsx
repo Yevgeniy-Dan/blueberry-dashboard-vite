@@ -1,10 +1,10 @@
 import { NavLink } from "react-router-dom";
-import logo from "../assets/images/logo.jpg";
+import logo from "../assets/images/logo.png";
 
 const Vertical = () => {
   return (
     //  <!-- Vertical Nav -->
-    <div className="kleon-vertical-nav">
+    <div className="kleon-vertical-nav bg-primary">
       {/* <!-- Logo  --> */}
       <div className="logo d-flex align-items-center justify-content-between">
         <NavLink
@@ -28,12 +28,12 @@ const Vertical = () => {
         </h6>
         <ul className="main-menu">
           <li className="menu-item menu-item-has-children">
-            <NavLink to={"./../appoitments"}>
+            <NavLink to={"./../appointments"}>
               {" "}
               <span className="nav-icon flex-shrink-0">
                 <i className="bi bi-calendar-check fs-18"></i>
               </span>{" "}
-              <span className="nav-text">My Appoitments</span>
+              <span className="nav-text">My Appointments</span>
             </NavLink>
           </li>
           <li className="menu-item menu-item-has-children">

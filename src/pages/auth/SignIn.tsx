@@ -1,4 +1,4 @@
-import logo from "../../assets/images/logo.jpg";
+import logo from "../../assets/images/logo.png";
 import company from "../../assets/images/company.jpg";
 import { NavLink } from "react-router-dom";
 
@@ -18,13 +18,13 @@ const SignIn = () => {
         <div className="col-xl-5 col-lg-5 col-md-6">
           <div className="d-flex align-items-center justify-content-center vh-100 bg-white">
             <div className="card rounded-0 border-0 p-5 m-0 w-100">
-              <div className="card-header border-0 p-0">
+              <div className="card-header border-0 p-0 text-center">
                 <a href="index.html" className="w-100 d-inline-block mb-5">
                   <img src={logo} alt="img" />
                 </a>
                 <h2>Welcome back!</h2>
                 <p className="text-dark mt-4 mb-5">
-                  Please login using your account.
+                  Please login using your account
                 </p>
               </div>
 
@@ -33,7 +33,7 @@ const SignIn = () => {
                   <div className="form-group">
                     <input
                       type="text"
-                      className="form-control"
+                      className="form-control border-gray-400"
                       name="u_name"
                       value=""
                       placeholder="Email Address"
@@ -44,7 +44,7 @@ const SignIn = () => {
                   <div className="form-group">
                     <input
                       type="password"
-                      className="form-control"
+                      className="form-control border-gray-400"
                       name="password"
                       value=""
                       placeholder="Password"
@@ -52,21 +52,25 @@ const SignIn = () => {
                     />
                   </div>
 
-                  <div className="form-group">
-                    <div className="form-check">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        value=""
-                        id="invalidCheck"
-                        required
-                      />
-                      <label
-                        className="form-check-label"
-                        htmlFor="invalidCheck"
-                      >
-                        Remember Me
-                      </label>
+                  <div className="form-group ">
+                    <div className="row justify-content-end">
+                      <div className="col-auto">
+                        <div className="form-check ">
+                          <input
+                            className="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="invalidCheck"
+                            required
+                          />
+                          <label
+                            className="form-check-label"
+                            htmlFor="invalidCheck"
+                          >
+                            Remember Me
+                          </label>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
@@ -77,7 +81,7 @@ const SignIn = () => {
                     Forgot password
                   </NavLink>
 
-                  <p className="d-flex align-items-center justify-content-between mt-4 mb-4">
+                  <p className="d-flex align-items-center justify-content-between mt-4 mb-4 fw-bold">
                     Don't have an account?
                     <NavLink
                       to={"./../sign-up"}
@@ -88,7 +92,7 @@ const SignIn = () => {
                   </p>
 
                   <NavLink
-                    to={"../dashboard/appoitments"}
+                    to={"../dashboard/appointments"}
                     className="btn btn-secondary w-100 text-uppercase text-white rounded-2 lh-34 ff-heading fw-bold shadow"
                   >
                     Login

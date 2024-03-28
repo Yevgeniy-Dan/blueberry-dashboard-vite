@@ -1,4 +1,4 @@
-import logo from "../../assets/images/logo.jpg";
+import logo from "../../assets/images/logo.png";
 
 const ForgetPassword = () => {
   return (
@@ -22,7 +22,7 @@ const ForgetPassword = () => {
                 <div className="form-group">
                   <input
                     type="email"
-                    className="form-control"
+                    className="form-control border-gray-400"
                     name="email"
                     value=""
                     placeholder="Email"

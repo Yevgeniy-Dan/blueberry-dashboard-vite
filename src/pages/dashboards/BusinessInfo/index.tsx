@@ -1,5 +1,3 @@
-import search from "../../../assets/images/search.svg";
-
 const BusinessInfo = () => {
   return (
     <main className="main-wrapper ">
@@ -9,19 +7,6 @@ const BusinessInfo = () => {
             <div className="left-part">
               <h2 className="text-dark">Business Info</h2>
               <p className="text-gray mb-0">Lorem ipsum dolor sit amet </p>
-            </div>
-            <div className="right-part">
-              <form className="search-form w-auto" action="search.php">
-                <input
-                  type="text"
-                  name="search"
-                  className=" bg-white form-control"
-                  placeholder="Search"
-                />
-                <button type="submit" className="btn">
-                  <img src={search} alt="" />
-                </button>{" "}
-              </form>
             </div>
           </div>
 
@@ -34,7 +19,7 @@ const BusinessInfo = () => {
                   </label>
                   <input
                     type="text"
-                    className="form-control"
+                    className="form-control border-gray-400"
                     id="validationCustom01"
                     value=""
                     placeholder="Business Name"
@@ -48,14 +33,14 @@ const BusinessInfo = () => {
                   </label>
                   <div className="input-group has-validation">
                     <span
-                      className="badge d-flex align-items-center text-dark rounded-0 rounded-start py-2 px-3 border border-light-200 fs-16"
+                      className="badge d-flex align-items-center text-dark rounded-0 rounded-start py-2 px-3 border border-gray-400 fs-16 bg-gray-100"
                       id="inputGroupPrepend"
                     >
                       blueberrynow.com/
                     </span>
                     <input
                       type="text"
-                      className="form-control"
+                      className="form-control border-gray-400"
                       id="validationCustom02"
                       value=""
                       placeholder="your-business-name"
@@ -70,10 +55,11 @@ const BusinessInfo = () => {
                   </label>
                   <input
                     type="text"
-                    className="form-control"
+                    className="form-control border-gray-400"
                     id="validationEmail"
                     value=""
                     required
+                    placeholder="Email Address"
                   />
                   <div className="invalid-feedback">Enter your Email</div>
                 </div>
@@ -83,7 +69,7 @@ const BusinessInfo = () => {
                   </label>
                   <input
                     type="text"
-                    className="form-control"
+                    className="form-control border-gray-400"
                     id="validationEmail"
                     value=""
                     placeholder="Example: (123) 456-7890"
@@ -101,7 +87,7 @@ const BusinessInfo = () => {
 
                   <input
                     type="text"
-                    className="form-control"
+                    className="form-control border-gray-400"
                     id="validationCustomUsername"
                     aria-describedby="inputGroupPrepend"
                     required
@@ -118,7 +104,7 @@ const BusinessInfo = () => {
 
                   <input
                     type="text"
-                    className="form-control"
+                    className="form-control border-gray-400"
                     id="validationCustomUsername"
                     aria-describedby="inputGroupPrepend"
                     required
@@ -135,7 +121,7 @@ const BusinessInfo = () => {
 
                   <input
                     type="text"
-                    className="form-control"
+                    className="form-control border-gray-400"
                     id="validationCustomUsername"
                     aria-describedby="inputGroupPrepend"
                     required
@@ -149,20 +135,21 @@ const BusinessInfo = () => {
                   </label>
                   <input
                     type="text"
-                    className="form-control"
+                    className="form-control border-gray-400"
                     id="validationCustom03"
                     required
+                    placeholder="City"
                   />
                   <div className="invalid-feedback">
                     Please provide a valid city.
                   </div>
                 </div>
                 <div className="form-group">
-                  <label htmlFor="validationCustom04" className="form-label">
+                  <label htmlFor="validationCustom04" className="form-label ">
                     State
                   </label>
                   <select
-                    className="form-control"
+                    className="form-control border-gray-400"
                     id="validationCustom04"
                     required
                   >
@@ -183,9 +170,10 @@ const BusinessInfo = () => {
                   </label>
                   <input
                     type="text"
-                    className="form-control"
+                    className="form-control border-gray-400"
                     id="validationCustom05"
                     required
+                    placeholder="Zip Code"
                   />
                   <div className="invalid-feedback">
                     Please provide a valid zip.
@@ -197,7 +185,7 @@ const BusinessInfo = () => {
                   </label>
                   <input
                     type="text"
-                    className="form-control"
+                    className="form-contro border-gray-400l"
                     id="validationCustom05"
                     required
                     placeholder="Business Hours"
@@ -211,13 +199,13 @@ const BusinessInfo = () => {
                   <label className="form-label">Upload Logo</label>
                   <input
                     type="file"
-                    className="form-control"
+                    className="form-control border-gray-400"
                     name="fileUpload"
                   />
                 </div>
-                <div className="form-group mb-0">
+                <div className="form-group mb-0 text-center">
                   <button type="submit" className="btn btn-secondary">
-                    Submit
+                    Save
                   </button>
                 </div>
               </form>

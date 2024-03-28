@@ -4,7 +4,7 @@ import avatar2 from "../../../assets/images/2.jpg";
 import avatar3 from "../../../assets/images/3.jpg";
 import Calendar from "./Calendar";
 
-const Appoitments = () => {
+const Appointments = () => {
   return (
     <main className="main-wrapper ">
       <div className="container-fluid">
@@ -13,7 +13,7 @@ const Appoitments = () => {
             <div className="col-xxl-4">
               <div className="page-header d-flex align-items-center justify-content-between mr-bottom-30">
                 <div className="left-part">
-                  <h2 className="text-dark">My Appoitments</h2>
+                  <h2 className="text-dark">My Appointments</h2>
                   <p className="text-gray mb-0">Lorem ipsum dolor sit amet </p>
                 </div>
               </div>
@@ -506,4 +506,4 @@ const Appoitments = () => {
   );
 };
 
-export default Appoitments;
+export default Appointments;

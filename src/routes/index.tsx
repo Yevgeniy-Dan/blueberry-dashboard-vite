@@ -1,5 +1,5 @@
 import { Suspense, lazy } from "react";
-import Appoitments from "../pages/dashboards/Appoitments";
+import Appointments from "../pages/dashboards/Appointments";
 import BusinessInfo from "../pages/dashboards/BusinessInfo";
 import Default from "../layouts/Default";
 import Vertical from "../layouts/Vertical";
@@ -8,6 +8,7 @@ import Preloader from "../pages/Preloader";
 const SignIn = lazy(() => import("../pages/auth/SignIn"));
 const SignUp = lazy(() => import("../pages/auth/SignUp"));
 const ForgetPassword = lazy(() => import("../pages/auth/ForgetPassword"));
+const Logout = lazy(() => import("../pages/auth/Logout"));
 
 // auth
 const authRoutes = [
@@ -35,16 +36,24 @@ const authRoutes = [
       </Suspense>
     ),
   },
+  {
+    path: "/account/logout",
+    element: (
+      <Suspense fallback={<Preloader />}>
+        <Logout />
+      </Suspense>
+    ),
+  },
 ];
 
 const dashboardRoutes = [
   {
-    path: "/dashboard/appoitments",
+    path: "/dashboard/appointments",
     element: (
       <Suspense fallback={<Preloader />}>
         <Default />
         <Vertical />
-        <Appoitments />
+        <Appointments />
       </Suspense>
     ),
   },
