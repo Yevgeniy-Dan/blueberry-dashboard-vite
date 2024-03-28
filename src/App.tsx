@@ -1,9 +1,10 @@
+import AppRoutes from "./routes/AppRoutes";
 import "./scss/main.scss";
 
 function App() {
   return (
     <div>
-      <h1>Hello World</h1>
+      <AppRoutes></AppRoutes>
     </div>
   );
 }
