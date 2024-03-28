@@ -1,8 +1,8 @@
-import logo from "../../assets/images/logo.svg";
+import logo from "../../assets/images/logo.jpg";
 
 const ForgetPassword = () => {
   return (
-    <div className="bg-soft-warning">
+    <div className="bg-primary">
       <div className="row align-items-center justify-content-center vh-100">
         <div className="col-xxl-4 col-xl-5 col-lg-5 col-md-6">
           <div className="card rounded-2 border-0 p-5 m-0">
@@ -32,9 +32,9 @@ const ForgetPassword = () => {
 
                 <button
                   type="submit"
-                  className="btn btn-primary w-100 text-uppercase text-white rounded-2 lh-34 ff-heading fw-bold shadow"
+                  className="btn btn-secondary w-100 text-uppercase text-white rounded-2 lh-34 ff-heading fw-bold shadow"
                 >
-                  Send Request
+                  Send
                 </button>
               </form>
             </div>

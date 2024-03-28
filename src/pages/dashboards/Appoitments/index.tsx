@@ -173,7 +173,7 @@ const Appoitments = () => {
                           href="#"
                           data-bs-toggle="modal"
                           data-bs-target="#add-event"
-                          className="btn btn-primary w-100 rounded-2 py-3"
+                          className="btn btn-secondary w-100 rounded-2 py-3"
                         >
                           <span className="align-middle">
                             <i className="bi bi-plus"></i>
@@ -324,7 +324,7 @@ const Appoitments = () => {
                               type="text"
                               className="form-control"
                               name="event_name"
-                              value="National Envato Meetup With Kleon Team"
+                              value="National Envato Meetup With Blueberry Team"
                               placeholder=""
                             />
                           </div>
@@ -361,7 +361,7 @@ const Appoitments = () => {
                         </div>
                         <button
                           type="submit"
-                          className="btn btn-primary fs-18 text-uppercase mx-0"
+                          className="btn btn-secondary fs-18 text-uppercase mx-0"
                         >
                           <i className="bi bi-send me-2"></i> Submit
                         </button>

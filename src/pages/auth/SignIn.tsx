@@ -1,5 +1,6 @@
-import logo from "../../assets/images/logo.svg";
+import logo from "../../assets/images/logo.jpg";
 import company from "../../assets/images/company.jpg";
+import { NavLink } from "react-router-dom";
 
 const SignIn = () => {
   return (
@@ -35,7 +36,7 @@ const SignIn = () => {
                       className="form-control"
                       name="u_name"
                       value=""
-                      placeholder="Username"
+                      placeholder="Email Address"
                       required
                     />
                   </div>
@@ -46,34 +47,52 @@ const SignIn = () => {
                       className="form-control"
                       name="password"
                       value=""
-                      placeholder="Type Password"
+                      placeholder="Password"
                       required
                     />
                   </div>
 
-                  <a
-                    href="index.html"
-                    className="btn btn-primary w-100 text-uppercase text-white rounded-2 lh-34 ff-heading fw-bold shadow"
+                  <div className="form-group">
+                    <div className="form-check">
+                      <input
+                        className="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="invalidCheck"
+                        required
+                      />
+                      <label
+                        className="form-check-label"
+                        htmlFor="invalidCheck"
+                      >
+                        Remember Me
+                      </label>
+                    </div>
+                  </div>
+
+                  <NavLink
+                    to={"./../forget-password"}
+                    className="d-flex align-items-center justify-content-between mt-4 mb-4 text-primary fw-bold"
                   >
-                    Login
-                  </a>
+                    Forgot password
+                  </NavLink>
 
                   <p className="d-flex align-items-center justify-content-between mt-4 mb-4">
-                    Forgot your password?
-                    <a
-                      href="forgot-password-2.html"
+                    Don't have an account?
+                    <NavLink
+                      to={"./../sign-up"}
                       className="text-primary fw-bold text-decoration-underline"
                     >
-                      Reset Here
-                    </a>
+                      Sign Up
+                    </NavLink>
                   </p>
 
-                  <a
-                    href="register-2.html"
-                    className="btn btn-secondary w-100 text-uppercase text-white rounded-2 lh-34 ff-heading fw-bold"
+                  <NavLink
+                    to={"../dashboard/appoitments"}
+                    className="btn btn-secondary w-100 text-uppercase text-white rounded-2 lh-34 ff-heading fw-bold shadow"
                   >
-                    Create an Account
-                  </a>
+                    Login
+                  </NavLink>
                 </form>
               </div>
             </div>

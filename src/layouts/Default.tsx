@@ -88,7 +88,7 @@ const Default = () => {
                         <div className="user-message">
                           <h6 className="message">
                             <a href="#">Jackie Kun</a> mentioned you at{" "}
-                            <a href="#">Kleon Projects</a>
+                            <a href="#">Blueberry Projects</a>
                           </h6>
                           <p className="message-footer d-flex align-items-center justify-content-between">
                             {" "}
@@ -106,7 +106,7 @@ const Default = () => {
                         <div className="user-message">
                           <h6 className="message">
                             <a href="#">Olivia Johanna</a> has created new task
-                            at <a href="#">Kleon Projects</a>
+                            at <a href="#">Blueberry Projects</a>
                           </h6>
                           <p className="message-footer d-flex align-items-center justify-content-between">
                             {" "}
@@ -170,7 +170,7 @@ const Default = () => {
                     className="rounded-2"
                   />
                   <div className="nav-toggler-content">
-                    <h6 className="mb-0">Franklin Jr.</h6>
+                    <h6 className="mb-0">John S.</h6>
                     <div className="ff-heading fs-14 fw-normal text-gray">
                       Super Admin
                     </div>
@@ -187,7 +187,7 @@ const Default = () => {
                           className="rounded-circle avatar"
                         />
                         <div className="mt-2">
-                          <h6 className="mb-0 lh-18">Franklin Jr.</h6>
+                          <h6 className="mb-0 lh-18">John S.</h6>
                           <div className="fs-14 fw-normal text-gray">
                             Super Admin
                           </div>
@@ -316,7 +316,7 @@ const Default = () => {
                         <div className="user-message">
                           <h6 className="message">
                             <a href="#">Jackie Kun</a> mentioned you at{" "}
-                            <a href="#">Kleon Projects</a>
+                            <a href="#">Blueberry Projects</a>
                           </h6>
                           <p className="message-footer d-flex align-items-center justify-content-between">
                             {" "}
@@ -334,7 +334,7 @@ const Default = () => {
                         <div className="user-message">
                           <h6 className="message">
                             <a href="#">Olivia Johanna</a> has created new task
-                            at <a href="#">Kleon Projects</a>
+                            at <a href="#">Blueberry Projects</a>
                           </h6>
                           <p className="message-footer d-flex align-items-center justify-content-between">
                             {" "}
@@ -398,7 +398,7 @@ const Default = () => {
                     className="rounded-2"
                   />
                   <div className="nav-toggler-content">
-                    <h6 className="mb-0">Franklin Jr.</h6>
+                    <h6 className="mb-0">John S.</h6>
                     <div className="ff-heading fs-14 fw-normal text-gray">
                       Super Admin
                     </div>
@@ -415,7 +415,7 @@ const Default = () => {
                           className="rounded-circle avatar"
                         />
                         <div className="mt-2">
-                          <h6 className="mb-0 lh-18">Franklin Jr.</h6>
+                          <h6 className="mb-0 lh-18">John S.</h6>
                           <div className="fs-14 fw-normal text-gray">
                             Super Admin
                           </div>

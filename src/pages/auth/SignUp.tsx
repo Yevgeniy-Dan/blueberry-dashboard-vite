@@ -1,5 +1,6 @@
-import logo from "../../assets/images/logo.svg";
+import logo from "../../assets/images/logo.jpg";
 import company from "../../assets/images/company.jpg";
+import { NavLink } from "react-router-dom";
 
 const SignUp = () => {
   return (
@@ -21,7 +22,7 @@ const SignUp = () => {
                 <a href="index.html" className="w-100 d-inline-block mb-5">
                   <img src={logo} alt="img" />
                 </a>
-                <h2>Welcome to Kleon!</h2>
+                <h2>Welcome to Blueberry!</h2>
                 <p className="text-dark mt-4 mb-5">
                   Signup here to create your own dashboard.
                 </p>
@@ -42,14 +43,26 @@ const SignUp = () => {
                         <input
                           type="text"
                           className="form-control"
-                          name="name"
+                          name="first_name"
                           value=""
-                          placeholder="Name or User Name"
+                          placeholder="First Name"
                           required
                         />
                       </div>
                     </div>
                     <div className="col-lg-6">
+                      <div className="form-group">
+                        <input
+                          type="text"
+                          className="form-control"
+                          name="last_name"
+                          value=""
+                          placeholder="Last Name"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div className="col-lg-12">
                       <div className="form-group">
                         <input
                           type="email"
@@ -68,7 +81,7 @@ const SignUp = () => {
                           className="form-control"
                           name="password"
                           value=""
-                          placeholder="Type Password"
+                          placeholder="Password"
                           required
                         />
                       </div>
@@ -80,28 +93,28 @@ const SignUp = () => {
                           className="form-control"
                           name="c_password"
                           value=""
-                          placeholder="Re-type Password"
+                          placeholder="Confirm Password"
                           required
                         />
                       </div>
                     </div>
                   </div>
 
-                  <a
-                    href="#"
-                    className="btn btn-primary w-100 text-uppercase text-white rounded-2 lh-34 ff-heading fw-bold shadow"
+                  <NavLink
+                    to={"../dashboard/appoitments"}
+                    className="btn btn-secondary w-100 text-uppercase text-white rounded-2 lh-34 ff-heading fw-bold shadow"
                   >
                     Register
-                  </a>
+                  </NavLink>
 
                   <p className="d-flex align-items-center gap-2 mt-4 mb-0">
                     Already have an account?{" "}
-                    <a
-                      href="login-2.html"
+                    <NavLink
+                      to={"./../sign-in"}
                       className="text-secondary fw-bold text-decoration-underline"
                     >
                       Sign In
-                    </a>
+                    </NavLink>
                   </p>
                 </form>
               </div>

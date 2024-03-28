@@ -216,7 +216,7 @@ const BusinessInfo = () => {
                   />
                 </div>
                 <div className="form-group mb-0">
-                  <button type="submit" className="btn btn-primary">
+                  <button type="submit" className="btn btn-secondary">
                     Submit
                   </button>
                 </div>
