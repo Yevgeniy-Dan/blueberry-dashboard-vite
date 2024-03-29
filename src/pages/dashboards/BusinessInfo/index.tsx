@@ -7,7 +7,7 @@ const BusinessInfo = () => {
 
   return (
     <div
-      className={`bg-light has-right-panel ${
+      className={`bg-white has-right-panel ${
         isCollapsed && "kleon-vertical-nav--collapse"
       }`}
     >

@@ -12,7 +12,7 @@ const Appointments = () => {
 
   return (
     <div
-      className={`bg-light has-right-panel ${
+      className={`bg-white has-right-panel ${
         isCollapsed && "kleon-vertical-nav--collapse"
       }`}
     >
@@ -42,7 +42,7 @@ const Appointments = () => {
                         <div className="dropdown-widget dropdown-schedule p-0">
                           <div className="dropdown-wrapper">
                             <ul className="notification-board calendar-schedule list-unstyled">
-                              <li className="author-online has-new-message bg-white d-flex align-items-center justify-content-between gap-3">
+                              <li className="author-online has-new-message bg-light d-flex align-items-center justify-content-between gap-3">
                                 <div className="d-flex align-items-center gap-3">
                                   <div className="calendar-date bg-soft-primary text-center d-flex flex-column justify-content-center">
                                     <h5 className="text-primary ff-heading fs-18 fw-bold lh-18 mb-0">
@@ -89,7 +89,7 @@ const Appointments = () => {
                                 </div>
                               </li>
 
-                              <li className="author-online has-new-message bg-white d-flex align-items-center justify-content-between gap-3">
+                              <li className="author-online has-new-message bg-light d-flex align-items-center justify-content-between gap-3">
                                 <div className="d-flex align-items-center gap-3">
                                   <div className="calendar-date bg-soft-info text-center d-flex flex-column justify-content-center">
                                     <h5 className="text-info ff-heading fs-18 fw-bold lh-18 mb-0">
@@ -136,7 +136,7 @@ const Appointments = () => {
                                 </div>
                               </li>
 
-                              <li className="author-online has-new-message bg-white d-flex align-items-center justify-content-between gap-3">
+                              <li className="author-online has-new-message bg-light d-flex align-items-center justify-content-between gap-3">
                                 <div className="d-flex align-items-center gap-3">
                                   <div className="calendar-date bg-soft-secondary text-center d-flex flex-column justify-content-center">
                                     <h5 className="text-secondary ff-heading fs-18 fw-bold lh-18 mb-0">
@@ -203,7 +203,7 @@ const Appointments = () => {
                   </div>
 
                   <div className="col-xxl-12 col-md-6">
-                    <div className="card border-0">
+                    <div className="card border-0 bg-light">
                       <div className="card-header p-5 pb-0 border-0">
                         <h4 className="mb-0">Upcoming Events</h4>
                       </div>
