@@ -1,11 +1,16 @@
 import { NavLink, useLocation } from "react-router-dom";
 import logo from "../assets/images/logo.png";
+import logoIconMin from "../assets/images/logo-icon-min.png";
+
 import {
   DASHBOARD_APPOINTMENTS,
   DASHBOARD_BUSINESS_INFO,
 } from "../routes/constants";
 
-const Vertical = () => {
+const Vertical: React.FC<{
+  onToggleCollapse: () => void;
+  isCollapsed: boolean;
+}> = ({ onToggleCollapse, isCollapsed }) => {
   const location = useLocation();
 
   return (
@@ -17,13 +22,17 @@ const Vertical = () => {
           to={"./"}
           className="d-flex align-items-center gap-3 flex-shrink-0"
         >
-          <img src={logo} alt="logo" />
+          <img src={`${isCollapsed ? logoIconMin : logo}`} alt="logo" />
           {/* <div className="position-relative flex-shrink-0">
             <img src={logoText} alt="" className="logo-text" />
             <img src={logoTextWhite} alt="" className="logo-text-white" />
           </div> */}
         </NavLink>
-        <button type="button" className="kleon-vertical-nav-toggle bg-light">
+        <button
+          type="button"
+          className="kleon-vertical-nav-toggle bg-light"
+          onClick={() => onToggleCollapse()}
+        >
           <i className="bi bi-list"></i>
         </button>
       </div>

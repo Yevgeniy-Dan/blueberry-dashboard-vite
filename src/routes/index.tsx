@@ -1,8 +1,7 @@
 import { Suspense, lazy } from "react";
 import Appointments from "../pages/dashboards/Appointments";
 import BusinessInfo from "../pages/dashboards/BusinessInfo";
-import Default from "../layouts/Default";
-import Vertical from "../layouts/Vertical";
+
 import Preloader from "../pages/Preloader";
 import { DASHBOARD_APPOINTMENTS, DASHBOARD_BUSINESS_INFO } from "./constants";
 
@@ -52,8 +51,6 @@ const dashboardRoutes = [
     path: DASHBOARD_APPOINTMENTS,
     element: (
       <Suspense fallback={<Preloader />}>
-        <Default />
-        <Vertical />
         <Appointments />
       </Suspense>
     ),
@@ -62,8 +59,6 @@ const dashboardRoutes = [
     path: DASHBOARD_BUSINESS_INFO,
     element: (
       <Suspense fallback={<Preloader />}>
-        <Default />
-        <Vertical />
         <BusinessInfo />
       </Suspense>
     ),
