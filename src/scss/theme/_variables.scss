@@ -3,7 +3,7 @@ $variable-prefix: "kleon-";
 
 //MY THEME COLORS
 // $primary: #924aef;
-$primary: #533fbd;
+$primary: rgb(112, 12, 236);
 $secondary: rgba(255, 191, 0);
 $success: #38e25d;
 $info: #5ecfff;
@@ -176,7 +176,7 @@ $spacers: map-merge(
     // 100px
     10: $spacer * 6,
     // 120px
-    11: $spacer * 7.5 // 150px,,,
+    11: $spacer * 7.5 // 150px,,,,
   ),
   $spacers
 );

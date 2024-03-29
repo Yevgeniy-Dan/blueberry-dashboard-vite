@@ -1,7 +1,13 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import logo from "../assets/images/logo.png";
+import {
+  DASHBOARD_APPOINTMENTS,
+  DASHBOARD_BUSINESS_INFO,
+} from "../routes/constants";
 
 const Vertical = () => {
+  const location = useLocation();
+
   return (
     //  <!-- Vertical Nav -->
     <div className="kleon-vertical-nav p-0">
@@ -24,11 +30,12 @@ const Vertical = () => {
 
       <div className=" bg-primary pt-4 h-100">
         <div className="kleon-navmenu p-4">
-          <h6 className="hidden-header text-gray text-uppercase ls-1 ms-4 mb-4">
-            Main Menu
-          </h6>
           <ul className="main-menu">
-            <li className="menu-item menu-item-has-children">
+            <li
+              className={`menu-item ${
+                location.pathname === DASHBOARD_APPOINTMENTS && "active"
+              }`}
+            >
               <NavLink to={"./../appointments"}>
                 {" "}
                 <span className="nav-icon flex-shrink-0">
@@ -37,7 +44,11 @@ const Vertical = () => {
                 <span className="nav-text">My Appointments</span>
               </NavLink>
             </li>
-            <li className="menu-item menu-item-has-children">
+            <li
+              className={`menu-item ${
+                location.pathname === DASHBOARD_BUSINESS_INFO && "active"
+              }`}
+            >
               <NavLink to={"./../business-info"}>
                 {" "}
                 <span className="nav-icon flex-shrink-0">

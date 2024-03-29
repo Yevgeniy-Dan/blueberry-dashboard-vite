@@ -4,6 +4,7 @@ import BusinessInfo from "../pages/dashboards/BusinessInfo";
 import Default from "../layouts/Default";
 import Vertical from "../layouts/Vertical";
 import Preloader from "../pages/Preloader";
+import { DASHBOARD_APPOINTMENTS, DASHBOARD_BUSINESS_INFO } from "./constants";
 
 const SignIn = lazy(() => import("../pages/auth/SignIn"));
 const SignUp = lazy(() => import("../pages/auth/SignUp"));
@@ -48,7 +49,7 @@ const authRoutes = [
 
 const dashboardRoutes = [
   {
-    path: "/dashboard/appointments",
+    path: DASHBOARD_APPOINTMENTS,
     element: (
       <Suspense fallback={<Preloader />}>
         <Default />
@@ -58,7 +59,7 @@ const dashboardRoutes = [
     ),
   },
   {
-    path: "/dashboard/business-info",
+    path: DASHBOARD_BUSINESS_INFO,
     element: (
       <Suspense fallback={<Preloader />}>
         <Default />

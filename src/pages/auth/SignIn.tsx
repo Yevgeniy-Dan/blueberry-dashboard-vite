@@ -52,34 +52,31 @@ const SignIn = () => {
                     />
                   </div>
 
-                  <div className="form-group ">
-                    <div className="row justify-content-end">
-                      <div className="col-auto">
-                        <div className="form-check ">
-                          <input
-                            className="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="invalidCheck"
-                            required
-                          />
-                          <label
-                            className="form-check-label"
-                            htmlFor="invalidCheck"
-                          >
-                            Remember Me
-                          </label>
-                        </div>
-                      </div>
+                  <div className="form-group d-flex justify-content-between align-items-center">
+                    <div className="form-check ">
+                      <input
+                        className="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="invalidCheck"
+                        required
+                      />
+                      <label
+                        className="form-check-label"
+                        htmlFor="invalidCheck"
+                      >
+                        Remember Me
+                      </label>
+                    </div>
+                    <div>
+                      <NavLink
+                        to={"./../forget-password"}
+                        className="d-flex align-items-center justify-content-between mt-4 mb-4 text-primary fw-bold"
+                      >
+                        Forgot password
+                      </NavLink>
                     </div>
                   </div>
-
-                  <NavLink
-                    to={"./../forget-password"}
-                    className="d-flex align-items-center justify-content-between mt-4 mb-4 text-primary fw-bold"
-                  >
-                    Forgot password
-                  </NavLink>
 
                   <p className="d-flex align-items-center justify-content-between mt-4 mb-4 fw-bold">
                     Don't have an account?
