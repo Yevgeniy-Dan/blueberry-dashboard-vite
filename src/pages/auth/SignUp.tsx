@@ -1,6 +1,7 @@
 import logo from "../../assets/images/logo.png";
 import company from "../../assets/images/company.jpg";
 import { NavLink } from "react-router-dom";
+import { DASHBOARD_APPOINTMENTS } from "../../routes/constants";
 
 const SignUp = () => {
   return (
@@ -18,18 +19,24 @@ const SignUp = () => {
         <div className="col-xl-5 col-lg-5 col-md-6">
           <div className="d-flex align-items-center justify-content-center vh-100 bg-white">
             <div className="card rounded-0 border-0 p-5 m-0 w-100">
-              <div className="card-header border-0 p-0 text-center">
-                <a href="index.html" className="w-100 d-inline-block mb-5">
+              <div className="card-header border-0 p-0 pt-8 text-center mb-8">
+                <NavLink to="/" className="w-100 d-inline-block ">
                   <img src={logo} alt="img" />
-                </a>
-                <h2>Welcome to Blueberry!</h2>
+                </NavLink>
               </div>
+              <h2 className="text-center">Welcome to Blueberry!</h2>
 
               <div className="card-body p-0 my-4">
                 <form className="form-horizontal" method="post">
                   <div className="row">
                     <div className="col-lg-6">
                       <div className="form-group">
+                        <label
+                          htmlFor="validationCustom01"
+                          className="form-label"
+                        >
+                          First Name
+                        </label>
                         <input
                           type="text"
                           className="form-control border-gray-400"
@@ -42,6 +49,12 @@ const SignUp = () => {
                     </div>
                     <div className="col-lg-6">
                       <div className="form-group">
+                        <label
+                          htmlFor="validationCustom01"
+                          className="form-label"
+                        >
+                          Last Name
+                        </label>
                         <input
                           type="text"
                           className="form-control border-gray-400"
@@ -54,6 +67,12 @@ const SignUp = () => {
                     </div>
                     <div className="col-lg-12">
                       <div className="form-group">
+                        <label
+                          htmlFor="validationCustom01"
+                          className="form-label"
+                        >
+                          Email Address
+                        </label>
                         <input
                           type="email"
                           className="form-control border-gray-400"
@@ -66,6 +85,12 @@ const SignUp = () => {
                     </div>
                     <div className="col-lg-6">
                       <div className="form-group">
+                        <label
+                          htmlFor="validationCustom01"
+                          className="form-label"
+                        >
+                          Password
+                        </label>
                         <input
                           type="password"
                           className="form-control border-gray-400"
@@ -78,6 +103,12 @@ const SignUp = () => {
                     </div>
                     <div className="col-lg-6">
                       <div className="form-group">
+                        <label
+                          htmlFor="validationCustom01"
+                          className="form-label"
+                        >
+                          Confirm Password
+                        </label>
                         <input
                           type="password"
                           className="form-control border-gray-400"
@@ -91,21 +122,21 @@ const SignUp = () => {
                   </div>
 
                   <NavLink
-                    to={"../dashboard/appointments"}
+                    to={DASHBOARD_APPOINTMENTS}
                     className="btn btn-secondary w-100 text-uppercase text-white rounded-2 lh-34 ff-heading fw-bold shadow"
                   >
                     Sign Up
                   </NavLink>
 
-                  <p className="d-flex align-items-center gap-2 mt-4 mb-0">
-                    Already have an account?{" "}
+                  <div className="d-flex flex-column align-items-center gap-2  mt-4 mb-0 text-center">
+                    Already have an account?
                     <NavLink
-                      to={"./../sign-in"}
+                      to={"/account/sign-in"}
                       className="text-primary fw-bold text-decoration-underline"
                     >
                       Log In
                     </NavLink>
-                  </p>
+                  </div>
                 </form>
               </div>
             </div>

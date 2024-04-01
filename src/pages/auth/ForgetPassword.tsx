@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 
 const ForgetPassword = () => {
@@ -5,11 +6,11 @@ const ForgetPassword = () => {
     <div className="bg-primary">
       <div className="row align-items-center justify-content-center vh-100">
         <div className="col-xxl-4 col-xl-5 col-lg-5 col-md-6">
-          <div className="card rounded-2 border-0 p-5 m-0">
+          <div className="card rounded-2 border-0 p-5 m-6 m-md-0">
             <div className="card-header border-0 p-0 text-center">
-              <a href="index.html" className="w-100 d-inline-block mb-5">
+              <NavLink to="/" className="w-100 d-inline-block mb-5">
                 <img src={logo} alt="img" />
-              </a>
+              </NavLink>
               <h3>Forgot your password?</h3>
               <p className="fs-14 text-dark my-4">
                 Enter your user account's verified email address and we will
@@ -25,7 +26,7 @@ const ForgetPassword = () => {
                     className="form-control border-gray-400"
                     name="email"
                     value=""
-                    placeholder="Email"
+                    placeholder="Email Address"
                     required
                   />
                 </div>

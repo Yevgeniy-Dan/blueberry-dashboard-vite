@@ -1,6 +1,7 @@
 import logo from "../../assets/images/logo.png";
 import company from "../../assets/images/company.jpg";
 import { NavLink } from "react-router-dom";
+import { DASHBOARD_APPOINTMENTS } from "../../routes/constants";
 
 const SignIn = () => {
   return (
@@ -18,19 +19,19 @@ const SignIn = () => {
         <div className="col-xl-5 col-lg-5 col-md-6">
           <div className="d-flex align-items-center justify-content-center vh-100 bg-white">
             <div className="card rounded-0 border-0 p-5 m-0 w-100">
-              <div className="card-header border-0 p-0 text-center">
-                <a href="index.html" className="w-100 d-inline-block mb-5">
+              <div className="card-header border-0 p-0 text-center mb-8">
+                <NavLink to="/" className="w-100 d-inline-block">
                   <img src={logo} alt="img" />
-                </a>
-                <h2>Welcome back!</h2>
-                <p className="text-dark mt-4 mb-5">
-                  Please login using your account
-                </p>
+                </NavLink>
               </div>
+              <h2 className="mb-5 text-center">Login</h2>
 
               <div className="card-body p-0">
                 <form className="form-horizontal" method="post">
                   <div className="form-group">
+                    <label htmlFor="validationCustom01" className="form-label">
+                      Email Address
+                    </label>
                     <input
                       type="text"
                       className="form-control border-gray-400"
@@ -41,7 +42,10 @@ const SignIn = () => {
                     />
                   </div>
 
-                  <div className="form-group">
+                  <div>
+                    <label htmlFor="validationCustom01" className="form-label">
+                      Password
+                    </label>
                     <input
                       type="password"
                       className="form-control border-gray-400"
@@ -62,7 +66,7 @@ const SignIn = () => {
                         required
                       />
                       <label
-                        className="form-check-label"
+                        className="form-check-label fw-bold"
                         htmlFor="invalidCheck"
                       >
                         Remember Me
@@ -70,30 +74,30 @@ const SignIn = () => {
                     </div>
                     <div>
                       <NavLink
-                        to={"./../forget-password"}
-                        className="d-flex align-items-center justify-content-between mt-4 mb-4 text-primary fw-bold"
+                        to={"/account/forget-password"}
+                        className="d-flex align-items-center justify-content-between mt-4 mb-4 text-primary fw-bold text-decoration-underline"
                       >
-                        Forgot password
+                        Forget Password?
                       </NavLink>
                     </div>
                   </div>
 
-                  <p className="d-flex align-items-center justify-content-between mt-4 mb-4 fw-bold">
-                    Don't have an account?
-                    <NavLink
-                      to={"./../sign-up"}
-                      className="text-primary fw-bold text-decoration-underline"
-                    >
-                      Sign Up
-                    </NavLink>
-                  </p>
-
                   <NavLink
-                    to={"../dashboard/appointments"}
+                    to={DASHBOARD_APPOINTMENTS}
                     className="btn btn-secondary w-100 text-uppercase text-white rounded-2 lh-34 ff-heading fw-bold shadow"
                   >
                     Login
                   </NavLink>
+
+                  <div className="d-flex flex-column align-items-center justify-content-between mt-4 mb-4 fw-bold text-center gap-2 ">
+                    Don't have an account?
+                    <NavLink
+                      to={"/account/sign-up"}
+                      className="text-primary fw-bold text-decoration-underline"
+                    >
+                      Sign Up
+                    </NavLink>
+                  </div>
                 </form>
               </div>
             </div>

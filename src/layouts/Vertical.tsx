@@ -45,12 +45,14 @@ const Vertical: React.FC<{
                 location.pathname === DASHBOARD_APPOINTMENTS && "active"
               }`}
             >
-              <NavLink to={"./../appointments"}>
+              <NavLink to={DASHBOARD_APPOINTMENTS}>
                 {" "}
                 <span className="nav-icon flex-shrink-0">
                   <i className="bi bi-calendar-check fs-18"></i>
                 </span>{" "}
-                <span className="nav-text">My Appointments</span>
+                {!isCollapsed && (
+                  <span className="nav-text">My Appointments</span>
+                )}
               </NavLink>
             </li>
             <li
@@ -58,12 +60,14 @@ const Vertical: React.FC<{
                 location.pathname === DASHBOARD_BUSINESS_INFO && "active"
               }`}
             >
-              <NavLink to={"./../business-info"}>
+              <NavLink to={DASHBOARD_BUSINESS_INFO}>
                 {" "}
                 <span className="nav-icon flex-shrink-0">
                   <i className="bi bi-bank fs-18"></i>
                 </span>{" "}
-                <span className="nav-text">Business Info</span>
+                {!isCollapsed && (
+                  <span className="nav-text">Business Info</span>
+                )}
               </NavLink>
             </li>
           </ul>

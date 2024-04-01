@@ -4,14 +4,18 @@ import Vertical from "../../../layouts/Vertical";
 
 const BusinessInfo = () => {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
+  const [isMobileCollapsed, setIsMobileCollapsed] = useState<boolean>(false);
 
   return (
     <div
       className={`bg-light has-right-panel ${
         isCollapsed && "kleon-vertical-nav--collapse"
-      }`}
+      } ${isMobileCollapsed && "kleon-vertical-nav--active"}`}
     >
-      <Default />
+      <Default
+        isCollapsed={isMobileCollapsed}
+        onToggleCollapse={() => setIsMobileCollapsed(!isMobileCollapsed)}
+      />
       <Vertical
         isCollapsed={isCollapsed}
         onToggleCollapse={() => setIsCollapsed(!isCollapsed)}

@@ -108,10 +108,12 @@
         display: none !important;
       }
       a {
+        text-align: center;
         width: 100%;
         border-radius: $border-radius-sm;
         .nav-icon {
           margin-right: 0px;
+          padding-left: 8px;
         }
         .nav-text {
           display: none;
@@ -124,7 +126,6 @@
         display: none;
       }
       &:hover {
-        width: 310px;
         overflow: visible;
         ul {
           display: block !important;

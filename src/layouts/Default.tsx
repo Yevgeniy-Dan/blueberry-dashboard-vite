@@ -8,8 +8,13 @@ import navAuthor from "../assets/images/nav_author.jpg";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 
-const Default = () => {
+const Default: React.FC<{
+  onToggleCollapse: () => void;
+  isCollapsed: boolean;
+}> = ({ onToggleCollapse }) => {
   const [showUserProfileDropdown, setShowUserProfileDropdown] =
+    useState<boolean>(false);
+  const [showUserProfileMobileDropdown, setShowUserProfileMobileDropdown] =
     useState<boolean>(false);
 
   return (
@@ -255,7 +260,7 @@ const Default = () => {
       <div className="small-header d-flex align-items-center justify-content-between d-xl-none">
         <div className="logo">
           <NavLink
-            to={"./"}
+            to={"/"}
             className="d-flex align-items-center gap-3 flex-shrink-0"
           >
             {/* <img src={logoIcon} alt="logo" /> */}
@@ -275,12 +280,22 @@ const Default = () => {
           </NavLink>
         </div>
         <div>
-          <button type="button" className="kleon-header-expand-toggle">
+          <button
+            type="button"
+            className="kleon-header-expand-toggle"
+            onClick={() => {
+              setShowUserProfileMobileDropdown(!showUserProfileMobileDropdown);
+            }}
+          >
             <span className="fs-24">
               <i className="bi bi-three-dots-vertical"></i>
             </span>
           </button>
-          <button type="button" className="kleon-mobile-menu-opener">
+          <button
+            type="button"
+            className="kleon-mobile-menu-opener"
+            onClick={() => onToggleCollapse()}
+          >
             <span className="close">
               <i className="bi bi-arrow-left"></i>
             </span>{" "}
@@ -291,7 +306,11 @@ const Default = () => {
         </div>
       </div>
 
-      <div className="header-mobile-option">
+      <div
+        className={`header-mobile-option ${
+          showUserProfileMobileDropdown && "expand"
+        }`}
+      >
         <div className="header-inner">
           <div className="d-flex align-items-center justify-content-end flex-shrink-0">
             <ul className="nav-elements d-flex align-items-center list-unstyled m-0 p-0">
@@ -401,12 +420,15 @@ const Default = () => {
               <li className="nav-item nav-author px-3">
                 <a
                   href="#"
-                  className="nav-toggler"
+                  className={`nav-toggler ${showUserProfileDropdown && "show"}`}
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
+                  onClick={() =>
+                    setShowUserProfileDropdown(!showUserProfileDropdown)
+                  }
                 >
                   <img
-                    src="assets/img/nav_author.jpg"
+                    src={navAuthor}
                     alt="img"
                     width="40"
                     className="rounded-2"
@@ -418,12 +440,17 @@ const Default = () => {
                     </div>
                   </div>
                 </a>
-                <div className="dropdown-widget dropdown-menu p-0 admin-card">
+                <div
+                  className={`dropdown-widget dropdown-menu p-0 admin-card ${
+                    showUserProfileDropdown &&
+                    "show position-absolute top-95 translate-middle-x  py-3 w-56 max-h-200  overflow-y-auto flex justify-center flex-wrap"
+                  }`}
+                >
                   <div className="dropdown-wrapper">
                     <div className="card mb-0">
                       <div className="card-header p-3 text-center">
                         <img
-                          src="assets/img/nav_author.jpg"
+                          src={navAuthor}
                           alt="img"
                           width="60"
                           className="rounded-circle avatar"
@@ -465,12 +492,12 @@ const Default = () => {
                         </ul>
                       </div>
                       <div className="card-footer p-3">
-                        <a
-                          href="login.html"
+                        <NavLink
+                          to={"../account/logout"}
                           className="btn btn-outline-gray bg-transparent w-100 py-1 rounded-1 text-dark fs-14 fw-medium"
                         >
                           <i className="bi bi-box-arrow-right"></i> Logout
-                        </a>
+                        </NavLink>
                       </div>
                     </div>
                   </div>
