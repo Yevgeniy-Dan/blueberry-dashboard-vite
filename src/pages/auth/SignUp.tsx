@@ -19,7 +19,7 @@ const SignUp = () => {
         <div className="col-xl-5 col-lg-5 col-md-6">
           <div className="d-flex align-items-center justify-content-center vh-100 bg-white">
             <div className="card rounded-0 border-0 p-5 m-0 w-100">
-              <div className="card-header border-0 p-0 pt-8 text-center mb-8">
+              <div className="card-header border-0 p-0 pt-8 text-center mb-0 mb-md-8">
                 <NavLink to="/" className="w-100 d-inline-block ">
                   <img src={logo} alt="img" />
                 </NavLink>
