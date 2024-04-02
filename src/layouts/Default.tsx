@@ -22,8 +22,8 @@ const Default: React.FC<{
     <header className="header kleon-default-nav">
       <div className="d-none d-xl-block">
         <div className="header-inner d-flex align-items-center justify-content-around justify-content-xl-between flex-wrap flex-xl-nowrap gap-3 gap-xl-5">
-          <div className="header-left-part d-flex align-items-center flex-grow-1 w-100">
-            <div className="header-search">
+          <div className="header-left-part d-flex align-items-center w-50">
+            <div className="header-search w-100">
               <form className="search-form" action="search.php">
                 <input
                   type="text"
@@ -40,132 +40,6 @@ const Default: React.FC<{
 
           <div className="header-right-part d-flex align-items-center flex-shrink-0">
             <ul className="nav-elements d-flex align-items-center list-unstyled m-0 p-0">
-              {/* <li className="nav-item nav-color-switch d-flex align-items-center gap-3">
-                <div className="sun">
-                  <img src={sun} alt="img" />
-                </div>
-                <div className="switch">
-                  <input
-                    type="checkbox"
-                    id="colorSwitch"
-                    value="false"
-                    name="defaultMode"
-                  />
-                  <div className="shutter">
-                    <span className="lbl-off"></span>
-                    <span className="lbl-on"></span>
-                    <div className="slider bg-primary"></div>
-                  </div>
-                </div>
-                <div className="moon">
-                  <img src={moon} alt="img" />
-                </div>
-              </li>
-
-              <li className="nav-item nav-flag">
-                <select className="kleon-select-single nav-toggler-content">
-                  <option selected value="en">
-                    Eng(US)
-                  </option>
-                  <option value="fr">French</option>
-                  <option value="de">German</option>
-                  <option value="sp">Spanish</option>
-                </select>
-              </li>
-
-              <li className="nav-item nav-notification dropdown">
-                <a
-                  href="#"
-                  className="nav-toggler"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <img src={bell} alt="bell" />
-                  <div className="badge rounded-circle">12</div>
-                </a>
-                <div className="dropdown-widget dropdown-menu p-0">
-                  <div className="dropdown-wrapper pd-50">
-                    <div className="dropdown-wrapper--title">
-                      <h4 className="d-flex align-items-center justify-content-between">
-                        Notifications <a href="#">View All</a>
-                      </h4>
-                    </div>
-                    <ul className="notification-board list-unstyled">
-                      <li className="author-online has-new-message d-flex gap-3">
-                        <div className="media bg-primary text-white">
-                          <i className="bi bi-lightning"></i>
-                        </div>
-                        <div className="user-message">
-                          <h6 className="message">
-                            <a href="#">Jackie Kun</a> mentioned you at{" "}
-                            <a href="#">Blueberry Projects</a>
-                          </h6>
-                          <p className="message-footer d-flex align-items-center justify-content-between">
-                            {" "}
-                            <span className="fs-14 text-gray fw-normal">
-                              2m ago
-                            </span>{" "}
-                            <span>Mark as read</span>
-                          </p>
-                        </div>
-                      </li>
-                      <li className="author-online has-new-message d-flex gap-3">
-                        <div className="media bg-secondary text-white">
-                          <i className="bi bi-lightning"></i>
-                        </div>
-                        <div className="user-message">
-                          <h6 className="message">
-                            <a href="#">Olivia Johanna</a> has created new task
-                            at <a href="#">Blueberry Projects</a>
-                          </h6>
-                          <p className="message-footer d-flex align-items-center justify-content-between">
-                            {" "}
-                            <span className="fs-14 text-gray fw-normal">
-                              2m ago
-                            </span>{" "}
-                            <span>Mark as read</span>
-                          </p>
-                        </div>
-                      </li>
-                      <li className="author-online has-new-message d-flex gap-3">
-                        <div className="media media-outline-red text-red">
-                          <i className="bi bi-clock-fill"></i>
-                        </div>
-                        <div className="user-message">
-                          <h6 className="message">
-                            [REMINDER] Due date of{" "}
-                            <a href="#">Highspeed Studios Projects</a> te task
-                            will be coming
-                          </h6>
-                          <p className="message-footer d-flex align-items-center justify-content-between">
-                            {" "}
-                            <span className="fs-14 text-gray fw-normal">
-                              2m ago
-                            </span>{" "}
-                            <span>Mark as read</span>
-                          </p>
-                        </div>
-                      </li>
-                    </ul>
-                    <h6 className="all-notifications">
-                      {" "}
-                      <a
-                        href="#"
-                        className="btn bg-muted text-primary w-100 fw-bold mt-3 ff-heading px-0"
-                      >
-                        View All Notifications
-                      </a>{" "}
-                    </h6>
-                  </div>
-                </div>
-              </li>
-
-              <li className="nav-item nav-settings">
-                <a href="#" className="nav-toggler">
-                  <img src={settings} alt="img" />
-                </a>
-              </li> */}
-
               <li className="nav-item nav-author">
                 <a
                   href="#"
@@ -505,6 +379,22 @@ const Default: React.FC<{
               </li>
             </ul>
           </div>
+        </div>
+      </div>
+
+      <div className="header-left-part d-flex align-items-center w-100 d-block d-xl-none py-5">
+        <div className="header-search w-100">
+          <form className="search-form" action="search.php">
+            <input
+              type="text"
+              name="search"
+              className="keyword form-control w-100"
+              placeholder="Search customer by name or email"
+            />
+            <button type="submit" className="btn">
+              <img src={search} alt="" />
+            </button>
+          </form>
         </div>
       </div>
     </header>

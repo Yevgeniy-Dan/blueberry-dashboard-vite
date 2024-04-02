@@ -173,11 +173,19 @@ const Appointments = () => {
                       <div className="card-body p-0">
                         <div className="row">
                           <div className="dropdown-widget dropdown-schedule p-2 col-md-6 col-12">
-                            <p className="fw-bold text-center">Today</p>
+                            <div className="card border-0 shadow-sm pd-top-40 pd-bottom-40 bg-light-200">
+                              <div className="card-body py-0">
+                                <h4 className="mb-3">Today</h4>
+                                <h2 className="fs-38 d-flex align-items-center gap-4">
+                                  {" "}
+                                  12{" "}
+                                </h2>
+                              </div>
+                            </div>
                             <div className="dropdown-wrapper">
                               <ul className="notification-board calendar-schedule list-unstyled">
                                 {todaysAppointments.map((appointment) => (
-                                  <li className="author-online has-new-message bg-soft-info d-flex align-items-center justify-content-between gap-3">
+                                  <li className="author-online has-new-message bg-light-200 d-flex align-items-center justify-content-between gap-3">
                                     <div className="d-flex align-items-center gap-3">
                                       <div className="calendar-date bg-soft-primary text-center d-flex flex-column justify-content-center">
                                         <h5 className="text-primary ff-heading fs-18 fw-bold lh-18 mb-0">
@@ -189,7 +197,11 @@ const Appointments = () => {
                                       </div>
                                       <div className="user-message">
                                         <h6 className="message mb-1">
-                                          <a href="#" className="text-dark">
+                                          <a
+                                            href="#"
+                                            className="text-dark d-inline-block text-truncate"
+                                            style={{ maxWidth: "100px" }}
+                                          >
                                             {appointment.title}
                                           </a>
                                         </h6>
@@ -231,11 +243,19 @@ const Appointments = () => {
                           </div>
 
                           <div className="dropdown-widget dropdown-schedule p-2 col-md-6 col-12">
-                            <p className="fw-bold text-center">Tomorrow</p>
+                            <div className="card border-0 shadow-sm pd-top-40 pd-bottom-40 bg-light-200">
+                              <div className="card-body py-0">
+                                <h4 className="mb-3">Tomorrow</h4>
+                                <h2 className="fs-38 d-flex align-items-center gap-4">
+                                  {" "}
+                                  15{" "}
+                                </h2>
+                              </div>
+                            </div>
                             <div className="dropdown-wrapper">
                               <ul className="notification-board calendar-schedule list-unstyled">
                                 {tomorrowsAppointments.map((appointment) => (
-                                  <li className="author-online has-new-message bg-soft-info d-flex align-items-center justify-content-between gap-3">
+                                  <li className="author-online has-new-message bg-light-200 d-flex align-items-center justify-content-between gap-3">
                                     <div className="d-flex align-items-center gap-3">
                                       <div className="calendar-date bg-soft-primary text-center d-flex flex-column justify-content-center">
                                         <h5 className="text-primary ff-heading fs-18 fw-bold lh-18 mb-0">
@@ -247,7 +267,11 @@ const Appointments = () => {
                                       </div>
                                       <div className="user-message">
                                         <h6 className="message mb-1">
-                                          <a href="#" className="text-dark">
+                                          <a
+                                            href="#"
+                                            className="text-dark d-inline-block text-truncate"
+                                            style={{ maxWidth: "100px" }}
+                                          >
                                             {appointment.title}
                                           </a>
                                         </h6>

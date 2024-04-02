@@ -7,7 +7,7 @@
   padding: $_30px;
 }
 .inner-contents {
-  @include rfs($_40px, padding-top);
+  // @include rfs($_40px, padding-top);
   @include rfs($_40px, padding-left);
   @include rfs($_40px, padding-right);
 }
