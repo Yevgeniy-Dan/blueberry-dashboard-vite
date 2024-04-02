@@ -11,6 +11,132 @@ const Appointments = () => {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
   const [isMobileCollapsed, setIsMobileCollapsed] = useState<boolean>(false);
 
+  const todaysAppointments = [
+    {
+      day: new Date().getDate(),
+      month: new Date().toLocaleString("default", { month: "short" }),
+      title: "Client Meeting",
+      time: "10.00 - 11.00",
+    },
+    {
+      day: new Date().getDate(),
+      month: new Date().toLocaleString("default", { month: "short" }),
+      title: "Client Meeting",
+      time: "10.00 - 11.00",
+    },
+    {
+      day: new Date().getDate(),
+      month: new Date().toLocaleString("default", { month: "short" }),
+      title: "Team Lunch",
+      time: "12.00 - 13.00",
+    },
+    {
+      day: new Date().getDate(),
+      month: new Date().toLocaleString("default", { month: "short" }),
+      title: "Project Deadline",
+      time: "09.00 - 17.00",
+    },
+    {
+      day: new Date().getDate(),
+      month: new Date().toLocaleString("default", { month: "short" }),
+      title: "Conference Call",
+      time: "14.00 - 15.00",
+    },
+    {
+      day: new Date().getDate(),
+      month: new Date().toLocaleString("default", { month: "short" }),
+      title: "Workshop",
+      time: "11.00 - 12.30",
+    },
+    {
+      day: new Date().getDate(),
+      month: new Date().toLocaleString("default", { month: "short" }),
+      title: "Team Building Activity",
+      time: "09.30 - 12.30",
+    },
+    {
+      day: new Date().getDate(),
+      month: new Date().toLocaleString("default", { month: "short" }),
+      title: "Client Presentation",
+      time: "15.00 - 16.30",
+    },
+    {
+      day: new Date().getDate(),
+      month: new Date().toLocaleString("default", { month: "short" }),
+      title: "Training Session",
+      time: "13.00 - 15.00",
+    },
+    {
+      day: new Date().getDate(),
+      month: new Date().toLocaleString("default", { month: "short" }),
+      title: "Product Launch",
+      time: "10.00 - 11.30",
+    },
+  ];
+
+  const tomorrowsAppointments = [
+    {
+      day: 2,
+      month: new Date().toLocaleString("default", { month: "short" }),
+      title: "Code Review",
+      time: "09.00 - 11.00",
+    },
+    {
+      day: 2,
+      month: new Date().toLocaleString("default", { month: "short" }),
+      title: "Company Anniversary",
+      time: "14.00 - 17.00",
+    },
+    {
+      day: 2,
+      month: new Date().toLocaleString("default", { month: "short" }),
+      title: "Client Visit",
+      time: "11.00 - 12.30",
+    },
+    {
+      day: 2,
+      month: new Date().toLocaleString("default", { month: "short" }),
+      title: "Quarterly Review",
+      time: "09.30 - 12.30",
+    },
+    {
+      day: 2,
+      month: new Date().toLocaleString("default", { month: "short" }),
+      title: "Holiday Party",
+      time: "18.00 - 21.00",
+    },
+    {
+      day: 2,
+      month: new Date().toLocaleString("default", { month: "short" }),
+      title: "Training Workshop",
+      time: "10.00 - 15.00",
+    },
+    {
+      day: 2,
+      month: new Date().toLocaleString("default", { month: "short" }),
+      title: "Team Meeting",
+      time: "09.30 - 10.30",
+    },
+    {
+      day: 2,
+      month: new Date().toLocaleString("default", { month: "short" }),
+      title: "Client Demo",
+      time: "14.00 - 15.00",
+    },
+    {
+      day: 2,
+      month: new Date().toLocaleString("default", { month: "short" }),
+      title: "Product Training",
+      time: "11.00 - 12.30",
+    },
+    {
+      day: 2,
+      month: new Date().toLocaleString("default", { month: "short" }),
+      title: "Design Review",
+      time: "10.30 - 12.00",
+    },
+  ];
+
   return (
     <div
       className={`bg-white has-right-panel ${
@@ -29,13 +155,10 @@ const Appointments = () => {
         <div className="container-fluid">
           <div className="inner-contents">
             <div className="row">
-              <div className="col-xxl-4">
+              <div className="col-xxl-8">
                 <div className="page-header d-flex align-items-center justify-content-between mr-bottom-30">
                   <div className="left-part">
                     <h2 className="text-dark">My Appointments</h2>
-                    <p className="text-gray mb-0">
-                      Lorem ipsum dolor sit amet{" "}
-                    </p>
                   </div>
                 </div>
 
@@ -43,214 +166,122 @@ const Appointments = () => {
                   <div className="col-xxl-12 col-md-6">
                     <div className="card border-0 bg-transparent rounded-0 overflow-visible">
                       <div className="card-body p-0">
-                        <div className="dropdown-widget dropdown-schedule p-0">
-                          <div className="dropdown-wrapper">
-                            <ul className="notification-board calendar-schedule list-unstyled">
-                              <li className="author-online has-new-message bg-light d-flex align-items-center justify-content-between gap-3">
-                                <div className="d-flex align-items-center gap-3">
-                                  <div className="calendar-date bg-soft-primary text-center d-flex flex-column justify-content-center">
-                                    <h5 className="text-primary ff-heading fs-18 fw-bold lh-18 mb-0">
-                                      5
-                                    </h5>
-                                    <p className="fs-14 mb-0">Jan</p>
-                                  </div>
-                                  <div className="user-message">
-                                    <h6 className="message mb-1">
-                                      <a href="#" className="text-dark">
-                                        Meeting with Client
+                        <div className="d-flex align-items-center justify-content-between">
+                          <div className="dropdown-widget dropdown-schedule p-0">
+                            <p className="fw-bold text-center">Today</p>
+                            <div className="dropdown-wrapper">
+                              <ul className="notification-board calendar-schedule list-unstyled">
+                                {todaysAppointments.map((appointment) => (
+                                  <li className="author-online has-new-message bg-soft-info d-flex align-items-center justify-content-between gap-3">
+                                    <div className="d-flex align-items-center gap-3">
+                                      <div className="calendar-date bg-soft-primary text-center d-flex flex-column justify-content-center">
+                                        <h5 className="text-primary ff-heading fs-18 fw-bold lh-18 mb-0">
+                                          {appointment.day}
+                                        </h5>
+                                        <p className="fs-14 mb-0">
+                                          {appointment.month}
+                                        </p>
+                                      </div>
+                                      <div className="user-message">
+                                        <h6 className="message mb-1">
+                                          <a href="#" className="text-dark">
+                                            {appointment.title}
+                                          </a>
+                                        </h6>
+                                        <p className="message-footer d-flex align-items-center justify-content-between">
+                                          <span>
+                                            <i className="bi bi-clock-fill"></i>{" "}
+                                            {appointment.time}
+                                          </span>
+                                        </p>
+                                      </div>
+                                    </div>
+                                    <div>
+                                      <a
+                                        href="#"
+                                        data-bs-toggle="dropdown"
+                                        className="fs-24 text-gray"
+                                      >
+                                        <i className="bi bi-three-dots-vertical"></i>
                                       </a>
-                                    </h6>
-                                    <p className="message-footer d-flex align-items-center justify-content-between">
-                                      <span>
-                                        <i className="bi bi-clock-fill"></i>{" "}
-                                        10.00 - 11.00
-                                      </span>
-                                    </p>
-                                  </div>
-                                </div>
-                                <div>
-                                  <a
-                                    href="#"
-                                    data-bs-toggle="dropdown"
-                                    className="fs-24 text-gray"
-                                  >
-                                    <i className="bi bi-three-dots-vertical"></i>
-                                  </a>
-                                  <div className="dropdown-menu p-0">
-                                    <a className="dropdown-item" href="#">
-                                      View
-                                    </a>
-                                    <a className="dropdown-item" href="#">
-                                      Edit
-                                    </a>
-                                    <a
-                                      className="dropdown-item text-danger"
-                                      href="#"
-                                    >
-                                      Remove
-                                    </a>
-                                  </div>
-                                </div>
-                              </li>
-
-                              <li className="author-online has-new-message bg-light d-flex align-items-center justify-content-between gap-3">
-                                <div className="d-flex align-items-center gap-3">
-                                  <div className="calendar-date bg-soft-info text-center d-flex flex-column justify-content-center">
-                                    <h5 className="text-info ff-heading fs-18 fw-bold lh-18 mb-0">
-                                      7
-                                    </h5>
-                                    <p className="fs-14 mb-0">Jan</p>
-                                  </div>
-                                  <div className="user-message">
-                                    <h6 className="message mb-1">
-                                      <a href="#" className="text-dark">
-                                        Interview Candidate
-                                      </a>
-                                    </h6>
-                                    <p className="message-footer d-flex align-items-center justify-content-between">
-                                      <span>
-                                        <i className="bi bi-clock-fill"></i>{" "}
-                                        10.00 - 11.00
-                                      </span>
-                                    </p>
-                                  </div>
-                                </div>
-                                <div>
-                                  <a
-                                    href="#"
-                                    data-bs-toggle="dropdown"
-                                    className="fs-24 text-gray"
-                                  >
-                                    <i className="bi bi-three-dots-vertical"></i>
-                                  </a>
-                                  <div className="dropdown-menu p-0">
-                                    <a className="dropdown-item" href="#">
-                                      View
-                                    </a>
-                                    <a className="dropdown-item" href="#">
-                                      Edit
-                                    </a>
-                                    <a
-                                      className="dropdown-item text-danger"
-                                      href="#"
-                                    >
-                                      Remove
-                                    </a>
-                                  </div>
-                                </div>
-                              </li>
-
-                              <li className="author-online has-new-message bg-light d-flex align-items-center justify-content-between gap-3">
-                                <div className="d-flex align-items-center gap-3">
-                                  <div className="calendar-date bg-soft-secondary text-center d-flex flex-column justify-content-center">
-                                    <h5 className="text-secondary ff-heading fs-18 fw-bold lh-18 mb-0">
-                                      7
-                                    </h5>
-                                    <p className="fs-14 mb-0">Jan</p>
-                                  </div>
-                                  <div className="user-message">
-                                    <h6 className="message mb-1">
-                                      <a href="#" className="text-dark">
-                                        A/B Testing
-                                      </a>
-                                    </h6>
-                                    <p className="message-footer d-flex align-items-center justify-content-between">
-                                      <span>
-                                        <i className="bi bi-clock-fill"></i>{" "}
-                                        10.00 - 11.00
-                                      </span>
-                                    </p>
-                                  </div>
-                                </div>
-                                <div>
-                                  <a
-                                    href="#"
-                                    data-bs-toggle="dropdown"
-                                    className="fs-24 text-gray"
-                                  >
-                                    <i className="bi bi-three-dots-vertical"></i>
-                                  </a>
-                                  <div className="dropdown-menu p-0">
-                                    <a className="dropdown-item" href="#">
-                                      View
-                                    </a>
-                                    <a className="dropdown-item" href="#">
-                                      Edit
-                                    </a>
-                                    <a
-                                      className="dropdown-item text-danger"
-                                      href="#"
-                                    >
-                                      Remove
-                                    </a>
-                                  </div>
-                                </div>
-                              </li>
-                            </ul>
+                                      <div className="dropdown-menu p-0">
+                                        <a className="dropdown-item" href="#">
+                                          View
+                                        </a>
+                                        <a className="dropdown-item" href="#">
+                                          Edit
+                                        </a>
+                                        <a
+                                          className="dropdown-item text-danger"
+                                          href="#"
+                                        >
+                                          Remove
+                                        </a>
+                                      </div>
+                                    </div>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
                           </div>
-                        </div>
-                        <div>
-                          <a
-                            href="#"
-                            data-bs-toggle="modal"
-                            data-bs-target="#add-event"
-                            className="btn btn-secondary w-100 rounded-2 py-3"
-                          >
-                            <span className="align-middle">
-                              <i className="bi bi-plus"></i>
-                            </span>
-                            Create New Event
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
 
-                  <div className="col-xxl-12 col-md-6">
-                    <div className="card border-0 bg-light">
-                      <div className="card-header p-5 pb-0 border-0">
-                        <h4 className="mb-0">Upcoming Events</h4>
-                      </div>
-                      <div className="card-body">
-                        <div className="current-date d-flex align-items-center justify-content-between gap-3 mb-5">
-                          <h5 className="mb-0 flex-shrink-0">5 Jul</h5>
-                          <div className="line w-100 bg-light-200"></div>
-                        </div>
-                        <div className="current-event-list">
-                          <ul className="list-unstyled p-0 mb-0">
-                            <li>
-                              <h5 className="mb-4">
-                                <span className="text-gray fw-semibold border-primary">
-                                  08:00 AM
-                                </span>{" "}
-                                HR Workshop
-                              </h5>
-                            </li>
-                            <li>
-                              <h5 className="mb-4">
-                                <span className="text-gray fw-semibold border-info">
-                                  10:00 AM
-                                </span>{" "}
-                                Meeting with team
-                              </h5>
-                            </li>
-                            <li>
-                              <h5 className="mb-4">
-                                <span className="text-gray fw-semibold border-secondary">
-                                  01:00 PM
-                                </span>{" "}
-                                Interview with Candidate
-                              </h5>
-                            </li>
-                            <li>
-                              <h5 className="mb-4">
-                                <span className="text-gray fw-semibold border-warning">
-                                  01:00 PM
-                                </span>{" "}
-                                Interview with outsourcing team...
-                              </h5>
-                            </li>
-                          </ul>
+                          <div className="dropdown-widget dropdown-schedule p-0">
+                            <p className="fw-bold text-center">Tomorrow</p>
+                            <div className="dropdown-wrapper">
+                              <ul className="notification-board calendar-schedule list-unstyled">
+                                {tomorrowsAppointments.map((appointment) => (
+                                  <li className="author-online has-new-message bg-soft-info d-flex align-items-center justify-content-between gap-3">
+                                    <div className="d-flex align-items-center gap-3">
+                                      <div className="calendar-date bg-soft-primary text-center d-flex flex-column justify-content-center">
+                                        <h5 className="text-primary ff-heading fs-18 fw-bold lh-18 mb-0">
+                                          {appointment.day}
+                                        </h5>
+                                        <p className="fs-14 mb-0">
+                                          {appointment.month}
+                                        </p>
+                                      </div>
+                                      <div className="user-message">
+                                        <h6 className="message mb-1">
+                                          <a href="#" className="text-dark">
+                                            {appointment.title}
+                                          </a>
+                                        </h6>
+                                        <p className="message-footer d-flex align-items-center justify-content-between">
+                                          <span>
+                                            <i className="bi bi-clock-fill"></i>{" "}
+                                            {appointment.time}
+                                          </span>
+                                        </p>
+                                      </div>
+                                    </div>
+                                    <div>
+                                      <a
+                                        href="#"
+                                        data-bs-toggle="dropdown"
+                                        className="fs-24 text-gray"
+                                      >
+                                        <i className="bi bi-three-dots-vertical"></i>
+                                      </a>
+                                      <div className="dropdown-menu p-0">
+                                        <a className="dropdown-item" href="#">
+                                          View
+                                        </a>
+                                        <a className="dropdown-item" href="#">
+                                          Edit
+                                        </a>
+                                        <a
+                                          className="dropdown-item text-danger"
+                                          href="#"
+                                        >
+                                          Remove
+                                        </a>
+                                      </div>
+                                    </div>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -258,12 +289,12 @@ const Appointments = () => {
                 </div>
               </div>
 
-              <div className="col-xxl-8">
+              <div className="col-xxl-4">
                 <div className="card border-0">
                   <div className="card-body">
-                    <div id="calendar" className="kleon-fullcalendar">
-                      <Calendar />
-                    </div>
+                    {/* <div id="calendar" className="kleon-fullcalendar"> */}
+                    <Calendar />
+                    {/* </div> */}
                   </div>
                 </div>
               </div>

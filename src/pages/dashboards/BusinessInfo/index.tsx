@@ -26,7 +26,6 @@ const BusinessInfo = () => {
             <div className="page-header d-flex align-items-center justify-content-between mr-bottom-30">
               <div className="left-part">
                 <h2 className="text-dark">Business Info</h2>
-                <p className="text-gray mb-0">Lorem ipsum dolor sit amet </p>
               </div>
             </div>
 

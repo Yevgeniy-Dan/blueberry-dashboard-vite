@@ -23,13 +23,13 @@ const Default: React.FC<{
       <div className="d-none d-xl-block">
         <div className="header-inner d-flex align-items-center justify-content-around justify-content-xl-between flex-wrap flex-xl-nowrap gap-3 gap-xl-5">
           <div className="header-left-part d-flex align-items-center flex-grow-1 w-100">
-            <div className="header-search w-100">
+            <div className="header-search">
               <form className="search-form" action="search.php">
                 <input
                   type="text"
                   name="search"
                   className="keyword form-control w-100"
-                  placeholder="Search"
+                  placeholder="Search customer by name or email"
                 />
                 <button type="submit" className="btn">
                   <img src={search} alt="" />
