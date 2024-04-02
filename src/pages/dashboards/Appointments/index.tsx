@@ -11,63 +11,68 @@ const Appointments = () => {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
   const [isMobileCollapsed, setIsMobileCollapsed] = useState<boolean>(false);
 
+  const currentDate = new Date();
+  const currentDay = currentDate.getDate();
+  currentDate.setDate(currentDay + 1);
+  const tomorrowDay = currentDate.getDate();
+
   const todaysAppointments = [
     {
-      day: new Date().getDate(),
+      day: currentDay,
       month: new Date().toLocaleString("default", { month: "short" }),
       title: "Client Meeting",
       time: "10.00 - 11.00",
     },
     {
-      day: new Date().getDate(),
+      day: currentDay,
       month: new Date().toLocaleString("default", { month: "short" }),
       title: "Client Meeting",
       time: "10.00 - 11.00",
     },
     {
-      day: new Date().getDate(),
+      day: currentDay,
       month: new Date().toLocaleString("default", { month: "short" }),
       title: "Team Lunch",
       time: "12.00 - 13.00",
     },
     {
-      day: new Date().getDate(),
+      day: currentDay,
       month: new Date().toLocaleString("default", { month: "short" }),
       title: "Project Deadline",
       time: "09.00 - 17.00",
     },
     {
-      day: new Date().getDate(),
+      day: currentDay,
       month: new Date().toLocaleString("default", { month: "short" }),
       title: "Conference Call",
       time: "14.00 - 15.00",
     },
     {
-      day: new Date().getDate(),
+      day: currentDay,
       month: new Date().toLocaleString("default", { month: "short" }),
       title: "Workshop",
       time: "11.00 - 12.30",
     },
     {
-      day: new Date().getDate(),
+      day: currentDay,
       month: new Date().toLocaleString("default", { month: "short" }),
       title: "Team Building Activity",
       time: "09.30 - 12.30",
     },
     {
-      day: new Date().getDate(),
+      day: currentDay,
       month: new Date().toLocaleString("default", { month: "short" }),
       title: "Client Presentation",
       time: "15.00 - 16.30",
     },
     {
-      day: new Date().getDate(),
+      day: currentDay,
       month: new Date().toLocaleString("default", { month: "short" }),
       title: "Training Session",
       time: "13.00 - 15.00",
     },
     {
-      day: new Date().getDate(),
+      day: currentDay,
       month: new Date().toLocaleString("default", { month: "short" }),
       title: "Product Launch",
       time: "10.00 - 11.30",
@@ -76,61 +81,61 @@ const Appointments = () => {
 
   const tomorrowsAppointments = [
     {
-      day: 2,
+      day: tomorrowDay,
       month: new Date().toLocaleString("default", { month: "short" }),
       title: "Code Review",
       time: "09.00 - 11.00",
     },
     {
-      day: 2,
+      day: tomorrowDay,
       month: new Date().toLocaleString("default", { month: "short" }),
       title: "Company Anniversary",
       time: "14.00 - 17.00",
     },
     {
-      day: 2,
+      day: tomorrowDay,
       month: new Date().toLocaleString("default", { month: "short" }),
       title: "Client Visit",
       time: "11.00 - 12.30",
     },
     {
-      day: 2,
+      day: tomorrowDay,
       month: new Date().toLocaleString("default", { month: "short" }),
       title: "Quarterly Review",
       time: "09.30 - 12.30",
     },
     {
-      day: 2,
+      day: tomorrowDay,
       month: new Date().toLocaleString("default", { month: "short" }),
       title: "Holiday Party",
       time: "18.00 - 21.00",
     },
     {
-      day: 2,
+      day: tomorrowDay,
       month: new Date().toLocaleString("default", { month: "short" }),
       title: "Training Workshop",
       time: "10.00 - 15.00",
     },
     {
-      day: 2,
+      day: tomorrowDay,
       month: new Date().toLocaleString("default", { month: "short" }),
       title: "Team Meeting",
       time: "09.30 - 10.30",
     },
     {
-      day: 2,
+      day: tomorrowDay,
       month: new Date().toLocaleString("default", { month: "short" }),
       title: "Client Demo",
       time: "14.00 - 15.00",
     },
     {
-      day: 2,
+      day: tomorrowDay,
       month: new Date().toLocaleString("default", { month: "short" }),
       title: "Product Training",
       time: "11.00 - 12.30",
     },
     {
-      day: 2,
+      day: tomorrowDay,
       month: new Date().toLocaleString("default", { month: "short" }),
       title: "Design Review",
       time: "10.30 - 12.00",
@@ -155,7 +160,7 @@ const Appointments = () => {
         <div className="container-fluid">
           <div className="inner-contents">
             <div className="row">
-              <div className="col-xxl-8">
+              <div className="col-xxl-6 col-12">
                 <div className="page-header d-flex align-items-center justify-content-between mr-bottom-30">
                   <div className="left-part">
                     <h2 className="text-dark">My Appointments</h2>
@@ -163,11 +168,11 @@ const Appointments = () => {
                 </div>
 
                 <div className="row">
-                  <div className="col-xxl-12 col-md-6">
+                  <div className="col-xxl-12 col-12">
                     <div className="card border-0 bg-transparent rounded-0 overflow-visible">
                       <div className="card-body p-0">
-                        <div className="d-flex align-items-center justify-content-between">
-                          <div className="dropdown-widget dropdown-schedule p-0">
+                        <div className="row">
+                          <div className="dropdown-widget dropdown-schedule p-2 col-md-6 col-12">
                             <p className="fw-bold text-center">Today</p>
                             <div className="dropdown-wrapper">
                               <ul className="notification-board calendar-schedule list-unstyled">
@@ -225,7 +230,7 @@ const Appointments = () => {
                             </div>
                           </div>
 
-                          <div className="dropdown-widget dropdown-schedule p-0">
+                          <div className="dropdown-widget dropdown-schedule p-2 col-md-6 col-12">
                             <p className="fw-bold text-center">Tomorrow</p>
                             <div className="dropdown-wrapper">
                               <ul className="notification-board calendar-schedule list-unstyled">
@@ -289,7 +294,7 @@ const Appointments = () => {
                 </div>
               </div>
 
-              <div className="col-xxl-4">
+              <div className="col-xxl-6">
                 <div className="card border-0">
                   <div className="card-body">
                     {/* <div id="calendar" className="kleon-fullcalendar"> */}
