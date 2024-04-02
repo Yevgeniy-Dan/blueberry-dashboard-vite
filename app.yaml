@@ -1,14 +1,13 @@
-runtime: python27
-threadsafe: true
-handlers:
-  - url: /(.*\.(json|ico|js|css|gif|jpg|png|svg|woff|woff2|ttf|eot|map|html|txt)$)
-    static_files: dist/\1
-    upload: dist/.*\.(json|ico|js|css|gif|jpg|png|svg|woff|woff2|ttf|eot|map|html|txt)$
-    expiration: "7d"
-    secure: always
+runtime: nodejs20
 
+instance_class: F1
+
+handlers:
+  # Serve static files with url ending with a file extension
+  - url: /(.*\..+)$
+    static_files: dist/\1
+    upload: dist/.*\..+$
+  # Catch all handler to index.html
   - url: /.*
     static_files: dist/index.html
     upload: dist/index.html
-    secure: always
-    redirect_http_response_code: 301
