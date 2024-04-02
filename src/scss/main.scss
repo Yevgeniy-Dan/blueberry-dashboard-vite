@@ -17,6 +17,7 @@
 @import url("../assets/font-icons/bootstrap-icons/font/bootstrap-icons.css");
 
 // External Plugins CSS File
+@import "custom/plugins/dropzone";
 // @import url("../../plugins/select2/css/select2.min.css");
 // @import url("../../plugins/datatables/css/jquery.dataTables.min.css");
 @import url("../../plugins/fullcalendar/fullcalendar.css");
@@ -55,6 +56,7 @@
 @import "theme/table";
 @import "theme/toasts";
 @import "theme/calendar";
+@import "theme/custom";
 
 // Layout
 @import "theme/layout";

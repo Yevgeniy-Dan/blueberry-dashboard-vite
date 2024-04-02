@@ -3,7 +3,7 @@ import Appointments from "../pages/dashboards/Appointments";
 import BusinessInfo from "../pages/dashboards/BusinessInfo";
 
 import Preloader from "../pages/Preloader";
-import { DASHBOARD_APPOINTMENTS, DASHBOARD_BUSINESS_INFO } from "./constants";
+import { APPOINTMENTS, BUSINESS_INFO } from "./constants";
 
 const SignIn = lazy(() => import("../pages/auth/SignIn"));
 const SignUp = lazy(() => import("../pages/auth/SignUp"));
@@ -48,7 +48,7 @@ const authRoutes = [
 
 const dashboardRoutes = [
   {
-    path: DASHBOARD_APPOINTMENTS,
+    path: APPOINTMENTS,
     element: (
       <Suspense fallback={<Preloader />}>
         <Appointments />
@@ -56,7 +56,7 @@ const dashboardRoutes = [
     ),
   },
   {
-    path: DASHBOARD_BUSINESS_INFO,
+    path: BUSINESS_INFO,
     element: (
       <Suspense fallback={<Preloader />}>
         <BusinessInfo />

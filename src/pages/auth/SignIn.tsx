@@ -1,7 +1,7 @@
 import logo from "../../assets/images/logo.png";
 import company from "../../assets/images/company.jpg";
 import { NavLink } from "react-router-dom";
-import { DASHBOARD_APPOINTMENTS } from "../../routes/constants";
+import { APPOINTMENTS } from "../../routes/constants";
 
 const SignIn = () => {
   return (
@@ -83,7 +83,7 @@ const SignIn = () => {
                   </div>
 
                   <NavLink
-                    to={DASHBOARD_APPOINTMENTS}
+                    to={APPOINTMENTS}
                     className="btn btn-secondary w-100 text-uppercase text-white rounded-2 lh-34 ff-heading fw-bold shadow"
                   >
                     Login

@@ -3,8 +3,14 @@ import logo from "../assets/images/logo.png";
 import logoIconMin from "../assets/images/logo-icon-min.png";
 
 import {
-  DASHBOARD_APPOINTMENTS,
-  DASHBOARD_BUSINESS_INFO,
+  ANALYTICS,
+  APPOINTMENTS,
+  BOOKING_PAGE,
+  BUSINESS_INFO,
+  ENABLE_PAYMENTS,
+  ROLES,
+  SERVICES,
+  STAFF,
 } from "../routes/constants";
 
 const Vertical: React.FC<{
@@ -42,10 +48,10 @@ const Vertical: React.FC<{
           <ul className="main-menu">
             <li
               className={`menu-item ${
-                location.pathname === DASHBOARD_APPOINTMENTS && "active"
+                location.pathname === APPOINTMENTS && "active"
               }`}
             >
-              <NavLink to={DASHBOARD_APPOINTMENTS}>
+              <NavLink to={APPOINTMENTS}>
                 {" "}
                 <span className="nav-icon flex-shrink-0">
                   <i className="bi bi-calendar-check fs-18"></i>
@@ -57,16 +63,92 @@ const Vertical: React.FC<{
             </li>
             <li
               className={`menu-item ${
-                location.pathname === DASHBOARD_BUSINESS_INFO && "active"
+                location.pathname === BUSINESS_INFO && "active"
               }`}
             >
-              <NavLink to={DASHBOARD_BUSINESS_INFO}>
+              <NavLink to={BUSINESS_INFO}>
                 {" "}
                 <span className="nav-icon flex-shrink-0">
                   <i className="bi bi-bank fs-18"></i>
                 </span>{" "}
                 {!isCollapsed && (
                   <span className="nav-text">Business Info</span>
+                )}
+              </NavLink>
+            </li>
+            <li
+              className={`menu-item ${location.pathname === STAFF && "active"}`}
+            >
+              <NavLink to={STAFF}>
+                {" "}
+                <span className="nav-icon flex-shrink-0">
+                  <i className="bi bi-people fs-18"></i>
+                </span>{" "}
+                {!isCollapsed && <span className="nav-text">Staff</span>}
+              </NavLink>
+            </li>
+            <li
+              className={`menu-item ${
+                location.pathname === SERVICES && "active"
+              }`}
+            >
+              <NavLink to={SERVICES}>
+                {" "}
+                <span className="nav-icon flex-shrink-0">
+                  <i className="bi bi-tools fs-18"></i>
+                </span>{" "}
+                {!isCollapsed && <span className="nav-text">Services</span>}
+              </NavLink>
+            </li>
+            <li
+              className={`menu-item ${
+                location.pathname === BOOKING_PAGE && "active"
+              }`}
+            >
+              <NavLink to={BOOKING_PAGE}>
+                {" "}
+                <span className="nav-icon flex-shrink-0">
+                  <i className="bi bi-calendar2 fs-18"></i>
+                </span>{" "}
+                {!isCollapsed && <span className="nav-text">Booking Page</span>}
+              </NavLink>
+            </li>
+            <li
+              className={`menu-item ${
+                location.pathname === ANALYTICS && "active"
+              }`}
+            >
+              <NavLink to={ANALYTICS}>
+                {" "}
+                <span className="nav-icon flex-shrink-0">
+                  <i className="bi bi-graph-up fs-18"></i>
+                </span>{" "}
+                {!isCollapsed && <span className="nav-text">Analytics</span>}
+              </NavLink>
+            </li>
+            <li
+              className={`menu-item ${location.pathname === ROLES && "active"}`}
+            >
+              <NavLink to={ROLES}>
+                {" "}
+                <span className="nav-icon flex-shrink-0">
+                  <i className="bi bi-shield-check fs-18"></i>
+                </span>{" "}
+                {!isCollapsed && <span className="nav-text">Roles</span>}
+              </NavLink>
+            </li>
+            <li
+              className={`menu-item ${
+                location.pathname === ENABLE_PAYMENTS && "active"
+              }`}
+            >
+              <NavLink to={ENABLE_PAYMENTS}>
+                {" "}
+                <span className="nav-icon flex-shrink-0">
+                  <i className="bi bi-credit-card fs-18"></i>
+                </span>{" "}
+                {!isCollapsed && (
+                  <span className="nav-text">Enable Payments</span>
                 )}
               </NavLink>
             </li>

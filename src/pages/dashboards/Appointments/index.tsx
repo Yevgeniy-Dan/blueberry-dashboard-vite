@@ -174,12 +174,9 @@ const Appointments = () => {
                         <div className="row">
                           <div className="dropdown-widget dropdown-schedule p-2 col-md-6 col-12">
                             <div className="card border-0 shadow-sm pd-top-40 pd-bottom-40 bg-light-200">
-                              <div className="card-body py-0">
+                              <div className="card-body py-0 text-center">
                                 <h4 className="mb-3">Today</h4>
-                                <h2 className="fs-38 d-flex align-items-center gap-4">
-                                  {" "}
-                                  12{" "}
-                                </h2>
+                                <h2 className="fs-38 gap-4 "> 12 </h2>
                               </div>
                             </div>
                             <div className="dropdown-wrapper">
@@ -244,12 +241,9 @@ const Appointments = () => {
 
                           <div className="dropdown-widget dropdown-schedule p-2 col-md-6 col-12">
                             <div className="card border-0 shadow-sm pd-top-40 pd-bottom-40 bg-light-200">
-                              <div className="card-body py-0">
+                              <div className="card-body py-0 text-center">
                                 <h4 className="mb-3">Tomorrow</h4>
-                                <h2 className="fs-38 d-flex align-items-center gap-4">
-                                  {" "}
-                                  15{" "}
-                                </h2>
+                                <h2 className="fs-38 gap-4"> 15 </h2>
                               </div>
                             </div>
                             <div className="dropdown-wrapper">
