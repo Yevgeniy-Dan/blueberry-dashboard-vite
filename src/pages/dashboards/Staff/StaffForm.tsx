@@ -1,4 +1,4 @@
-import { useEffect, useId, useState } from "react";
+import { useId, useState } from "react";
 import Default from "../../../layouts/Default";
 import Vertical from "../../../layouts/Vertical";
 import { useNavigate, useParams } from "react-router-dom";
@@ -10,6 +10,8 @@ import {
 } from "../../../redux/staff/slice";
 // import ReactSelect from "react-select";
 import { StaffModel } from "../../../redux/staff/models";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 const days = ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"];
 
@@ -25,60 +27,56 @@ const StaffForm = () => {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
   const [isMobileCollapsed, setIsMobileCollapsed] = useState<boolean>(false);
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phoneNumber: "",
+  const formik = useFormik({
+    initialValues: {
+      name: staff ? staff.name : "",
+      email: staff ? staff.email : "",
+      phoneNumber: staff ? staff.phoneNumber : "",
+      selectedDays: staff ? staff.daysOff : [],
+    },
+    validationSchema: Yup.object().shape({
+      name: Yup.string().required("Name is required"),
+      email: Yup.string()
+        .email("Enter a valid email address")
+        .required("Email is required"),
+      phoneNumber: Yup.string()
+        .matches(
+          /^\d{3}-\d{3}-\d{4}$/,
+          "Enter a valid phone number (XXX-XXX-XXXX)"
+        )
+        .required("Phone number is required"),
+    }),
+    onSubmit: (values) => {
+      const staffData: StaffModel = {
+        id,
+        name: values.name,
+        email: values.email,
+        phoneNumber: values.phoneNumber,
+        daysOff: values.selectedDays,
+      };
+
+      if (userId) {
+        dispatch(udpateStaff({ userId, staff: staffData }));
+        navigate("./../..");
+      } else {
+        dispatch(addStaff(staffData));
+        navigate("./..");
+      }
+    },
   });
-
-  const [selectedDays, setSelectedDays] = useState<string[]>([]);
-
-  const { name, email, phoneNumber } = formData;
-
-  useEffect(() => {
-    if (userId && staff) {
-      setFormData({
-        name: staff.name,
-        email: staff.email,
-        phoneNumber: staff.phoneNumber,
-      });
-      setSelectedDays(staff.daysOff);
-    }
-  }, [userId, staff]);
 
   const handleDayCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, checked } = e.target;
     if (checked) {
-      setSelectedDays([...selectedDays, value]);
+      formik.setFieldValue("selectedDays", [
+        ...formik.values.selectedDays,
+        value,
+      ]);
     } else {
-      setSelectedDays(selectedDays.filter((day) => day !== value));
-    }
-  };
-
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((prevState) => ({
-      ...prevState,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
-  const onSubmitHandler = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    const staffData: StaffModel = {
-      id,
-      name,
-      email,
-      phoneNumber,
-      daysOff: selectedDays,
-    };
-
-    if (userId) {
-      dispatch(udpateStaff({ userId, staff: staffData }));
-      navigate("./../.."); //TODO: move t othe saga later since this is side effect
-    } else {
-      dispatch(addStaff(staffData));
-      navigate("./.."); //TODO: move t othe saga later since this is side effect
+      formik.setFieldValue(
+        "selectedDays",
+        formik.values.selectedDays.filter((day: string) => day !== value)
+      );
     }
   };
 
@@ -107,7 +105,7 @@ const StaffForm = () => {
             <div className="col-lg-8  bg-light">
               <div className="card border-0 p-5">
                 <div className="card-body p-0 pt-4">
-                  <form onSubmit={onSubmitHandler}>
+                  <form onSubmit={formik.handleSubmit}>
                     <div className="form-group">
                       <div className="row align-items-center">
                         <div className="col-lg-3">
@@ -122,15 +120,23 @@ const StaffForm = () => {
                             </span>
                             <input
                               type="text"
-                              className="form-control "
+                              className={`form-control ${
+                                formik.touched.name && formik.errors.name
+                                  ? "is-invalid"
+                                  : ""
+                              }`}
                               id="name"
                               name="name"
-                              value={name}
+                              value={formik.values.name}
                               placeholder="Name"
-                              required
-                              onChange={onChange}
+                              onChange={formik.handleChange}
+                              onBlur={formik.handleBlur}
                             />
-                            <div className="valid-feedback">Looks good!</div>
+                            {formik.touched.name && formik.errors.name && (
+                              <div className="invalid-feedback icon-input">
+                                {formik.errors.name}
+                              </div>
+                            )}
                           </div>
                         </div>
                       </div>
@@ -150,17 +156,23 @@ const StaffForm = () => {
                             </span>
                             <input
                               type="text"
-                              className="form-control "
+                              className={`form-control ${
+                                formik.touched.email && formik.errors.email
+                                  ? "is-invalid"
+                                  : ""
+                              }`}
                               id="email"
                               name="email"
-                              value={email}
-                              onChange={onChange}
-                              required
+                              value={formik.values.email}
                               placeholder="Email Address"
+                              onChange={formik.handleChange}
+                              onBlur={formik.handleBlur}
                             />
-                            <div className="invalid-feedback">
-                              Enter your Email
-                            </div>
+                            {formik.touched.email && formik.errors.email && (
+                              <div className="invalid-feedback">
+                                {formik.errors.email}
+                              </div>
+                            )}
                           </div>
                         </div>
                       </div>
@@ -180,14 +192,25 @@ const StaffForm = () => {
                             </span>
                             <input
                               type="text"
-                              className="form-control"
+                              className={`form-control ${
+                                formik.touched.phoneNumber &&
+                                formik.errors.phoneNumber
+                                  ? "is-invalid"
+                                  : ""
+                              }`}
                               id="phoneNumber"
                               name="phoneNumber"
-                              value={phoneNumber}
-                              onChange={onChange}
+                              value={formik.values.phoneNumber}
+                              onChange={formik.handleChange}
+                              onBlur={formik.handleBlur}
                               placeholder="Example: (123) 456-7890"
-                              required
                             />
+                            {formik.touched.phoneNumber &&
+                              formik.errors.phoneNumber && (
+                                <div className="invalid-feedback">
+                                  {formik.errors.phoneNumber}
+                                </div>
+                              )}
                           </div>
                         </div>
                       </div>
@@ -196,12 +219,7 @@ const StaffForm = () => {
                     <div className="form-group">
                       <div className="row ">
                         <div className="col-lg-3">
-                          <label
-                            htmlFor="validationCustomUsername"
-                            className="form-label"
-                          >
-                            Select days off
-                          </label>
+                          <label className="form-label">Select days off</label>
                         </div>
                         <div className="col-lg-9">
                           <div className="input-group">
@@ -211,11 +229,13 @@ const StaffForm = () => {
                                 key={index}
                               >
                                 <input
-                                  className="form-check-input"
+                                  className={`form-check-input`}
                                   type="checkbox"
                                   id={`checkbox_${day}`}
                                   value={day}
-                                  checked={selectedDays.includes(day)}
+                                  checked={formik.values.selectedDays.includes(
+                                    day
+                                  )}
                                   onChange={handleDayCheckboxChange}
                                 />
                                 <label
