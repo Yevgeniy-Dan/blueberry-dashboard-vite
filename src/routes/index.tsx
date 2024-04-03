@@ -5,7 +5,7 @@ import BusinessInfo from "../pages/dashboards/BusinessInfo";
 import Preloader from "../pages/Preloader";
 import { APPOINTMENTS, BUSINESS_INFO, STAFF } from "./constants";
 import Staff from "../pages/dashboards/Staff";
-import AddStaffForm from "../pages/dashboards/Staff/AddStaffForm";
+import StaffForm from "../pages/dashboards/Staff/StaffForm";
 
 const SignIn = lazy(() => import("../pages/auth/SignIn"));
 const SignUp = lazy(() => import("../pages/auth/SignUp"));
@@ -77,7 +77,15 @@ const dashboardRoutes = [
     path: `${STAFF}/add`,
     element: (
       <Suspense fallback={<Preloader />}>
-        <AddStaffForm />
+        <StaffForm />
+      </Suspense>
+    ),
+  },
+  {
+    path: `${STAFF}/add/:userId`,
+    element: (
+      <Suspense fallback={<Preloader />}>
+        <StaffForm />
       </Suspense>
     ),
   },

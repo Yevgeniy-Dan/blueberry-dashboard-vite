@@ -1,15 +1,86 @@
-import { useState } from "react";
+import { useEffect, useId, useState } from "react";
 import Default from "../../../layouts/Default";
 import Vertical from "../../../layouts/Vertical";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
+import {
+  addStaff,
+  selectStaffById,
+  udpateStaff,
+} from "../../../redux/staff/slice";
+// import ReactSelect from "react-select";
+import { StaffModel } from "../../../redux/staff/models";
 
 const days = ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"];
 
-const AddStaffForm = () => {
+const StaffForm = () => {
+  const { userId } = useParams();
+  const staff = useAppSelector((state) => selectStaffById(state)(userId || ""));
+  const id = useId();
+
+  const dispatch = useAppDispatch();
+
   const navigate = useNavigate();
 
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
   const [isMobileCollapsed, setIsMobileCollapsed] = useState<boolean>(false);
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phoneNumber: "",
+  });
+
+  const [selectedDays, setSelectedDays] = useState<string[]>([]);
+
+  const { name, email, phoneNumber } = formData;
+
+  useEffect(() => {
+    if (userId && staff) {
+      setFormData({
+        name: staff.name,
+        email: staff.email,
+        phoneNumber: staff.phoneNumber,
+      });
+      setSelectedDays(staff.daysOff);
+    }
+  }, [userId, staff]);
+
+  const handleDayCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value, checked } = e.target;
+    if (checked) {
+      setSelectedDays([...selectedDays, value]);
+    } else {
+      setSelectedDays(selectedDays.filter((day) => day !== value));
+    }
+  };
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const onSubmitHandler = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const staffData: StaffModel = {
+      id,
+      name,
+      email,
+      phoneNumber,
+      daysOff: selectedDays,
+    };
+
+    if (userId) {
+      dispatch(udpateStaff({ userId, staff: staffData }));
+      navigate("./../.."); //TODO: move t othe saga later since this is side effect
+    } else {
+      dispatch(addStaff(staffData));
+      navigate("./.."); //TODO: move t othe saga later since this is side effect
+    }
+  };
 
   return (
     <div
@@ -36,14 +107,11 @@ const AddStaffForm = () => {
             <div className="col-lg-8  bg-light">
               <div className="card border-0 p-5">
                 <div className="card-body p-0 pt-4">
-                  <form>
+                  <form onSubmit={onSubmitHandler}>
                     <div className="form-group">
                       <div className="row align-items-center">
                         <div className="col-lg-3">
-                          <label
-                            htmlFor="validationCustom01"
-                            className="form-label"
-                          >
+                          <label htmlFor="name" className="form-label">
                             Name
                           </label>
                         </div>
@@ -55,10 +123,12 @@ const AddStaffForm = () => {
                             <input
                               type="text"
                               className="form-control "
-                              id="validationCustom01"
-                              value=""
+                              id="name"
+                              name="name"
+                              value={name}
                               placeholder="Name"
                               required
+                              onChange={onChange}
                             />
                             <div className="valid-feedback">Looks good!</div>
                           </div>
@@ -69,10 +139,7 @@ const AddStaffForm = () => {
                     <div className="form-group">
                       <div className="row align-items-center">
                         <div className="col-lg-3">
-                          <label
-                            htmlFor="validationEmail"
-                            className="form-label"
-                          >
+                          <label htmlFor="email" className="form-label">
                             Email
                           </label>
                         </div>
@@ -84,8 +151,10 @@ const AddStaffForm = () => {
                             <input
                               type="text"
                               className="form-control "
-                              id="validationEmail"
-                              value=""
+                              id="email"
+                              name="email"
+                              value={email}
+                              onChange={onChange}
                               required
                               placeholder="Email Address"
                             />
@@ -100,10 +169,7 @@ const AddStaffForm = () => {
                     <div className="form-group">
                       <div className="row align-items-center">
                         <div className="col-lg-3">
-                          <label
-                            htmlFor="validationEmail"
-                            className="form-label"
-                          >
+                          <label htmlFor="phoneNumber" className="form-label">
                             Phone Number
                           </label>
                         </div>
@@ -115,8 +181,10 @@ const AddStaffForm = () => {
                             <input
                               type="text"
                               className="form-control"
-                              id="validationEmail"
-                              value=""
+                              id="phoneNumber"
+                              name="phoneNumber"
+                              value={phoneNumber}
+                              onChange={onChange}
                               placeholder="Example: (123) 456-7890"
                               required
                             />
@@ -145,9 +213,10 @@ const AddStaffForm = () => {
                                 <input
                                   className="form-check-input"
                                   type="checkbox"
-                                  id="inlineCheckbox1"
+                                  id={`checkbox_${day}`}
                                   value={day}
-                                  onChange={() => {}}
+                                  checked={selectedDays.includes(day)}
+                                  onChange={handleDayCheckboxChange}
                                 />
                                 <label
                                   className="form-check-label"
@@ -157,6 +226,20 @@ const AddStaffForm = () => {
                                 </label>
                               </div>
                             ))}
+                            {/* <span className="badge d-flex align-items-center text-dark rounded-0 rounded-start py-2 px-3 border border-light-200 fs-16">
+                              <i className="bi bi-telephone"></i>
+                            </span>
+                            <ReactSelect
+                              name="daysOff"
+                              closeMenuOnSelect={false}
+                              isMulti
+                              options={days}
+                              onChange={(days) => {
+                                const values = days.map((day) => day.value);
+                                setSelectedDays(values);
+                              }}
+                              className="form-control"
+                            /> */}
                           </div>
                         </div>
                       </div>
@@ -165,11 +248,7 @@ const AddStaffForm = () => {
                     <div className="row">
                       <div className="col-lg-9 offset-lg-3">
                         <div className="button_group">
-                          <button
-                            type="submit"
-                            className="btn btn-primary"
-                            onClick={() => navigate("./..")}
-                          >
+                          <button type="submit" className="btn btn-primary">
                             Save
                           </button>
                         </div>
@@ -186,4 +265,4 @@ const AddStaffForm = () => {
   );
 };
 
-export default AddStaffForm;
+export default StaffForm;

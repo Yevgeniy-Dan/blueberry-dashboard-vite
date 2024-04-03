@@ -2,14 +2,21 @@ import { useState } from "react";
 import Default from "../../../layouts/Default";
 import Vertical from "../../../layouts/Vertical";
 import { useNavigate } from "react-router-dom";
-
-const staffs = ["Tonny", "Farguson", "Ashley", "Jackie"];
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
+import { removeStaff } from "../../../redux/staff/slice";
 
 const Staff = () => {
+  const { items: staffs } = useAppSelector((state) => state.staff);
+  const dispatch = useAppDispatch();
+
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
   const [isMobileCollapsed, setIsMobileCollapsed] = useState<boolean>(false);
 
   const navigate = useNavigate();
+  function removeStaffHandler(id: string): void {
+    dispatch(removeStaff(id));
+  }
+
   return (
     <div
       className={`bg-white has-right-panel ${
@@ -64,13 +71,16 @@ const Staff = () => {
                             <tbody>
                               {staffs.map((s, i) => (
                                 <tr>
-                                  <th scope="row">{i}</th>
-                                  <td>{s}</td>
+                                  <th scope="row">{i + 1}</th>
+                                  <td>{s.name}</td>
                                   <td>
                                     <div className="d-flex gap-3">
                                       <button
                                         type="button"
                                         className="btn p-0  btn-link"
+                                        onClick={() => {
+                                          navigate(`./add/${s.id}`);
+                                        }}
                                       >
                                         <span className="py-2 fs-20">
                                           <i className="bi bi-pencil-square"></i>
@@ -79,6 +89,7 @@ const Staff = () => {
                                       <button
                                         type="button"
                                         className="btn p-0 btn-link"
+                                        onClick={() => removeStaffHandler(s.id)}
                                       >
                                         <span className="py-2 fs-20">
                                           <i className="bi bi-trash"></i>
