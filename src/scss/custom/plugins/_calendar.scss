@@ -1,0 +1,11 @@
+.fc-addAppointment-button {
+  background-color: $secondary;
+  border-color: $secondary;
+}
+
+.fc-addAppointment-button:hover,
+.fc-addAppointment-button:focus {
+  background-color: $secondary;
+  border-color: $secondary;
+  --kleon-btn-focus-shadow-rgb: rgba($secondary, 0.75);
+}

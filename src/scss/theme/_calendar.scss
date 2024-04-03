@@ -6,3 +6,9 @@
 .fc .fc-dayGridMonth-button {
   text-transform: capitalize;
 }
+
+.fc-toolbar-chunk {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

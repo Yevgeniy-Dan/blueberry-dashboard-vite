@@ -165,6 +165,11 @@ const Appointments = () => {
                   <div className="left-part">
                     <h2 className="text-dark">My Appointments</h2>
                   </div>
+                  <div className="d-block d-xxl-none">
+                    <button type="submit" className="btn btn-primary">
+                      Calendar
+                    </button>
+                  </div>
                 </div>
 
                 <div className="row">

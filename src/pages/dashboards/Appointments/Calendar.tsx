@@ -5,7 +5,7 @@ import BootstrapTheme from "@fullcalendar/bootstrap5";
 
 const Calendar = () => {
   const customButtons = {
-    myCustomButton: {
+    addAppointment: {
       text: "+ Add Appointment",
       click: () => {},
     },
@@ -18,9 +18,9 @@ const Calendar = () => {
       plugins={[BootstrapTheme, dayGridPlugin, interactionPlugin]}
       customButtons={customButtons}
       headerToolbar={{
-        center: "prev,next today dayGridMonth",
+        center: "prev dayGridMonth next",
         left: "title",
-        right: "myCustomButton",
+        right: "addAppointment",
       }}
       dayHeaderClassNames={"bg-primary text-white"}
     />
