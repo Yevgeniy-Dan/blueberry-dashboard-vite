@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Default from "../../../layouts/Default";
 import Vertical from "../../../layouts/Vertical";
 import { useNavigate } from "react-router-dom";

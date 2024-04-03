@@ -51,17 +51,17 @@ const states = [
   "Wyoming",
 ];
 
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import countryList from "react-select-country-list";
 import FileUploader from "../../../components/FileUploader";
 
 const Form = () => {
-  const [value, setValue] = useState("");
+  // const [value, setValue] = useState("");
   const options = useMemo(() => countryList().getData(), []);
 
-  const changeHandler = (value) => {
-    setValue(value);
-  };
+  // const changeHandler = (value) => {
+  //   setValue(value);
+  // };
 
   return (
     <div className="col-lg-8 bg-light">

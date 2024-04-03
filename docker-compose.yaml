@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  blueberry-admin:
+    build:
+      context: ./dist
+      dockerfile: Dockerfile
+    container_name: cmp
+    image: oredata/cmp
+    ports:
+      - "8080:8080"
+    restart: always
+    volumes:
+      - ../test-blueberry-admin-971ccb9a4b13.json:/app/keyfile.json

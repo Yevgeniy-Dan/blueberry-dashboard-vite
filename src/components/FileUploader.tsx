@@ -2,8 +2,13 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import Dropzone from "react-dropzone";
 
+interface FileWithPreview extends File {
+  preview?: string;
+  formattedSize?: string;
+}
+
 const FileUploader = () => {
-  const [selectedFile, setSelectedFile] = useState<File>();
+  const [selectedFile, setSelectedFile] = useState<FileWithPreview>();
 
   /**
    * Handled the accepted files and shows the preview
@@ -76,7 +81,7 @@ const FileUploader = () => {
                   <div className="col-auto">
                     <div className="avatar-lg">
                       <span className="text-white bg-primary rounded-1">
-                        {f.type.split("/")[0]}
+                        {selectedFile.type.split("/")[0]}
                       </span>
                     </div>
                   </div>
