@@ -382,7 +382,7 @@ const Default: React.FC<{
         </div>
       </div>
 
-      <div className="header-left-part d-flex align-items-center w-50 d-block py-5">
+      <div className="header-left-part d-flex align-items-center d-block py-5">
         <div className="header-search w-100">
           <form className="search-form" action="search.php">
             <input

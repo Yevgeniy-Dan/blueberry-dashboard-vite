@@ -1,0 +1,7 @@
+.header-left-part {
+  width: 100%;
+
+  @include media-breakpoint-up(sm) {
+    width: 50%;
+  }
+}
