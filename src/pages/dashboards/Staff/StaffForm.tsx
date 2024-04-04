@@ -103,8 +103,8 @@ const StaffForm = () => {
               </div>
             </div>
             <div className="col-lg-8  bg-light">
-              <div className="card border-0 p-5">
-                <div className="card-body p-0 pt-4">
+              <div className="card border-0 px-5 py-2">
+                <div className="card-body p-0">
                   <form onSubmit={formik.handleSubmit}>
                     <div className="form-group">
                       <div className="row align-items-center">
@@ -267,7 +267,7 @@ const StaffForm = () => {
 
                     <div className="row">
                       <div className="col-lg-9 offset-lg-3">
-                        <div className="button_group">
+                        <div className="button_group text-center">
                           <button type="submit" className="btn btn-primary">
                             Save
                           </button>

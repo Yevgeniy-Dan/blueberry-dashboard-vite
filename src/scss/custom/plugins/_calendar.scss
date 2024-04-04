@@ -1,3 +1,30 @@
+.fc-view {
+  border: 1px solid $primary;
+  border-radius: 4px;
+}
+
+.fc .fc-dayGridMonth-button {
+  text-transform: capitalize;
+}
+
+.fc-toolbar-chunk {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fc-toolbar-title {
+  text-align: center;
+}
+
+.fc-direction-ltr .fc-toolbar > * > :not(:first-child) {
+  margin-right: 0.75em;
+}
+
+.fc-direction-rtl .fc-toolbar > * > :not(:first-child) {
+  margin-left: 0.75em;
+}
+
 .fc-addAppointment-button {
   background-color: $secondary;
   border-color: $secondary;
@@ -8,4 +35,8 @@
   background-color: $secondary;
   border-color: $secondary;
   --kleon-btn-focus-shadow-rgb: rgba($secondary, 0.75);
+}
+
+.fc-day:hover {
+  cursor: pointer;
 }

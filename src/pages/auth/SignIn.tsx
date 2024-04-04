@@ -32,28 +32,38 @@ const SignIn = () => {
                     <label htmlFor="validationCustom01" className="form-label">
                       Email Address
                     </label>
-                    <input
-                      type="text"
-                      className="form-control border-gray-400"
-                      name="u_name"
-                      value=""
-                      placeholder="Email Address"
-                      required
-                    />
+                    <div className="input-group">
+                      <span className="badge d-flex align-items-center text-dark rounded-0 rounded-start py-2 px-3 border border-light-200 fs-16">
+                        <i className="bi bi-person"></i>
+                      </span>
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="u_name"
+                        value=""
+                        placeholder="Email Address"
+                        required
+                      />
+                    </div>
                   </div>
 
                   <div>
                     <label htmlFor="validationCustom01" className="form-label">
                       Password
                     </label>
-                    <input
-                      type="password"
-                      className="form-control border-gray-400"
-                      name="password"
-                      value=""
-                      placeholder="Password"
-                      required
-                    />
+                    <div className="input-group">
+                      <span className="badge d-flex align-items-center text-dark rounded-0 rounded-start py-2 px-3 border border-light-200 fs-16">
+                        <i className="bi bi-lock"></i>
+                      </span>
+                      <input
+                        type="password"
+                        className="form-control"
+                        name="password"
+                        value=""
+                        placeholder="Password"
+                        required
+                      />
+                    </div>
                   </div>
 
                   <div className="form-group d-flex justify-content-between align-items-center">

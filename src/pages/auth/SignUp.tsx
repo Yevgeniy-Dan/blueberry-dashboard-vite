@@ -37,14 +37,19 @@ const SignUp = () => {
                         >
                           First Name
                         </label>
-                        <input
-                          type="text"
-                          className="form-control border-gray-400"
-                          name="first_name"
-                          value=""
-                          placeholder="First Name"
-                          required
-                        />
+                        <div className="input-group">
+                          <span className="badge d-flex align-items-center text-dark rounded-0 rounded-start py-2 px-3 border border-light-200 fs-16">
+                            <i className="bi bi-person"></i>
+                          </span>
+                          <input
+                            type="text"
+                            className="form-control"
+                            name="first_name"
+                            value=""
+                            placeholder="First Name"
+                            required
+                          />
+                        </div>
                       </div>
                     </div>
                     <div className="col-lg-6">
@@ -55,14 +60,19 @@ const SignUp = () => {
                         >
                           Last Name
                         </label>
-                        <input
-                          type="text"
-                          className="form-control border-gray-400"
-                          name="last_name"
-                          value=""
-                          placeholder="Last Name"
-                          required
-                        />
+                        <div className="input-group">
+                          <span className="badge d-flex align-items-center text-dark rounded-0 rounded-start py-2 px-3 border border-light-200 fs-16">
+                            <i className="bi bi-person"></i>
+                          </span>
+                          <input
+                            type="text"
+                            className="form-control"
+                            name="last_name"
+                            value=""
+                            placeholder="Last Name"
+                            required
+                          />
+                        </div>
                       </div>
                     </div>
                     <div className="col-lg-12">
@@ -73,14 +83,19 @@ const SignUp = () => {
                         >
                           Email Address
                         </label>
-                        <input
-                          type="email"
-                          className="form-control border-gray-400"
-                          name="email"
-                          value=""
-                          placeholder="Email"
-                          required
-                        />
+                        <div className="input-group">
+                          <span className="badge d-flex align-items-center text-dark rounded-0 rounded-start py-2 px-3 border border-light-200 fs-16">
+                            <i className="bi bi-envelope"></i>
+                          </span>
+                          <input
+                            type="email"
+                            className="form-control"
+                            name="email"
+                            value=""
+                            placeholder="Email"
+                            required
+                          />
+                        </div>
                       </div>
                     </div>
                     <div className="col-lg-6">
@@ -91,14 +106,19 @@ const SignUp = () => {
                         >
                           Password
                         </label>
-                        <input
-                          type="password"
-                          className="form-control border-gray-400"
-                          name="password"
-                          value=""
-                          placeholder="Password"
-                          required
-                        />
+                        <div className="input-group">
+                          <span className="badge d-flex align-items-center text-dark rounded-0 rounded-start py-2 px-3 border border-light-200 fs-16">
+                            <i className="bi bi-lock"></i>
+                          </span>
+                          <input
+                            type="password"
+                            className="form-control"
+                            name="password"
+                            value=""
+                            placeholder="Password"
+                            required
+                          />
+                        </div>
                       </div>
                     </div>
                     <div className="col-lg-6">
@@ -109,14 +129,19 @@ const SignUp = () => {
                         >
                           Confirm Password
                         </label>
-                        <input
-                          type="password"
-                          className="form-control border-gray-400"
-                          name="c_password"
-                          value=""
-                          placeholder="Confirm Password"
-                          required
-                        />
+                        <div className="input-group">
+                          <span className="badge d-flex align-items-center text-dark rounded-0 rounded-start py-2 px-3 border border-light-200 fs-16">
+                            <i className="bi bi-lock"></i>
+                          </span>
+                          <input
+                            type="password"
+                            className="form-control"
+                            name="c_password"
+                            value=""
+                            placeholder="Confirm Password"
+                            required
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>

@@ -65,8 +65,8 @@ const Form = () => {
 
   return (
     <div className="col-lg-8 bg-light">
-      <div className="card border-0 p-5">
-        <div className="card-body p-0 pt-4">
+      <div className="card border-0 px-4 py-2">
+        <div className="card-body p-0">
           <form>
             <div className="form-group">
               <div className="row align-items-center">
@@ -102,9 +102,9 @@ const Form = () => {
                   </label>
                 </div>
                 <div className="col-lg-9">
-                  <div className="input-group has-validation">
+                  <div className="input-group has-validation ">
                     <span
-                      className="badge d-flex align-items-center text-white rounded-0 rounded-start py-2 px-3 fs-16 bg-primary"
+                      className="badge d-flex align-items-center text-white rounded-0 rounded-start py-2 px-3 fs-16 bg-primary business-url-input"
                       id="inputGroupPrepend"
                     >
                       appointment.blueberrynow.com/
@@ -190,18 +190,16 @@ const Form = () => {
                       <i className="bi bi-globe"></i>
                     </span>
                     <select
-                      className="form-control "
+                      className="form-control form-select"
                       id="validationCustom04"
                       required
                     >
                       <option selected disabled value="">
-                        Choose...
+                        Select...
                       </option>
                       {options.map((state, index) => (
                         <option key={index}>{state.label}</option>
                       ))}
-                      <option>Arizona</option>
-                      <option>Arizona</option>
                     </select>
                   </div>
                 </div>
@@ -301,12 +299,12 @@ const Form = () => {
                       <i className="bi bi-flag"></i>
                     </span>
                     <select
-                      className="form-control "
+                      className="form-control form-select"
                       id="validationCustom04"
                       required
                     >
                       <option selected disabled value="">
-                        Choose...
+                        Select...
                       </option>
                       {states.map((state, index) => (
                         <option key={index}>{state}</option>
@@ -391,11 +389,11 @@ const Form = () => {
 
             <div className="row">
               <div className="col-lg-9 offset-lg-3">
-                <div className="button_group">
+                <div className="button_group text-center">
                   <button type="submit" className="btn btn-primary">
-                    Submit
+                    Save
                   </button>
-                  <button type="reset" className="btn btn-warning">
+                  <button type="reset" className="btn btn-secondary text-white">
                     Reset
                   </button>
                 </div>

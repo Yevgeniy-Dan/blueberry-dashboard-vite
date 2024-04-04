@@ -21,14 +21,19 @@ const ForgetPassword = () => {
             <div className="card-body p-0">
               <form className="form-horizontal" method="post">
                 <div className="form-group">
-                  <input
-                    type="email"
-                    className="form-control border-gray-400"
-                    name="email"
-                    value=""
-                    placeholder="Email Address"
-                    required
-                  />
+                  <div className="input-group">
+                    <span className="badge d-flex align-items-center text-dark rounded-0 rounded-start py-2 px-3 border border-light-200 fs-16">
+                      <i className="bi bi-envelope"></i>
+                    </span>
+                    <input
+                      type="email"
+                      className="form-control"
+                      name="email"
+                      value=""
+                      placeholder="Email Address"
+                      required
+                    />
+                  </div>
                 </div>
 
                 <button

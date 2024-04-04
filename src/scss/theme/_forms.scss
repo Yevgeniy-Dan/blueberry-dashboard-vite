@@ -37,13 +37,14 @@
     &:focus {
         color: $dark;
         background-color: $light-200;
-        border-color: $primary;
+        border-color: rgba($primary, 0.6);
         outline: 0;
         @if $enable-shadows {
             @include box-shadow($input-box-shadow, $input-focus-box-shadow);
         } @else {
             // Avoid using mixin so we can pass custom focus shadow properly
-            box-shadow: $input-focus-box-shadow;
+            // box-shadow: $input-focus-box-shadow;
+            box-shadow: none;
         }
     }
 }

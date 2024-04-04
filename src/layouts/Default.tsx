@@ -23,7 +23,7 @@ const Default: React.FC<{
       <div className="d-none d-xl-block">
         <div className="header-inner d-flex align-items-center justify-content-around justify-content-xl-between flex-wrap flex-xl-nowrap gap-3 gap-xl-5">
           <div className="header-left-part d-flex align-items-center w-50">
-            <div className="header-search w-100">
+            {/* <div className="header-search w-100">
               <form className="search-form" action="search.php">
                 <input
                   type="text"
@@ -35,7 +35,7 @@ const Default: React.FC<{
                   <img src={search} alt="" />
                 </button>
               </form>
-            </div>
+            </div> */}
           </div>
 
           <div className="header-right-part d-flex align-items-center flex-shrink-0">
@@ -382,7 +382,7 @@ const Default: React.FC<{
         </div>
       </div>
 
-      <div className="header-left-part d-flex align-items-center w-100 d-block d-xl-none py-5">
+      <div className="header-left-part d-flex align-items-center w-50 d-block py-5">
         <div className="header-search w-100">
           <form className="search-form" action="search.php">
             <input
