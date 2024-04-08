@@ -98,7 +98,7 @@ const Form = () => {
               <div className="row align-items-center">
                 <div className="col-lg-3">
                   <label htmlFor="validationCustom02" className="form-label">
-                    Business URL
+                    Booking Page
                   </label>
                 </div>
                 <div className="col-lg-9">
@@ -190,7 +190,7 @@ const Form = () => {
                       <i className="bi bi-globe"></i>
                     </span>
                     <select
-                      className="form-control form-select"
+                      className="form-control form-select custom-select"
                       id="validationCustom04"
                       required
                     >
@@ -299,7 +299,7 @@ const Form = () => {
                       <i className="bi bi-flag"></i>
                     </span>
                     <select
-                      className="form-control form-select"
+                      className="form-control form-select custom-select"
                       id="validationCustom04"
                       required
                     >

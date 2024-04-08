@@ -19,9 +19,9 @@ const Calendar: React.FC<{
 
   return (
     <div>
-      <div className="d-flex justify-content-end w-100 mb-5">
+      <div className="d-flex justify-content-center w-100 mb-3">
         <div>
-          <button className="btn btn-secondary text-white">
+          <button className="btn btn-secondary btn-space-1 text-white fw-bold">
             + Add Appointment
           </button>
         </div>

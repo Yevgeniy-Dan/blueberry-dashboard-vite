@@ -40,11 +40,7 @@ const StaffForm = () => {
         .email("Enter a valid email address")
         .required("Email is required"),
       phoneNumber: Yup.string()
-        .matches(
-          /^\d{3}-\d{3}-\d{4}$/,
-          "Enter a valid phone number (XXX-XXX-XXXX)"
-        )
-        .required("Phone number is required"),
+      .required("Phone number is required"),
     }),
     onSubmit: (values) => {
       const staffData: StaffModel = {
@@ -221,7 +217,7 @@ const StaffForm = () => {
                         <div className="col-lg-3">
                           <label className="form-label">Select days off</label>
                         </div>
-                        <div className="col-lg-9">
+                        <div className="col-lg-12">
                           <div className="input-group">
                             {days.map((day, index) => (
                               <div

@@ -144,6 +144,33 @@ const SignUp = () => {
                         </div>
                       </div>
                     </div>
+                    <div className="col-lg-12">
+                      <div className="form-group">
+                        <input
+                          type="checkbox"
+                          className="form-check-input"
+                          id="checkbox1"
+                          value=""
+                        />
+                        <label className="form-label mb-0" htmlFor="checkbox1">
+                          I agree to the{" "}
+                          <NavLink
+                            to={""}
+                            className="text-primary fw-bold text-decoration-underline"
+                          >
+                            Terms
+                          </NavLink>
+                          <span className="text-decoration-underline"></span>{" "}
+                          and{" "}
+                          <NavLink
+                            to={""}
+                            className="text-primary fw-bold text-decoration-underline"
+                          >
+                            Privacy Policy
+                          </NavLink>
+                        </label>
+                      </div>
+                    </div>
                   </div>
 
                   <NavLink

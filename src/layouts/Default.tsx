@@ -1,4 +1,3 @@
-import search from "../assets/images/search.svg";
 // import sun from "../assets/images/sun.svg";
 // import moon from "../assets/images/moon.svg";
 // import bell from "../assets/images/bell.svg";
@@ -14,6 +13,7 @@ const Default: React.FC<{
 }> = ({ onToggleCollapse }) => {
   const [showUserProfileDropdown, setShowUserProfileDropdown] =
     useState<boolean>(false);
+  const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
   const [showUserProfileMobileDropdown, setShowUserProfileMobileDropdown] =
     useState<boolean>(false);
 
@@ -22,21 +22,7 @@ const Default: React.FC<{
     <header className="header kleon-default-nav">
       <div className="d-none d-xl-block">
         <div className="header-inner d-flex align-items-center justify-content-around justify-content-xl-between flex-wrap flex-xl-nowrap gap-3 gap-xl-5">
-          <div className="header-left-part d-flex align-items-center w-50">
-            {/* <div className="header-search w-100">
-              <form className="search-form" action="search.php">
-                <input
-                  type="text"
-                  name="search"
-                  className="keyword form-control w-100"
-                  placeholder="Search customer by name or email"
-                />
-                <button type="submit" className="btn">
-                  <img src={search} alt="" />
-                </button>
-              </form>
-            </div> */}
-          </div>
+          <div className="header-left-part d-flex align-items-center w-50"></div>
 
           <div className="header-right-part d-flex align-items-center flex-shrink-0">
             <ul className="nav-elements d-flex align-items-center list-unstyled m-0 p-0">
@@ -158,7 +144,7 @@ const Default: React.FC<{
             type="button"
             className="kleon-header-expand-toggle"
             onClick={() => {
-              setShowUserProfileMobileDropdown(!showUserProfileMobileDropdown);
+              setShowMobileMenu(!showMobileMenu);
             }}
           >
             <span className="fs-24">
@@ -180,11 +166,7 @@ const Default: React.FC<{
         </div>
       </div>
 
-      <div
-        className={`header-mobile-option ${
-          showUserProfileMobileDropdown && "expand"
-        }`}
-      >
+      <div className={`header-mobile-option ${showMobileMenu && "expand"}`}>
         <div className="header-inner">
           <div className="d-flex align-items-center justify-content-end flex-shrink-0">
             <ul className="nav-elements d-flex align-items-center list-unstyled m-0 p-0">
@@ -294,11 +276,15 @@ const Default: React.FC<{
               <li className="nav-item nav-author px-3">
                 <a
                   href="#"
-                  className={`nav-toggler ${showUserProfileDropdown && "show"}`}
+                  className={`nav-toggler ${
+                    showUserProfileMobileDropdown && "show"
+                  }`}
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                   onClick={() =>
-                    setShowUserProfileDropdown(!showUserProfileDropdown)
+                    setShowUserProfileMobileDropdown(
+                      !showUserProfileMobileDropdown
+                    )
                   }
                 >
                   <img
@@ -316,7 +302,7 @@ const Default: React.FC<{
                 </a>
                 <div
                   className={`dropdown-widget dropdown-menu p-0 admin-card ${
-                    showUserProfileDropdown &&
+                    showUserProfileMobileDropdown &&
                     "show position-absolute top-95 translate-middle-x  py-3 w-56 max-h-200  overflow-y-auto flex justify-center flex-wrap"
                   }`}
                 >
@@ -379,22 +365,6 @@ const Default: React.FC<{
               </li>
             </ul>
           </div>
-        </div>
-      </div>
-
-      <div className="header-left-part d-flex align-items-center d-block py-5">
-        <div className="header-search w-100">
-          <form className="search-form" action="search.php">
-            <input
-              type="text"
-              name="search"
-              className="keyword form-control w-100"
-              placeholder="Search customer by name or email"
-            />
-            <button type="submit" className="btn">
-              <img src={search} alt="" />
-            </button>
-          </form>
         </div>
       </div>
     </header>

@@ -21,7 +21,7 @@ const Vertical: React.FC<{
 
   return (
     //  <!-- Vertical Nav -->
-    <div className="kleon-vertical-nav p-0">
+    <div className="bg-light-600 kleon-vertical-nav p-0">
       {/* <!-- Logo  --> */}
       <div className="logo d-flex align-items-center justify-content-between pt-4">
         <NavLink
@@ -43,7 +43,7 @@ const Vertical: React.FC<{
         </button>
       </div>
 
-      <div className=" bg-primary pt-4 h-100">
+      <div className="  pt-4 h-100">
         <div className="kleon-navmenu p-4">
           <ul className="main-menu">
             <li
