@@ -290,6 +290,13 @@ table.dataTable th,
 table.dataTable td {
   box-sizing: content-box;
 }
+table.dataTable td {
+  max-width: 200px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  white-space: pre-wrap !important;
+}
+
 .dataTables_wrapper {
   position: relative;
   clear: both;
