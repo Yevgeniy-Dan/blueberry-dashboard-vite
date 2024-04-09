@@ -22,7 +22,7 @@ import {
 } from "@tanstack/match-sorter-utils";
 
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
-import React, { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { SERVICES } from "../../../routes/constants";
 import { removeService } from "../../../redux/services/slice";
@@ -77,9 +77,11 @@ const Table = () => {
 
   const dispatch = useAppDispatch();
 
-  function removeServiceHandler(id: string): void {
-    dispatch(removeService(id));
-  }
+  const removeServiceHandler = useMemo(() => {
+    return (id: string) => {
+      dispatch(removeService(id));
+    };
+  }, [dispatch]);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const columns = useMemo<ColumnDef<ServiceModel, any>[]>(
@@ -138,7 +140,7 @@ const Table = () => {
         ),
       },
     ],
-    []
+    [removeServiceHandler]
   );
 
   const [pagination, setPagination] = useState({
