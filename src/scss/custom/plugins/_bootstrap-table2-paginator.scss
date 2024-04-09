@@ -297,6 +297,10 @@ table.dataTable td {
   white-space: pre-wrap !important;
 }
 
+table.dataTable th {
+  min-width: 100px;
+}
+
 .dataTables_wrapper {
   position: relative;
   clear: both;

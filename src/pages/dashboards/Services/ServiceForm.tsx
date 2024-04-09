@@ -118,7 +118,7 @@ const ServiceForm = () => {
           <div className="inner-contents">
             <div className="page-header d-flex align-items-center justify-content-between mr-bottom-30">
               <div className="left-part ">
-                <h2 className="text-dark">Add Staff</h2>
+                <h2 className="text-dark">Add Service</h2>
               </div>
             </div>
             <div className="col-lg-8  bg-light">

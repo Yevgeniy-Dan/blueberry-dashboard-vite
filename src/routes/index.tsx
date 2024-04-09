@@ -8,7 +8,6 @@ import Staff from "../pages/dashboards/Staff";
 import StaffForm from "../pages/dashboards/Staff/StaffForm";
 import Services from "../pages/dashboards/Services";
 import ServiceForm from "../pages/dashboards/Services/ServiceForm";
-import BusinessHoursSetter from "../pages/dashboards/BusinessInfo/BusinessHoursSetter";
 
 const SignIn = lazy(() => import("../pages/auth/SignIn"));
 const SignUp = lazy(() => import("../pages/auth/SignUp"));
@@ -65,14 +64,6 @@ const dashboardRoutes = [
     element: (
       <Suspense fallback={<Preloader />}>
         <BusinessInfo />
-      </Suspense>
-    ),
-  },
-  {
-    path: `${BUSINESS_INFO}/set-hours`,
-    element: (
-      <Suspense fallback={<Preloader />}>
-        <BusinessHoursSetter />
       </Suspense>
     ),
   },
