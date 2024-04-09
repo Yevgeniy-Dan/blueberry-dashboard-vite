@@ -1,5 +1,8 @@
 @use "sass:math";
 
+@import url("https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/themes/light.css");
+
 // px to rem convert files
 @import "theme/pxtorem";
 
@@ -26,6 +29,7 @@
 @import "custom/plugins/forms";
 @import "custom/plugins/bootstrap-table2-paginator.scss";
 @import "custom/plugins/react-select";
+@import "custom/plugins/flatpickr";
 // @import url("../../plugins/select2/css/select2.min.css");
 // @import url("../../plugins/datatables/css/jquery.dataTables.min.css");
 @import url("../../plugins/fullcalendar/fullcalendar.css");
