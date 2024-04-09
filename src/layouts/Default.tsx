@@ -1,6 +1,6 @@
 // import sun from "../assets/images/sun.svg";
 // import moon from "../assets/images/moon.svg";
-// import bell from "../assets/images/bell.svg";
+import bell from "../assets/images/bell.svg";
 // import settings from "../assets/images/settings.svg";
 import logo from "../assets/images/logo.png";
 import navAuthor from "../assets/images/nav_author.jpg";
@@ -26,6 +26,93 @@ const Default: React.FC<{
 
           <div className="header-right-part d-flex align-items-center flex-shrink-0">
             <ul className="nav-elements d-flex align-items-center list-unstyled m-0 p-0">
+              <li className="nav-item nav-notification dropdown">
+                <a
+                  href="#"
+                  className="nav-toggler"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <img src={bell} alt="bell" />
+                  <div className="badge rounded-circle">12</div>
+                </a>
+                <div className="dropdown-widget dropdown-menu p-0">
+                  <div className="dropdown-wrapper pd-50">
+                    <div className="dropdown-wrapper--title">
+                      <h4 className="d-flex align-items-center justify-content-between">
+                        Notifications <a href="#">View All</a>
+                      </h4>
+                    </div>
+                    <ul className="notification-board list-unstyled">
+                      <li className="author-online has-new-message d-flex gap-3">
+                        <div className="media bg-primary text-white">
+                          <i className="bi bi-lightning"></i>
+                        </div>
+                        <div className="user-message">
+                          <h6 className="message">
+                            <a href="#">Jackie Kun</a> mentioned you at{" "}
+                            <a href="#">Blueberry Projects</a>
+                          </h6>
+                          <p className="message-footer d-flex align-items-center justify-content-between">
+                            {" "}
+                            <span className="fs-14 text-gray fw-normal">
+                              2m ago
+                            </span>{" "}
+                            <span>Mark as read</span>
+                          </p>
+                        </div>
+                      </li>
+                      <li className="author-online has-new-message d-flex gap-3">
+                        <div className="media bg-secondary text-white">
+                          <i className="bi bi-lightning"></i>
+                        </div>
+                        <div className="user-message">
+                          <h6 className="message">
+                            <a href="#">Olivia Johanna</a> has created new task
+                            at <a href="#">Blueberry Projects</a>
+                          </h6>
+                          <p className="message-footer d-flex align-items-center justify-content-between">
+                            {" "}
+                            <span className="fs-14 text-gray fw-normal">
+                              2m ago
+                            </span>{" "}
+                            <span>Mark as read</span>
+                          </p>
+                        </div>
+                      </li>
+                      <li className="author-online has-new-message d-flex gap-3">
+                        <div className="media media-outline-red text-red">
+                          <i className="bi bi-clock-fill"></i>
+                        </div>
+                        <div className="user-message">
+                          <h6 className="message">
+                            [REMINDER] Due date of{" "}
+                            <a href="#">Highspeed Studios Projects</a> te task
+                            will be coming
+                          </h6>
+                          <p className="message-footer d-flex align-items-center justify-content-between">
+                            {" "}
+                            <span className="fs-14 text-gray fw-normal">
+                              2m ago
+                            </span>{" "}
+                            <span>Mark as read</span>
+                          </p>
+                        </div>
+                      </li>
+                    </ul>
+                    <h6 className="all-notifications">
+                      {" "}
+                      <a
+                        href="#"
+                        className="btn bg-muted text-primary w-100 fw-bold mt-3 ff-heading px-0"
+                      >
+                        View All Notifications
+                      </a>{" "}
+                    </h6>
+                  </div>
+                </div>
+              </li>
+
               <li className="nav-item nav-author">
                 <a
                   href="#"
@@ -36,17 +123,8 @@ const Default: React.FC<{
                     setShowUserProfileDropdown(!showUserProfileDropdown)
                   }
                 >
-                  <img
-                    src={navAuthor}
-                    alt="img"
-                    width="54"
-                    className="rounded-2"
-                  />
                   <div className="nav-toggler-content">
                     <h6 className="mb-0">John S.</h6>
-                    <div className="ff-heading fs-14 fw-normal text-gray">
-                      Super Admin
-                    </div>
                   </div>
                 </a>
                 <div
@@ -66,9 +144,6 @@ const Default: React.FC<{
                         />
                         <div className="mt-2">
                           <h6 className="mb-0 lh-18">John S.</h6>
-                          <div className="fs-14 fw-normal text-gray">
-                            Super Admin
-                          </div>
                         </div>
                       </div>
                       <div className="card-body p-3">
@@ -83,10 +158,10 @@ const Default: React.FC<{
                           </li>
                           <li>
                             <a
-                              href="email.html"
+                              href="#"
                               className="fs-14 fw-normal text-dark d-block p-1"
                             >
-                              <i className="bi bi-envelope me-2 "></i> Inbox
+                              <i className="bi bi-book me-2"></i> Terms
                             </a>
                           </li>
                           <li>
@@ -94,8 +169,7 @@ const Default: React.FC<{
                               href="#"
                               className="fs-14 fw-normal text-dark d-block p-1"
                             >
-                              <i className="bi bi-gear me-2"></i> Setting &
-                              Privacy
+                              <i className="bi bi-lock me-2"></i> Privacy
                             </a>
                           </li>
                         </ul>
@@ -295,9 +369,6 @@ const Default: React.FC<{
                   />
                   <div className="nav-toggler-content">
                     <h6 className="mb-0">John S.</h6>
-                    <div className="ff-heading fs-14 fw-normal text-gray">
-                      Super Admin
-                    </div>
                   </div>
                 </a>
                 <div
@@ -317,9 +388,6 @@ const Default: React.FC<{
                         />
                         <div className="mt-2">
                           <h6 className="mb-0 lh-18">John S.</h6>
-                          <div className="fs-14 fw-normal text-gray">
-                            Super Admin
-                          </div>
                         </div>
                       </div>
                       <div className="card-body p-3">
@@ -334,10 +402,10 @@ const Default: React.FC<{
                           </li>
                           <li>
                             <a
-                              href="email.html"
+                              href="#"
                               className="fs-14 fw-normal text-dark d-block p-1"
                             >
-                              <i className="bi bi-envelope me-2 "></i> Inbox
+                              <i className="bi bi-book me-2"></i> Terms
                             </a>
                           </li>
                           <li>
@@ -345,8 +413,7 @@ const Default: React.FC<{
                               href="#"
                               className="fs-14 fw-normal text-dark d-block p-1"
                             >
-                              <i className="bi bi-gear me-2"></i> Setting &
-                              Privacy
+                              <i className="bi bi-lock me-2"></i> Privacy
                             </a>
                           </li>
                         </ul>
