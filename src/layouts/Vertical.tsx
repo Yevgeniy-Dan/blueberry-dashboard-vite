@@ -7,6 +7,7 @@ import {
   APPOINTMENTS,
   BOOKING_PAGE,
   BUSINESS_INFO,
+  CUSTOMERS,
   ENABLE_PAYMENTS,
   ROLES,
   SERVICES,
@@ -98,6 +99,19 @@ const Vertical: React.FC<{
                   <i className="bi bi-tools fs-18"></i>
                 </span>{" "}
                 {!isCollapsed && <span className="nav-text">Services</span>}
+              </NavLink>
+            </li>
+            <li
+              className={`menu-item ${
+                location.pathname === CUSTOMERS && "active"
+              }`}
+            >
+              <NavLink to={CUSTOMERS}>
+                {" "}
+                <span className="nav-icon flex-shrink-0">
+                  <i className="bi bi-tools fs-18"></i>
+                </span>{" "}
+                {!isCollapsed && <span className="nav-text">Customers</span>}
               </NavLink>
             </li>
             <li
