@@ -4,6 +4,7 @@ import BusinessInfo from "../pages/dashboards/BusinessInfo";
 
 import Preloader from "../pages/Preloader";
 import {
+  ANALYTICS,
   APPOINTMENTS,
   BUSINESS_INFO,
   CUSTOMERS,
@@ -19,6 +20,7 @@ import Customers from "../pages/dashboards/Customers";
 import Roles from "../pages/dashboards/Roles";
 import RoleForm from "../pages/dashboards/Roles/RoleForm";
 import AddForm from "../pages/dashboards/Appointments/AddForm";
+import Analytics from "../pages/dashboards/Analytics";
 
 const SignIn = lazy(() => import("../pages/auth/SignIn"));
 const SignUp = lazy(() => import("../pages/auth/SignUp"));
@@ -163,6 +165,14 @@ const dashboardRoutes = [
     element: (
       <Suspense fallback={<Preloader />}>
         <RoleForm />
+      </Suspense>
+    ),
+  },
+  {
+    path: `${ANALYTICS}`,
+    element: (
+      <Suspense fallback={<Preloader />}>
+        <Analytics />
       </Suspense>
     ),
   },

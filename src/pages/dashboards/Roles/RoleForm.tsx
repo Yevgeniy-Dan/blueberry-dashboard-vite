@@ -1,4 +1,4 @@
-import React, { useId, useState } from "react";
+import { useId, useState } from "react";
 import Default from "../../../layouts/Default";
 import Vertical from "../../../layouts/Vertical";
 import { useNavigate, useParams } from "react-router-dom";
