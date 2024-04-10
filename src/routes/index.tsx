@@ -7,6 +7,7 @@ import {
   APPOINTMENTS,
   BUSINESS_INFO,
   CUSTOMERS,
+  ROLES,
   SERVICES,
   STAFF,
 } from "./constants";
@@ -15,6 +16,8 @@ import StaffForm from "../pages/dashboards/Staff/StaffForm";
 import Services from "../pages/dashboards/Services";
 import ServiceForm from "../pages/dashboards/Services/ServiceForm";
 import Customers from "../pages/dashboards/Customers";
+import Roles from "../pages/dashboards/Roles";
+import RoleForm from "../pages/dashboards/Roles/RoleForm";
 
 const SignIn = lazy(() => import("../pages/auth/SignIn"));
 const SignUp = lazy(() => import("../pages/auth/SignUp"));
@@ -127,6 +130,30 @@ const dashboardRoutes = [
     element: (
       <Suspense fallback={<Preloader />}>
         <Customers />
+      </Suspense>
+    ),
+  },
+  {
+    path: ROLES,
+    element: (
+      <Suspense fallback={<Preloader />}>
+        <Roles />
+      </Suspense>
+    ),
+  },
+  {
+    path: `${ROLES}/add`,
+    element: (
+      <Suspense fallback={<Preloader />}>
+        <RoleForm />
+      </Suspense>
+    ),
+  },
+  {
+    path: `${ROLES}/add/:roleId`,
+    element: (
+      <Suspense fallback={<Preloader />}>
+        <RoleForm />
       </Suspense>
     ),
   },
