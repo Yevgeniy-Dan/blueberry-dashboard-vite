@@ -412,11 +412,7 @@ const Form = () => {
       <div className="row">
         <div className="col-lg-9 offset-lg-3">
           <div className="button_group text-center">
-            <button
-              type="submit"
-              className="btn btn-primary"
-              onClick={() => console.log(businessHours)}
-            >
+            <button type="submit" className="btn btn-primary">
               Save
             </button>
             <button type="reset" className="btn btn-secondary text-white">

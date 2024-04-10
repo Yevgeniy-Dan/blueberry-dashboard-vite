@@ -39,8 +39,7 @@ const StaffForm = () => {
       email: Yup.string()
         .email("Enter a valid email address")
         .required("Email is required"),
-      phoneNumber: Yup.string()
-      .required("Phone number is required"),
+      phoneNumber: Yup.string().required("Phone number is required"),
     }),
     onSubmit: (values) => {
       const staffData: StaffModel = {
@@ -165,7 +164,7 @@ const StaffForm = () => {
                               onBlur={formik.handleBlur}
                             />
                             {formik.touched.email && formik.errors.email && (
-                              <div className="invalid-feedback">
+                              <div className="invalid-feedback icon-input">
                                 {formik.errors.email}
                               </div>
                             )}
@@ -203,7 +202,7 @@ const StaffForm = () => {
                             />
                             {formik.touched.phoneNumber &&
                               formik.errors.phoneNumber && (
-                                <div className="invalid-feedback">
+                                <div className="invalid-feedback icon-input">
                                   {formik.errors.phoneNumber}
                                 </div>
                               )}

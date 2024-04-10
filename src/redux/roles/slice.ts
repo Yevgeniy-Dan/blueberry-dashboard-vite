@@ -1,25 +1,25 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
-import { UserModel } from "./model";
+import { RoleModel } from "./model";
 
 type InitialState = {
-  items: UserModel[];
+  items: RoleModel[];
 };
 
 const initialState: InitialState = {
-  items: [] as UserModel[],
+  items: [] as RoleModel[],
 };
 
 const roleSlice = createSlice({
   name: "roles",
   initialState,
   reducers: {
-    addRole: (state, action: PayloadAction<UserModel>) => {
+    addRole: (state, action: PayloadAction<RoleModel>) => {
       state.items.push(action.payload);
     },
     udpateRole: (
       state,
-      action: PayloadAction<{ roleId: string; role: UserModel }>
+      action: PayloadAction<{ roleId: string; role: RoleModel }>
     ) => {
       const { roleId, role } = action.payload;
       state.items = state.items.map((item) => {

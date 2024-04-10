@@ -18,6 +18,7 @@ import ServiceForm from "../pages/dashboards/Services/ServiceForm";
 import Customers from "../pages/dashboards/Customers";
 import Roles from "../pages/dashboards/Roles";
 import RoleForm from "../pages/dashboards/Roles/RoleForm";
+import AddForm from "../pages/dashboards/Appointments/AddForm";
 
 const SignIn = lazy(() => import("../pages/auth/SignIn"));
 const SignUp = lazy(() => import("../pages/auth/SignUp"));
@@ -66,6 +67,14 @@ const dashboardRoutes = [
     element: (
       <Suspense fallback={<Preloader />}>
         <Appointments />
+      </Suspense>
+    ),
+  },
+  {
+    path: `${APPOINTMENTS}/add`,
+    element: (
+      <Suspense fallback={<Preloader />}>
+        <AddForm />
       </Suspense>
     ),
   },

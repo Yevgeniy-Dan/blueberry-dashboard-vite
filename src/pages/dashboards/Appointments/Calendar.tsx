@@ -2,16 +2,19 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import BootstrapTheme from "@fullcalendar/bootstrap5";
+import { useNavigate } from "react-router-dom";
 
 const Calendar: React.FC<{
   onCalendarDateClick: () => void;
 }> = ({ onCalendarDateClick }) => {
-  const customButtons = {
-    addAppointment: {
-      text: "+ Add Appointment",
-      click: () => {},
-    },
-  };
+  const navigate = useNavigate();
+
+  // const customButtons = {
+  //   addAppointment: {
+  //     text: "+ Add Appointment",
+  //     click: () => {},
+  //   },
+  // };
 
   function handleDateClick(): void {
     onCalendarDateClick();
@@ -21,7 +24,10 @@ const Calendar: React.FC<{
     <div>
       <div className="d-flex justify-content-center w-100 mb-3">
         <div>
-          <button className="btn btn-secondary btn-space-1 text-white fw-bold">
+          <button
+            className="btn btn-secondary btn-space-1 text-white fw-bold"
+            onClick={() => navigate("./add")}
+          >
             + Add Appointment
           </button>
         </div>
@@ -30,7 +36,7 @@ const Calendar: React.FC<{
         initialView="dayGridMonth"
         themeSystem="bootstrap5"
         plugins={[BootstrapTheme, dayGridPlugin, interactionPlugin]}
-        customButtons={customButtons}
+        // customButtons={customButtons}
         headerToolbar={{
           center: "prev title next",
           left: "",
