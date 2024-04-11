@@ -16,6 +16,7 @@ import Vertical from "../../../layouts/Vertical";
 
 import currencyCodes from "currency-codes";
 import ReactSelect from "react-select";
+import getSymbolFromCurrency from "currency-symbol-map";
 
 const timeOptions = [
   { label: "20 Mins" },
@@ -135,7 +136,7 @@ const ServiceForm = () => {
                         <div className="col-lg-9">
                           <div className="input-group">
                             <span className="badge d-flex align-items-center text-dark rounded-0 rounded-start py-2 px-3 border border-light-200 fs-16">
-                              <i className="bi bi-building"></i>
+                              <i className="bi bi-card-heading"></i>
                             </span>
                             <input
                               type="text"
@@ -171,7 +172,7 @@ const ServiceForm = () => {
                         <div className="col-lg-9">
                           <div className="input-group">
                             <span className="badge d-flex align-items-center text-dark rounded-0 rounded-start py-2 px-3 border border-light-200 fs-16">
-                              <i className="bi bi-globe"></i>
+                              <i className="bi bi-clock"></i>
                             </span>
                             <select
                               className={`form-control form-select custom-select ${
@@ -212,9 +213,9 @@ const ServiceForm = () => {
                           </label>
                         </div>
                         <div className="col-lg-9">
-                          <div className="input-group">
+                          <div className="input-group ">
                             <span className="badge d-flex align-items-center text-dark rounded-0 rounded-start py-2 px-3 border border-light-200 fs-16">
-                              <i className="bi bi-building"></i>
+                              <i className="bi bi-cash"></i>
                             </span>
                             <select
                               className={`form-control form-select custom-select`}
@@ -230,22 +231,27 @@ const ServiceForm = () => {
                                 <option key={index}>{state}</option>
                               ))}
                             </select>
-                            <input
-                              type="text"
-                              className={`form-control ${
-                                formik.touched.price && formik.errors.price
-                                  ? "is-invalid"
-                                  : ""
-                              }`}
-                              id="price"
-                              name="price"
-                              value={formik.values.price}
-                              placeholder="Price"
-                              onChange={formik.handleChange}
-                              onBlur={formik.handleBlur}
-                            />
+                            <div className="position-relative d-flex align-items-center">
+                              <input
+                                type="text"
+                                className={`form-control ps-6 ${
+                                  formik.touched.price && formik.errors.price
+                                    ? "is-invalid pe-0"
+                                    : ""
+                                }`}
+                                id="price"
+                                name="price"
+                                value={formik.values.price}
+                                placeholder="Price"
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                              />
+                              <span className="input-icon">
+                                {getSymbolFromCurrency(formik.values.currency)}
+                              </span>
+                            </div>
                             {formik.touched.price && formik.errors.price && (
-                              <div className="invalid-feedback icon-input">
+                              <div className="invalid-feedback d-block icon-input">
                                 {formik.errors.price}
                               </div>
                             )}
@@ -264,7 +270,7 @@ const ServiceForm = () => {
                         <div className="col-lg-9">
                           <div className="input-group">
                             <span className="badge d-flex align-items-center text-dark rounded-0 rounded-start py-2 px-3 border border-light-200 fs-16">
-                              <i className="bi bi-globe"></i>
+                              <i className="bi bi-person"></i>
                             </span>
                             <ReactSelect
                               closeMenuOnSelect={false}

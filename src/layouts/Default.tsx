@@ -3,7 +3,6 @@
 import bell from "../assets/images/bell.svg";
 // import settings from "../assets/images/settings.svg";
 import logo from "../assets/images/logo.png";
-import navAuthor from "../assets/images/nav_author.jpg";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 
@@ -136,12 +135,6 @@ const Default: React.FC<{
                   <div className="dropdown-wrapper">
                     <div className="card mb-0">
                       <div className="card-header p-3 text-center">
-                        <img
-                          src={navAuthor}
-                          alt="img"
-                          width="80"
-                          className="rounded-circle avatar"
-                        />
                         <div className="mt-2">
                           <h6 className="mb-0 lh-18">John S.</h6>
                         </div>
@@ -361,12 +354,6 @@ const Default: React.FC<{
                     )
                   }
                 >
-                  <img
-                    src={navAuthor}
-                    alt="img"
-                    width="40"
-                    className="rounded-2"
-                  />
                   <div className="nav-toggler-content">
                     <h6 className="mb-0">John S.</h6>
                   </div>
@@ -380,12 +367,6 @@ const Default: React.FC<{
                   <div className="dropdown-wrapper">
                     <div className="card mb-0">
                       <div className="card-header p-3 text-center">
-                        <img
-                          src={navAuthor}
-                          alt="img"
-                          width="60"
-                          className="rounded-circle avatar"
-                        />
                         <div className="mt-2">
                           <h6 className="mb-0 lh-18">John S.</h6>
                         </div>
