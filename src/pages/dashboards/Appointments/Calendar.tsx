@@ -1,12 +1,14 @@
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
-import interactionPlugin from "@fullcalendar/interaction";
+import interactionPlugin, { DateClickArg } from "@fullcalendar/interaction";
 import BootstrapTheme from "@fullcalendar/bootstrap5";
 import { useNavigate } from "react-router-dom";
+import moment from "moment";
 
 const Calendar: React.FC<{
-  onCalendarDateClick: () => void;
-}> = ({ onCalendarDateClick }) => {
+  selectedDate: Date;
+  onCalendarDateClick: (info: DateClickArg) => void;
+}> = ({ selectedDate, onCalendarDateClick }) => {
   const navigate = useNavigate();
 
   // const customButtons = {
@@ -16,9 +18,21 @@ const Calendar: React.FC<{
   //   },
   // };
 
-  function handleDateClick(): void {
-    onCalendarDateClick();
+  function handleDateClick(info: DateClickArg): void {
+    onCalendarDateClick(info);
   }
+
+  const renderDayCell = (arg: { date: Date }): React.ReactNode => {
+    const cellDate = moment(arg.date);
+    const isToday = cellDate.isSame(moment(), "day");
+    const isSelected = selectedDate
+      ? cellDate.isSame(selectedDate, "day")
+      : false;
+    const classNames = `fc-daygrid-day-number${isSelected ? " selected" : ""}${
+      isToday ? " today" : ""
+    }`;
+    return <div className={classNames}>{cellDate.format("D")}</div>;
+  };
 
   return (
     <div>
@@ -43,7 +57,9 @@ const Calendar: React.FC<{
           // right: "addAppointment",
           right: "",
         }}
+        dayCellContent={renderDayCell}
         dayHeaderClassNames={"bg-primary text-white"}
+        dayCellClassNames={"bg-transparent"}
         dateClick={handleDateClick}
       />
     </div>

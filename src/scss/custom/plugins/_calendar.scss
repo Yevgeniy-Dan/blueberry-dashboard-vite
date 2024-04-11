@@ -52,3 +52,18 @@
 .fc-day:hover {
   cursor: pointer;
 }
+
+/* Add a new style to highlight the selected date */
+.fc .fc-daygrid-day-number.selected,
+.fc .fc-daygrid-day-number.selected.today {
+  background-color: $primary !important;
+  border-radius: 50% !important;
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  color: $white;
+}
+
+.fc-daygrid-day-number {
+  background-color: transparent !important;
+}

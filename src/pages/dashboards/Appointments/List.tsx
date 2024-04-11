@@ -3,6 +3,8 @@ const currentDay = currentDate.getDate();
 currentDate.setDate(currentDay + 1);
 const tomorrowDay = currentDate.getDate();
 
+import moment from "moment";
+
 const todaysAppointments = [
   {
     day: currentDay,
@@ -128,7 +130,7 @@ const tomorrowsAppointments = [
     time: "10.30 - 12.00",
   },
 ];
-const List = () => {
+const List: React.FC<{ selectedDate: Date }> = ({ selectedDate }) => {
   return (
     <div className="row">
       <div className="col-xxl-12 col-12">
@@ -138,7 +140,9 @@ const List = () => {
               <div className="dropdown-widget dropdown-schedule p-2 col-md-6 col-12">
                 <div className="card border-0 shadow-sm pd-top-40 pd-bottom-40 bg-primary">
                   <div className="card-body py-0 text-center">
-                    <h4 className="mb-3 fs-medium  text-white">Today</h4>
+                    <h4 className="mb-3 fs-medium  text-white">
+                      {moment(selectedDate).format("MMMM D")}
+                    </h4>
                     <h2 className="fs-big gap-4  text-white"> 12 </h2>
                     <button
                       className="btn btn-sm btn-primary rounded-pill text-white border-white"
@@ -206,7 +210,9 @@ const List = () => {
               <div className="dropdown-widget dropdown-schedule p-2 col-md-6 col-12">
                 <div className="card border-0 shadow-sm pd-top-40 pd-bottom-40 bg-secondary">
                   <div className="card-body py-0 text-center">
-                    <h4 className="mb-3 fs-medium  text-white">Tomorrow</h4>
+                    <h4 className="mb-3 fs-medium  text-white">
+                      {moment(selectedDate).add(1, "day").format("MMMM D")}
+                    </h4>
                     <h2 className="fs-big gap-4  text-white"> 15 </h2>
                     <button
                       className="btn btn-sm btn-secondary rounded-pill text-white border border-white"

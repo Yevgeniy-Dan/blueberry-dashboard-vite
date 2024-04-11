@@ -8,13 +8,17 @@ import Default from "../../../layouts/Default";
 import Vertical from "../../../layouts/Vertical";
 import { useState } from "react";
 import List from "./List";
+import { DateClickArg } from "@fullcalendar/interaction/index.js";
 
 const Appointments = () => {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
   const [isMobileCollapsed, setIsMobileCollapsed] = useState<boolean>(false);
   const [showCalendar, setShowCalendar] = useState(false);
 
-  const handleCalendarDateClick = () => {
+  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
+
+  const handleCalendarDateClick = (info: DateClickArg) => {
+    setSelectedDate(info.date);
     setShowCalendar(false);
   };
 
@@ -78,14 +82,17 @@ const Appointments = () => {
                   block  d-xxl-none"
                 >
                   {showCalendar ? (
-                    <Calendar onCalendarDateClick={handleCalendarDateClick} />
+                    <Calendar
+                      selectedDate={selectedDate}
+                      onCalendarDateClick={handleCalendarDateClick}
+                    />
                   ) : (
-                    <List />
+                    <List selectedDate={selectedDate} />
                   )}
                 </div>
 
                 <div className="d-none d-xxl-block">
-                  <List />
+                  <List selectedDate={selectedDate} />
                 </div>
               </div>
 
@@ -93,7 +100,10 @@ const Appointments = () => {
                 <div className="card border-0">
                   <div className="card-body">
                     {/* <div id="calendar" className="kleon-fullcalendar"> */}
-                    <Calendar onCalendarDateClick={handleCalendarDateClick} />
+                    <Calendar
+                      selectedDate={selectedDate}
+                      onCalendarDateClick={handleCalendarDateClick}
+                    />
                     {/* </div> */}
                   </div>
                 </div>
