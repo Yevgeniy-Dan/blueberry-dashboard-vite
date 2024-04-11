@@ -56,16 +56,6 @@ const Customers = () => {
                     <div className="card border-0 shadow-sm">
                       <div className="card-body">
                         <div className="mb-5 text-center">
-                          <div
-                            className="avatar-img m-auto position-relative"
-                            style={{ width: "105px", height: "105px" }}
-                          >
-                            {/* <img
-                              src={`${user.avatar}`}
-                              alt="img"
-                              className="rounded-2 w-100"
-                            /> */}
-                          </div>
                           <div className="card-content mt-3">
                             <h5 className="mb-0">
                               <a href="#" className="text-dark">

@@ -132,6 +132,7 @@ const AddForm = () => {
                                 altInput: true,
                                 altFormat: "F j",
                                 dateFormat: "Y-m-d",
+                                disableMobile: true,
                               }}
                             />
                             {formik.errors.date && formik.touched.date && (
@@ -175,6 +176,7 @@ const AddForm = () => {
                                 enableTime: true,
                                 noCalendar: true,
                                 dateFormat: "H:i",
+                                disableMobile: true,
                               }}
                             />
                             {formik.errors.time && formik.touched.time && (

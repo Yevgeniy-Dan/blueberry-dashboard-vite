@@ -4,7 +4,7 @@ export interface ServiceModel {
   id: string;
   name: string;
   duration: string;
-  price: string;
+  price: number;
   currencyCode: string;
   // staffMembers: StaffModel[];
   staffMembers: string[];

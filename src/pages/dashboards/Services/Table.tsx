@@ -101,8 +101,12 @@ const Table = () => {
         header: "Price",
         cell: ({ row }) => {
           const price: string = row.getValue("price");
-          // const currencyCode = row.original.currencyCode;
-          return <span>{price}</span>;
+          const currencyCode = row.original.currencyCode;
+          return (
+            <span>
+              {currencyCode} {price}
+            </span>
+          );
         },
       },
       {

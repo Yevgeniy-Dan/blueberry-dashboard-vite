@@ -17,6 +17,7 @@ import Vertical from "../../../layouts/Vertical";
 import currencyCodes from "currency-codes";
 import ReactSelect from "react-select";
 import getSymbolFromCurrency from "currency-symbol-map";
+import _ from "lodash";
 
 const timeOptions = [
   { label: "20 Mins" },
@@ -65,7 +66,7 @@ const ServiceForm = () => {
       name: service ? service.name : "",
       currency: currencyCodesOptions[0],
       duration: service ? service.duration : "",
-      price: service ? service.price : "",
+      price: service ? service.price : 0,
       staffMembers: service ? service.staffMembers : [],
       isNoPreferenceEnabled: service
         ? service.isNoPreferenceEnabled
@@ -82,7 +83,7 @@ const ServiceForm = () => {
         id,
         name: values.name,
         duration: values.duration,
-        price: values.price,
+        price: _.round(values.price, 2),
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-expect-error
         staffMembers: values.staffMembers.map((m) => m.label),
@@ -315,7 +316,7 @@ const ServiceForm = () => {
                             Selection?
                           </label>
                         </div>
-                        <div className="col-lg-9">
+                        <div className="col-lg-9 d-flex align-items-center">
                           <div className="input-group">
                             <div className="form-check form-check-inline">
                               <input

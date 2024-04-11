@@ -36,6 +36,7 @@ const BusinessHoursSetter: React.FC<{
                       enableTime: true,
                       noCalendar: true,
                       dateFormat: "H:i",
+                      disableMobile: true,
                     }}
                     placeholder="Start Time"
                     required
@@ -49,6 +50,7 @@ const BusinessHoursSetter: React.FC<{
                       enableTime: true,
                       noCalendar: true,
                       dateFormat: "H:i",
+                      disableMobile: true,
                     }}
                     placeholder="End Time"
                     required

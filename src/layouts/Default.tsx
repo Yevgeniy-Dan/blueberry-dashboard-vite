@@ -33,7 +33,7 @@ const Default: React.FC<{
                   aria-expanded="false"
                 >
                   <i className="bi bi-bell-fill text-primary"></i>
-                  <div className="badge rounded-circle">12</div>
+                  <div className="badge rounded-circle bg-primary">12</div>
                 </a>
                 <div className="dropdown-widget dropdown-menu p-0">
                   <div className="dropdown-wrapper pd-50">
@@ -255,7 +255,7 @@ const Default: React.FC<{
                   aria-expanded="false"
                 >
                   <i className="bi bi-bell-fill text-primary"></i>
-                  <div className="badge rounded-circle">12</div>
+                  <div className="badge rounded-circle bg-primary">12</div>
                 </a>
                 <div className="dropdown-widget dropdown-menu p-0">
                   <div className="dropdown-wrapper pd-50">
