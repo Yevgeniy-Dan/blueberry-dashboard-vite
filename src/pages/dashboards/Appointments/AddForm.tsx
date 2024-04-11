@@ -56,7 +56,7 @@ const AddForm = () => {
     validationSchema: Yup.object().shape({
       date: Yup.date().required("Date is required"),
       time: Yup.string().required("Time is required"),
-      customer: Yup.string().required("Customer is required"),
+      customer: Yup.string().required("Name is required"),
       staff: Yup.string().required("Staff is required"),
       service: Yup.string().required("Service is required"),
     }),
@@ -115,11 +115,11 @@ const AddForm = () => {
                         <div className="col-lg-9">
                           <div className="input-group">
                             <span className="badge d-flex align-items-center text-dark rounded-0 rounded-start py-2 px-3 border border-light-200 fs-16">
-                              <i className="bi bi-building"></i>
+                              <i className="bi bi-calendar"></i>
                             </span>
                             <Flatpickr
                               id="date"
-                              className={`form-control ${
+                              className={`form-control form-select bg-white ${
                                 formik.errors.date && formik.touched.date
                                   ? "is-invalid"
                                   : ""
@@ -158,11 +158,11 @@ const AddForm = () => {
                         <div className="col-lg-9">
                           <div className="input-group has-validation ">
                             <span className="badge d-flex align-items-center text-dark rounded-0 rounded-start py-2 px-3 border border-light-200 fs-16">
-                              <i className="bi bi-building"></i>
+                              <i className="bi bi-clock"></i>
                             </span>
                             <Flatpickr
                               id="time"
-                              className={`form-control ${
+                              className={`form-control form-select  bg-white ${
                                 formik.errors.time && formik.touched.time
                                   ? "is-invalid"
                                   : ""
@@ -200,11 +200,11 @@ const AddForm = () => {
                         <div className="col-lg-9">
                           <div className="input-group">
                             <span className="badge d-flex align-items-center text-dark rounded-0 rounded-start py-2 px-3 border border-light-200 fs-16">
-                              <i className="bi bi-envelope"></i>
+                              <i className="bi bi-tools"></i>
                             </span>
                             <select
                               id="service"
-                              className={`form-control ${
+                              className={`form-control form-select ${
                                 formik.errors.service && formik.touched.service
                                   ? "is-invalid"
                                   : ""
@@ -246,11 +246,11 @@ const AddForm = () => {
                         <div className="col-lg-9">
                           <div className="input-group">
                             <span className="badge d-flex align-items-center text-dark rounded-0 rounded-start py-2 px-3 border border-light-200 fs-16">
-                              <i className="bi bi-telephone"></i>
+                              <i className="bi bi-person"></i>
                             </span>
                             <select
                               id="staff"
-                              className={`form-control ${
+                              className={`form-control  form-select ${
                                 formik.errors.staff && formik.touched.staff
                                   ? "is-invalid"
                                   : ""
@@ -284,13 +284,13 @@ const AddForm = () => {
                             htmlFor="validationCustomUsername"
                             className="form-label"
                           >
-                            Customer
+                            Name
                           </label>
                         </div>
                         <div className="col-lg-9">
                           <div className="input-group">
                             <span className="badge d-flex align-items-center text-dark rounded-0 rounded-start py-2 px-3 border border-light-200 fs-16">
-                              <i className="bi bi-globe"></i>
+                              <i className="bi bi-person-check"></i>
                             </span>
 
                             <input

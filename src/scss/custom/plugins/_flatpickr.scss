@@ -5,3 +5,60 @@
 .flatpickr-time {
   width: 15em;
 }
+
+.flatpickr-months {
+  background-color: $primary;
+  color: $white;
+  .flatpickr-month {
+    background-color: $primary;
+    color: $white;
+    .flatpickr-current-month {
+      background-color: $primary;
+      color: $white;
+    }
+  }
+}
+
+.flatpickr-monthDropdown-months {
+  margin-right: 0 !important;
+  background-color: $primary !important;
+  color: $white !important;
+
+  .flatpickr-monthDropdown-month {
+    background-color: $white !important;
+    color: $dark;
+  }
+}
+
+.flatpickr-months {
+  .flatpickr-prev-month {
+    svg {
+      fill: $white;
+
+      &:hover {
+        fill: $white;
+      }
+    }
+  }
+
+  .flatpickr-next-month {
+    svg {
+      fill: $white;
+
+      &:hover {
+        fill: $white;
+      }
+    }
+  }
+}
+
+.flatpickr-weekdays {
+  background-color: $primary !important;
+
+  .flatpickr-weekdaycontainer {
+    .flatpickr-weekday {
+      background-color: transparent !important;
+      color: $white !important;
+    }
+  }
+}

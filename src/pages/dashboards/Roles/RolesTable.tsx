@@ -23,12 +23,12 @@ import { removeRole } from "../../../redux/roles/slice";
 import { NavLink } from "react-router-dom";
 import { ROLES } from "../../../routes/constants";
 import { getFacetedRowModel } from "@tanstack/react-table";
-import { DebouncedInput } from "../Services/DebounceInput";
+// import { DebouncedInput } from "../Services/DebounceInput";
 
 import sortAscPng from "../../../assets/images/sort_asc.png";
 import sortDescPng from "../../../assets/images/sort_desc.png";
 import sortBothPng from "../../../assets/images/sort_both.png";
-import { RoleModel } from "../../../redux/roles/model";
+import { RoleModel, Roles, roleKeyValueMap } from "../../../redux/roles/model";
 
 declare module "@tanstack/react-table" {
   interface FilterFns {
@@ -87,7 +87,7 @@ const RolesTable = () => {
     () => [
       {
         accessorKey: "name",
-        header: "Role Name",
+        header: "Name",
         sortingFn: fuzzySort,
       },
       {
@@ -100,10 +100,14 @@ const RolesTable = () => {
         header: "Roles",
         enableSorting: false,
         cell: ({ row }) => {
-          const roles: [] = row.getValue("roles");
+          const roles: Roles = row.getValue("roles");
+          console.log(roles);
           const checkedRoles = Object.entries(roles)
             .filter(([, value]) => value === true)
-            .map(([role]) => role);
+            .map(
+              ([role]) => (roleKeyValueMap as { [key: string]: string })[role]
+            );
+
           return checkedRoles.join(", ");
         },
       },
@@ -193,14 +197,14 @@ const RolesTable = () => {
           </select>
           <label>entries</label>
         </div>
-        <div className="col-lg-6 d-flex justify-content-end">
+        {/* <div className="col-lg-6 d-flex justify-content-end">
           <DebouncedInput
             value={globalFilter ?? ""}
             onChange={(value) => setGlobalFilter(String(value))}
             className="form-control"
             placeholder="Search all columns..."
           />
-        </div>
+        </div> */}
       </div>
       <table className="dataTable">
         <thead>

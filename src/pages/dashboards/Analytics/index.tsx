@@ -42,7 +42,11 @@ const Analytics = () => {
                   >
                     Dropdown
                   </button>
-                  <ul className={`dropdown-menu ${showDropdown && "show"}`}>
+                  <ul
+                    className={`dropdown-menu ${
+                      showDropdown && "show dropdown-btn-show"
+                    }`}
+                  >
                     <li>
                       <a className="dropdown-item" href="#">
                         Today

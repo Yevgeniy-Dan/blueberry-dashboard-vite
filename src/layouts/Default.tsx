@@ -1,6 +1,6 @@
 // import sun from "../assets/images/sun.svg";
 // import moon from "../assets/images/moon.svg";
-import bell from "../assets/images/bell.svg";
+// import bell from "../assets/images/bell.svg";
 // import settings from "../assets/images/settings.svg";
 import logo from "../assets/images/logo.png";
 import { NavLink } from "react-router-dom";
@@ -32,7 +32,7 @@ const Default: React.FC<{
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  <img src={bell} alt="bell" />
+                  <i className="bi bi-bell-fill text-primary"></i>
                   <div className="badge rounded-circle">12</div>
                 </a>
                 <div className="dropdown-widget dropdown-menu p-0">
@@ -129,7 +129,7 @@ const Default: React.FC<{
                 <div
                   className={`dropdown-widget dropdown-menu p-0 admin-card ${
                     showUserProfileDropdown &&
-                    "show position-absolute top-95 translate-middle-x  py-3 w-56 max-h-200  overflow-y-auto flex justify-center flex-wrap"
+                    "show position-absolute top-95 header-dropdown  py-3 w-56 max-h-200  overflow-y-auto flex justify-center flex-wrap"
                   }`}
                 >
                   <div className="dropdown-wrapper">
@@ -254,7 +254,7 @@ const Default: React.FC<{
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  <i className="bi bi-bell-fill"></i>
+                  <i className="bi bi-bell-fill text-primary"></i>
                   <div className="badge rounded-circle">12</div>
                 </a>
                 <div className="dropdown-widget dropdown-menu p-0">
@@ -361,7 +361,7 @@ const Default: React.FC<{
                 <div
                   className={`dropdown-widget dropdown-menu p-0 admin-card ${
                     showUserProfileMobileDropdown &&
-                    "show position-absolute top-95 translate-middle-x  py-3 w-56 max-h-200  overflow-y-auto flex justify-center flex-wrap"
+                    "show position-absolute top-95 header-dropdown  py-3 w-56 max-h-200  overflow-y-auto flex justify-center flex-wrap"
                   }`}
                 >
                   <div className="dropdown-wrapper">

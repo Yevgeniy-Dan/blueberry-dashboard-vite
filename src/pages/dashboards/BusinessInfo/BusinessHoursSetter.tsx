@@ -14,13 +14,19 @@ const BusinessHoursSetter: React.FC<{
 }) => {
   return (
     <div>
-      <h3 className="mb-5 text-gray-400">Set Business Hours</h3>
+      <button
+        className="btn btn-primary "
+        onClick={() => onShowBusinessHoursSetter(false)}
+      >
+        <i className="bi bi-arrow-left"></i>
+      </button>
+      <h3 className="mb-5 text-center">Set Business Hours</h3>
       <div className="form-group">
         {businessHours.map((item, index) => (
           <div key={index} className="mb-4">
             <label className="fw-bold mb-2">{item.day}</label>
             <div className="row align-items-center ">
-              <div className="col-lg-9">
+              <div className="col-9">
                 <div className="d-flex align-items-center gap-1">
                   <Flatpickr
                     className="form-control bg-transparent"
@@ -49,7 +55,7 @@ const BusinessHoursSetter: React.FC<{
                   />
                 </div>
               </div>
-              <div className="col-lg-3">
+              <div className="col-3">
                 <div className="switch">
                   <input
                     type="checkbox"
@@ -70,7 +76,7 @@ const BusinessHoursSetter: React.FC<{
             </div>
           </div>
         ))}
-        <div>
+        <div className="text-center">
           <button
             className="btn btn-primary"
             onClick={() => onShowBusinessHoursSetter(false)}

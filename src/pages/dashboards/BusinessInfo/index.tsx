@@ -7,6 +7,8 @@ const BusinessInfo = () => {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
   const [isMobileCollapsed, setIsMobileCollapsed] = useState<boolean>(false);
 
+  const [showBusinessHoursSetter, setShowBusinessHoursSetter] = useState(false);
+
   return (
     <div
       className={`bg-white has-right-panel ${
@@ -24,13 +26,17 @@ const BusinessInfo = () => {
       <main className="main-wrapper ">
         <div className="container-fluid">
           <div className="inner-contents">
-            <div className="page-header d-flex align-items-center justify-content-between mr-bottom-30">
-              <div className="left-part">
-                <h2 className="text-dark">Business Info</h2>
+            {!showBusinessHoursSetter && (
+              <div className="page-header d-flex align-items-center justify-content-between mr-bottom-30">
+                <div className="left-part">
+                  <h2 className="text-dark">Business Info</h2>
+                </div>
               </div>
-            </div>
-
-            <Form />
+            )}
+            <Form
+              showBusinessHoursSetter={showBusinessHoursSetter}
+              onShowBusinessHoursSetter={setShowBusinessHoursSetter}
+            />
           </div>
         </div>
       </main>

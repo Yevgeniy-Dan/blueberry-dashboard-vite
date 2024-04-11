@@ -92,7 +92,7 @@ const RoleForm = () => {
           <div className="inner-contents">
             <div className="page-header d-flex align-items-center justify-content-between mr-bottom-30">
               <div className="left-part ">
-                <h2 className="text-dark">Add Service</h2>
+                <h2 className="text-dark">Add Role</h2>
               </div>
             </div>
             <div className="card">
@@ -183,14 +183,14 @@ const RoleForm = () => {
                           </div>
                         </div>
 
-                        <div className="col-lg-4">
+                        <div className="col-lg-9">
                           <div className="form-group">
                             <label className="form-label fs-16 fw-bold text-uppercase ls-1 text-gray-300">
                               Roles
                             </label>
                             <div className="row">
                               {/* Business Info */}
-                              <div className="col-sm-6">
+                              <div className="col-sm-4">
                                 <div className="form-check form-check-inline">
                                   <label
                                     className="form-label mb-0 fs-18 fw-semibold"
@@ -210,7 +210,7 @@ const RoleForm = () => {
                                 </div>
                               </div>
                               {/* Staff */}
-                              <div className="col-sm-6">
+                              <div className="col-sm-4">
                                 <div className="form-check form-check-inline">
                                   <label
                                     className="form-label mb-0 fs-18 fw-semibold"
@@ -230,7 +230,7 @@ const RoleForm = () => {
                                 </div>
                               </div>
                               {/* Services */}
-                              <div className="col-sm-6">
+                              <div className="col-sm-4">
                                 <div className="form-check form-check-inline">
                                   <label
                                     className="form-label mb-0 fs-18 fw-semibold"
@@ -250,7 +250,7 @@ const RoleForm = () => {
                                 </div>
                               </div>
                               {/* Customers */}
-                              <div className="col-sm-6">
+                              <div className="col-sm-4">
                                 <div className="form-check form-check-inline">
                                   <label
                                     className="form-label mb-0 fs-18 fw-semibold"
@@ -270,7 +270,7 @@ const RoleForm = () => {
                                 </div>
                               </div>
                               {/* Payments */}
-                              <div className="col-sm-6">
+                              <div className="col-sm-4">
                                 <div className="form-check form-check-inline">
                                   <label
                                     className="form-label mb-0 fs-18 fw-semibold"
@@ -290,7 +290,7 @@ const RoleForm = () => {
                                 </div>
                               </div>
                               {/* Analytics */}
-                              <div className="col-sm-6">
+                              <div className="col-sm-4">
                                 <div className="form-check form-check-inline">
                                   <label
                                     className="form-label mb-0 fs-18 fw-semibold"

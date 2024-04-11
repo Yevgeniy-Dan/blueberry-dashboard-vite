@@ -63,13 +63,14 @@ import countryList from "react-select-country-list";
 import FileUploader from "../../../components/FileUploader";
 import BusinessHoursSetter from "./BusinessHoursSetter";
 
-const Form = () => {
+const Form: React.FC<{
+  showBusinessHoursSetter: boolean;
+  onShowBusinessHoursSetter: React.Dispatch<React.SetStateAction<boolean>>;
+}> = ({ showBusinessHoursSetter, onShowBusinessHoursSetter }) => {
   const options = useMemo(() => countryList().getData(), []);
 
-  const [showBusinessHoursSetter, setShowBusinessHoursSetter] = useState(false);
-
   const handleBusinessHoursClick = () => {
-    setShowBusinessHoursSetter(true);
+    onShowBusinessHoursSetter(true);
   };
 
   const [businessHours, setBusinessHours] = useState<BusinessHour[]>([
@@ -433,7 +434,7 @@ const Form = () => {
               businessHours={businessHours}
               onCheckboxChange={handleCheckboxChange}
               onTimeChange={handleTimeChange}
-              onShowBusinessHoursSetter={setShowBusinessHoursSetter}
+              onShowBusinessHoursSetter={onShowBusinessHoursSetter}
             />
           ) : (
             formComponent
