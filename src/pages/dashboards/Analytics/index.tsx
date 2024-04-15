@@ -3,12 +3,27 @@ import Default from "../../../layouts/Default";
 import Vertical from "../../../layouts/Vertical";
 import InvoicesStatistic from "./InvoicesStatistic";
 import TotalBalance from "./TotalBalance";
+import {
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
+  UncontrolledButtonDropdown,
+} from "reactstrap";
+import FullCalendar from "@fullcalendar/react";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import interactionPlugin, { DateClickArg } from "@fullcalendar/interaction";
+import BootstrapTheme from "@fullcalendar/bootstrap5";
 
 const Analytics = () => {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
   const [isMobileCollapsed, setIsMobileCollapsed] = useState<boolean>(false);
 
-  const [showDropdown, setShowDropdown] = useState<boolean>(false);
+  const [showCustomDatePicker, setShowCustomDatePicker] = useState(false);
+
+  function handleDateClick(arg: DateClickArg): void {
+    console.log(arg);
+    setShowCustomDatePicker(false);
+  }
 
   return (
     <div
@@ -31,49 +46,53 @@ const Analytics = () => {
               <div className="left-part">
                 <h2 className="text-dark">Analytics</h2>
               </div>
-              <div className="right-part">
-                <div className="btn-group">
-                  <button
-                    className="btn btn-outline-primary dropdown-toggle m-1 py-2 px-4"
-                    type="button"
-                    onClick={() => setShowDropdown(!showDropdown)}
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
+              <div className="right-part position-relative">
+                <UncontrolledButtonDropdown className="float-right">
+                  <DropdownToggle
+                    tag="button"
+                    className="btn btn-link arrow-none card-drop p-0"
+                    onClick={() => {
+                      setShowCustomDatePicker(false);
+                    }}
                   >
-                    Sort
-                  </button>
-                  <ul
-                    className={`dropdown-menu ${
-                      showDropdown && "show dropdown-btn-show"
-                    }`}
-                  >
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Today
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Yesterday
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Weekly
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Monthly
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Custom
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+                    <button
+                      className="btn btn-outline-primary dropdown-toggle m-1 py-2 px-4"
+                      type="button"
+                    >
+                      Sort
+                    </button>
+                  </DropdownToggle>
+
+                  <DropdownMenu right>
+                    <DropdownItem>Today</DropdownItem>
+                    <DropdownItem>Yesterday</DropdownItem>
+                    <DropdownItem>Weekly</DropdownItem>
+                    <DropdownItem>Monthly</DropdownItem>
+                    <DropdownItem onClick={() => setShowCustomDatePicker(true)}>
+                      Custom
+                    </DropdownItem>
+                  </DropdownMenu>
+                </UncontrolledButtonDropdown>
+                {showCustomDatePicker && (
+                  <div className="bg-white date-picker-popup">
+                    <FullCalendar
+                      initialView="dayGridMonth"
+                      themeSystem="bootstrap5"
+                      plugins={[
+                        BootstrapTheme,
+                        dayGridPlugin,
+                        interactionPlugin,
+                      ]}
+                      headerToolbar={{
+                        center: "prev title next",
+                        left: "",
+                        right: "",
+                      }}
+                      dayCellClassNames={"bg-white"}
+                      dateClick={handleDateClick}
+                    />
+                  </div>
+                )}
               </div>
             </div>
 

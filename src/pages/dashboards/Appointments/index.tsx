@@ -61,7 +61,7 @@ const Appointments = () => {
               <div className="col-xxl-6 col-12">
                 <div className="page-header d-flex align-items-center justify-content-between mr-bottom-30">
                   <div className="left-part">
-                    <h2 className="text-dark pt-9">My Appointments</h2>
+                    <h2 className="text-dark pt-6">My Appointments</h2>
                   </div>
 
                   <div className="d-block d-xxl-none">

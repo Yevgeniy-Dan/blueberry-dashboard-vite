@@ -1,56 +1,3 @@
-const states = [
-  "Alabama",
-  "Alaska",
-  "Arizona",
-  "Arkansas",
-  "California",
-  "Colorado",
-  "Connecticut",
-  "Delaware",
-  "Florida",
-  "Georgia",
-  "Hawaii",
-  "Idaho",
-  "Illinois",
-  "Indiana",
-  "Iowa",
-  "Kansas",
-  "Kentucky",
-  "Louisiana",
-  "Maine",
-  "Maryland",
-  "Massachusetts",
-  "Michigan",
-  "Minnesota",
-  "Mississippi",
-  "Missouri",
-  "Montana",
-  "Nebraska",
-  "Nevada",
-  "New Hampshire",
-  "New Jersey",
-  "New Mexico",
-  "New York",
-  "North Carolina",
-  "North Dakota",
-  "Ohio",
-  "Oklahoma",
-  "Oregon",
-  "Pennsylvania",
-  "Rhode Island",
-  "South Carolina",
-  "South Dakota",
-  "Tennessee",
-  "Texas",
-  "Utah",
-  "Vermont",
-  "Virginia",
-  "Washington",
-  "West Virginia",
-  "Wisconsin",
-  "Wyoming",
-];
-
 export interface BusinessHour {
   day: string;
   start: Date | "";
@@ -62,6 +9,9 @@ import { useMemo, useState } from "react";
 import countryList from "react-select-country-list";
 import FileUploader from "../../../components/FileUploader";
 import BusinessHoursSetter from "./BusinessHoursSetter";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { states } from "./Data";
 
 const Form: React.FC<{
   showBusinessHoursSetter: boolean;
@@ -99,12 +49,42 @@ const Form: React.FC<{
     setBusinessHours(updatedHours);
   };
 
+  const formik = useFormik({
+    initialValues: {
+      businessName: "",
+      bookingPage: "",
+      email: "",
+      phoneNumber: "",
+      country: "United States",
+      streetAddress: "",
+      address2: "",
+      city: "",
+      state: "",
+      zipCode: "",
+    },
+    validationSchema: Yup.object().shape({
+      businessName: Yup.string().required("Business Name is required"),
+      bookingPage: Yup.string().required("Booking Page is required"),
+      email: Yup.string().email("Invalid email").required("Email is required"),
+      phoneNumber: Yup.string().required("Phone Number is required"),
+      country: Yup.string().required("Country is required"),
+      streetAddress: Yup.string().required("Street Address is required"),
+      city: Yup.string().required("City is required"),
+      state: Yup.string(),
+      zipCode: Yup.string().required("Zip Code is required"),
+    }),
+    onSubmit: (values) => {
+      // Handle form submission
+      console.log("Form values:", values);
+    },
+  });
+
   const formComponent = (
-    <form>
+    <form onSubmit={formik.handleSubmit}>
       <div className="form-group">
         <div className="row align-items-center">
           <div className="col-lg-3">
-            <label htmlFor="validationCustom01" className="form-label">
+            <label htmlFor="businessName" className="form-label">
               Business Name
             </label>
           </div>
@@ -115,13 +95,25 @@ const Form: React.FC<{
               </span>
               <input
                 type="text"
-                className="form-control "
-                id="validationCustom01"
-                value=""
+                // className={`form-control ${
+                //   formik.touched.businessName && formik.errors.businessName
+                //     ? "is-invalid"
+                //     : ""
+                // }`}
+                className={`form-control`}
+                id="businessName"
+                name="businessName"
+                value={formik.values.businessName}
                 placeholder="Business Name"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 required
               />
-              <div className="valid-feedback">Looks good!</div>
+              {/* {formik.touched.businessName && formik.errors.businessName && (
+                <div className="invalid-feedback icon-input">
+                  {formik.errors.businessName}
+                </div>
+              )} */}
             </div>
           </div>
         </div>
@@ -130,7 +122,7 @@ const Form: React.FC<{
       <div className="form-group">
         <div className="row align-items-center">
           <div className="col-lg-3">
-            <label htmlFor="validationCustom02" className="form-label">
+            <label htmlFor="bookingPage" className="form-label">
               Booking Page
             </label>
           </div>
@@ -142,15 +134,28 @@ const Form: React.FC<{
               >
                 appointment.blueberrynow.com/
               </span>
+
               <input
                 type="text"
-                className="form-control "
-                id="validationCustom02"
-                value=""
+                // className={`form-control ${
+                //   formik.touched.bookingPage && formik.errors.bookingPage
+                //     ? "is-invalid"
+                //     : ""
+                // }`}
+                className={`form-control`}
+                id="bookingPage"
+                name="bookingPage"
+                value={formik.values.bookingPage}
                 placeholder="your-business-name"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 required
               />
-              <div className="valid-feedback">Looks good!</div>
+              {/* {formik.touched.bookingPage && formik.errors.bookingPage && (
+                <div className="invalid-feedback icon-input">
+                  {formik.errors.bookingPage}
+                </div>
+              )} */}
             </div>
           </div>
         </div>
@@ -220,10 +225,18 @@ const Form: React.FC<{
                 <i className="bi bi-globe"></i>
               </span>
               <select
-                className="form-control form-select custom-select"
-                id="validationCustom04"
+                className={`form-control form-select custom-select ${
+                  formik.touched.country && formik.errors.country
+                    ? "is-invalid"
+                    : ""
+                }`}
+                id="country"
+                name="country"
                 required
                 defaultValue={"United States"}
+                value={formik.values.country}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
               >
                 <option selected disabled value="">
                   Select...
@@ -232,6 +245,11 @@ const Form: React.FC<{
                   <option key={index}>{state.label}</option>
                 ))}
               </select>
+              {formik.touched.country && formik.errors.country && (
+                <div className="invalid-feedback icon-input">
+                  {formik.errors.country}
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -311,36 +329,36 @@ const Form: React.FC<{
         </div>
       </div>
 
-      <div className="form-group">
-        <div className="row align-items-center">
-          <div className="col-lg-3">
-            <label htmlFor="validationCustom04" className="form-label ">
-              State
-            </label>
-          </div>
-          <div className="col-lg-9">
-            <div className="input-group">
-              <span className="badge d-flex align-items-center text-dark rounded-0 rounded-start py-2 px-3 border border-light-200 fs-16">
-                <i className="bi bi-flag"></i>
-              </span>
-              <select
-                className="form-control form-select custom-select"
-                id="validationCustom04"
-                required
-              >
-                <option selected disabled value="">
-                  Select...
-                </option>
-                {states.map((state, index) => (
-                  <option key={index}>{state}</option>
-                ))}
-                <option>Arizona</option>
-                <option>Arizona</option>
-              </select>
+      {formik.values.country === "United States" && (
+        <div className="form-group">
+          <div className="row align-items-center">
+            <div className="col-lg-3">
+              <label htmlFor="validationCustom04" className="form-label ">
+                State
+              </label>
+            </div>
+            <div className="col-lg-9">
+              <div className="input-group">
+                <span className="badge d-flex align-items-center text-dark rounded-0 rounded-start py-2 px-3 border border-light-200 fs-16">
+                  <i className="bi bi-flag"></i>
+                </span>
+                <select
+                  className="form-control form-select custom-select"
+                  id="validationCustom04"
+                  required
+                >
+                  <option selected disabled value="">
+                    Select...
+                  </option>
+                  {states.map((state, index) => (
+                    <option key={index}>{state}</option>
+                  ))}
+                </select>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
 
       <div className="form-group">
         <div className="row align-items-center">

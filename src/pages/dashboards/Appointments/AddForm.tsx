@@ -177,8 +177,9 @@ const AddForm = () => {
                               options={{
                                 enableTime: true,
                                 noCalendar: true,
-                                dateFormat: "H:i",
+                                dateFormat: "h:i K",
                                 disableMobile: true,
+                                time_24hr: false,
                               }}
                             />
                             {formik.errors.time && formik.touched.time && (

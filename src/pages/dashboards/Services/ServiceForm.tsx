@@ -75,7 +75,7 @@ const ServiceForm = () => {
     validationSchema: Yup.object().shape({
       name: Yup.string().required("Name is required"),
       duration: Yup.string().required("Duration is required"),
-      price: Yup.string().required("Price is required"),
+      price: Yup.number().required("Price is required"),
       staffMembers: Yup.array().required("Staff members are required"),
     }),
     onSubmit: (values) => {
@@ -218,21 +218,23 @@ const ServiceForm = () => {
                             <span className="badge d-flex align-items-center text-dark rounded-0 rounded-start py-2 px-3 border border-light-200 fs-16">
                               <i className="bi bi-cash"></i>
                             </span>
-                            <select
-                              className={`form-control form-select custom-select`}
-                              id="currency"
-                              name="currency"
-                              defaultValue={formik.values.currency}
-                              onChange={formik.handleChange}
-                            >
-                              <option selected disabled value="">
-                                Select...
-                              </option>
-                              {currencyCodesOptions.map((state, index) => (
-                                <option key={index}>{state}</option>
-                              ))}
-                            </select>
-                            <div className="position-relative d-flex align-items-center">
+                            <span className="badge d-flex align-items-center text-dark rounded-0 p-0  border border-light-200 fs-16">
+                              <select
+                                className={`form-control form-select custom-select rounded-0`}
+                                id="currency"
+                                name="currency"
+                                onChange={formik.handleChange}
+                              >
+                                <option selected disabled value="">
+                                  Select...
+                                </option>
+                                {currencyCodesOptions.map((state, index) => (
+                                  <option key={index}>{state}</option>
+                                ))}
+                              </select>
+                            </span>
+
+                            <div className="flex-grow-1 position-relative d-flex align-items-center ">
                               <input
                                 type="text"
                                 className={`form-control ps-6 ${
@@ -251,6 +253,7 @@ const ServiceForm = () => {
                                 {getSymbolFromCurrency(formik.values.currency)}
                               </span>
                             </div>
+
                             {formik.touched.price && formik.errors.price && (
                               <div className="invalid-feedback d-block icon-input">
                                 {formik.errors.price}
