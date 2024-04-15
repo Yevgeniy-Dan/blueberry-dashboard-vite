@@ -49,25 +49,27 @@ const AddForm = () => {
     initialValues: {
       date: "",
       time: "",
-      customer: "",
+      customerName: "",
       staff: "",
       service: "",
     },
     validationSchema: Yup.object().shape({
       date: Yup.date().required("Date is required"),
       time: Yup.string().required("Time is required"),
-      customer: Yup.string().required("Name is required"),
+      customerName: Yup.string().required("Name is required"),
       staff: Yup.string().required("Staff is required"),
       service: Yup.string().required("Service is required"),
     }),
     onSubmit: (values) => {
+      console.log(values);
       const appointmentRecord: AppointmentModel = {
         id,
         date: values.date,
         time: values.time,
-        customer: values.customer,
+        customerName: values.customerName,
         service: values.service,
         staff: values.staff,
+        status: "Pending",
       };
 
       dispatch(addAppointment(appointmentRecord));
@@ -125,7 +127,7 @@ const AddForm = () => {
                                   : ""
                               }`}
                               value={formik.values.date}
-                              onChange={(date) =>
+                              onChange={([date]) =>
                                 formik.setFieldValue("date", date)
                               }
                               options={{
@@ -297,21 +299,21 @@ const AddForm = () => {
 
                             <input
                               type="text"
-                              id="customer"
+                              id="customerName"
                               className={`form-control ${
-                                formik.errors.customer &&
-                                formik.touched.customer
+                                formik.errors.customerName &&
+                                formik.touched.customerName
                                   ? "is-invalid"
                                   : ""
                               }`}
-                              value={formik.values.customer}
+                              value={formik.values.customerName}
                               onChange={formik.handleChange}
                               onBlur={formik.handleBlur}
                             />
-                            {formik.errors.customer &&
-                              formik.touched.customer && (
+                            {formik.errors.customerName &&
+                              formik.touched.customerName && (
                                 <div className="invalid-feedback icon-input">
-                                  {formik.errors.customer}
+                                  {formik.errors.customerName}
                                 </div>
                               )}
                           </div>

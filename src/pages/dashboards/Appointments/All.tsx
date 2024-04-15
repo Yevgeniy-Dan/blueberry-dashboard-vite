@@ -50,7 +50,7 @@ const AllAppointments = () => {
   const columns = useMemo<ColumnDef<AppointmentModel, any>[]>(
     () => [
       {
-        accessorKey: "name",
+        accessorKey: "service",
         header: "Name",
         // sortingFn: fuzzySort,
       },

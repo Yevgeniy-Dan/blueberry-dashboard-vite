@@ -6,7 +6,8 @@ import logo from "../assets/images/logo.png";
 import search from "../assets/images/search.svg";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
-import { useAppSelector } from "../hooks/redux";
+import { useAppDispatch, useAppSelector } from "../hooks/redux";
+import { onSearchText } from "../redux/appNavigation/slice";
 
 const Default: React.FC<{
   onToggleCollapse: () => void;
@@ -18,7 +19,11 @@ const Default: React.FC<{
   const [showUserProfileMobileDropdown, setShowUserProfileMobileDropdown] =
     useState<boolean>(false);
 
-  const { isActivateSearchBar } = useAppSelector((state) => state.navbar);
+  const { isActivateSearchBar, searchText } = useAppSelector(
+    (state) => state.navbar
+  );
+
+  const dispatch = useAppDispatch();
 
   return (
     // <!-- Default Nav -->
@@ -34,6 +39,8 @@ const Default: React.FC<{
                     name="search"
                     className="keyword form-control w-100 bg-muted"
                     placeholder="Search customer by name or email"
+                    value={searchText}
+                    onChange={(e) => dispatch(onSearchText(e.target.value))}
                   />
                   <button type="submit" className="btn">
                     <img src={search} alt="" />

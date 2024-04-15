@@ -1,8 +1,3 @@
-const currentDate = new Date();
-const currentDay = currentDate.getDate();
-currentDate.setDate(currentDay + 1);
-const tomorrowDay = currentDate.getDate();
-
 import {
   DropdownItem,
   DropdownMenu,
@@ -11,133 +6,16 @@ import {
 } from "reactstrap";
 
 import moment from "moment";
+import { useAppSelector } from "../../../hooks/redux";
+import { selectAppointmentByDate } from "../../../redux/appointment/slice";
 
-const todaysAppointments = [
-  {
-    day: currentDay,
-    month: new Date().toLocaleString("default", { month: "short" }),
-    title: "Client Meeting",
-    time: "10.00 - 11.00",
-  },
-  {
-    day: currentDay,
-    month: new Date().toLocaleString("default", { month: "short" }),
-    title: "Client Meeting",
-    time: "10.00 - 11.00",
-  },
-  {
-    day: currentDay,
-    month: new Date().toLocaleString("default", { month: "short" }),
-    title: "Team Lunch",
-    time: "12.00 - 13.00",
-  },
-  {
-    day: currentDay,
-    month: new Date().toLocaleString("default", { month: "short" }),
-    title: "Project Deadline",
-    time: "09.00 - 17.00",
-  },
-  {
-    day: currentDay,
-    month: new Date().toLocaleString("default", { month: "short" }),
-    title: "Conference Call",
-    time: "14.00 - 15.00",
-  },
-  {
-    day: currentDay,
-    month: new Date().toLocaleString("default", { month: "short" }),
-    title: "Workshop",
-    time: "11.00 - 12.30",
-  },
-  {
-    day: currentDay,
-    month: new Date().toLocaleString("default", { month: "short" }),
-    title: "Team Building Activity",
-    time: "09.30 - 12.30",
-  },
-  {
-    day: currentDay,
-    month: new Date().toLocaleString("default", { month: "short" }),
-    title: "Client Presentation",
-    time: "15.00 - 16.30",
-  },
-  {
-    day: currentDay,
-    month: new Date().toLocaleString("default", { month: "short" }),
-    title: "Training Session",
-    time: "13.00 - 15.00",
-  },
-  {
-    day: currentDay,
-    month: new Date().toLocaleString("default", { month: "short" }),
-    title: "Product Launch",
-    time: "10.00 - 11.30",
-  },
-];
-
-const tomorrowsAppointments = [
-  {
-    day: tomorrowDay,
-    month: new Date().toLocaleString("default", { month: "short" }),
-    title: "Code Review",
-    time: "09.00 - 11.00",
-  },
-  {
-    day: tomorrowDay,
-    month: new Date().toLocaleString("default", { month: "short" }),
-    title: "Company Anniversary",
-    time: "14.00 - 17.00",
-  },
-  {
-    day: tomorrowDay,
-    month: new Date().toLocaleString("default", { month: "short" }),
-    title: "Client Visit",
-    time: "11.00 - 12.30",
-  },
-  {
-    day: tomorrowDay,
-    month: new Date().toLocaleString("default", { month: "short" }),
-    title: "Quarterly Review",
-    time: "09.30 - 12.30",
-  },
-  {
-    day: tomorrowDay,
-    month: new Date().toLocaleString("default", { month: "short" }),
-    title: "Holiday Party",
-    time: "18.00 - 21.00",
-  },
-  {
-    day: tomorrowDay,
-    month: new Date().toLocaleString("default", { month: "short" }),
-    title: "Training Workshop",
-    time: "10.00 - 15.00",
-  },
-  {
-    day: tomorrowDay,
-    month: new Date().toLocaleString("default", { month: "short" }),
-    title: "Team Meeting",
-    time: "09.30 - 10.30",
-  },
-  {
-    day: tomorrowDay,
-    month: new Date().toLocaleString("default", { month: "short" }),
-    title: "Client Demo",
-    time: "14.00 - 15.00",
-  },
-  {
-    day: tomorrowDay,
-    month: new Date().toLocaleString("default", { month: "short" }),
-    title: "Product Training",
-    time: "11.00 - 12.30",
-  },
-  {
-    day: tomorrowDay,
-    month: new Date().toLocaleString("default", { month: "short" }),
-    title: "Design Review",
-    time: "10.30 - 12.00",
-  },
-];
 const List: React.FC<{ selectedDate: Date }> = ({ selectedDate }) => {
+  const todaysAppointments = useAppSelector((state) =>
+    selectAppointmentByDate(state)(selectedDate)
+  );
+  const tomorrowsAppointments = useAppSelector((state) =>
+    selectAppointmentByDate(state)(moment(selectedDate).add(1, "day").toDate())
+  );
   return (
     <div className="row">
       <div className="col-xxl-12 col-12">
@@ -165,11 +43,15 @@ const List: React.FC<{ selectedDate: Date }> = ({ selectedDate }) => {
                       <li className="author-online has-new-message bg-light-200 d-flex  align-items-center justify-content-between">
                         <div className="flex-grow-1">
                           <div>
-                            <p className="text-center fw-bold">10:00AM</p>
+                            <p className="text-center fw-bold">
+                              {moment(appointment.time).format("h:mmA")}
+                            </p>
                           </div>
                           <div className="d-flex justify-content-between w-100">
                             <div>
-                              <p className="fw-bold">John Smith</p>
+                              <p className="fw-bold">
+                                {appointment.customerName}
+                              </p>
                             </div>
                             <div>
                               <UncontrolledButtonDropdown className="float-right">
@@ -178,7 +60,7 @@ const List: React.FC<{ selectedDate: Date }> = ({ selectedDate }) => {
                                   className="btn btn-link arrow-none card-drop p-0"
                                 >
                                   <span className="badge text-bg-primary text-white mb-1">
-                                    Pending
+                                    {appointment.status}
                                   </span>
                                 </DropdownToggle>
 
@@ -194,10 +76,10 @@ const List: React.FC<{ selectedDate: Date }> = ({ selectedDate }) => {
                           </div>
                           <div className="d-flex justify-content-between w-100">
                             <div>
-                              <p className="fw-bold">w/Albert</p>
+                              <p className="fw-bold">{appointment.staff}</p>
                             </div>
                             <div>
-                              <p className="text-dark">{appointment.title}</p>
+                              <p className="text-dark">{appointment.service}</p>
                             </div>
                           </div>
                         </div>
@@ -248,11 +130,15 @@ const List: React.FC<{ selectedDate: Date }> = ({ selectedDate }) => {
                       <li className="author-online has-new-message bg-light-200 d-flex  align-items-center justify-content-between">
                         <div className="flex-grow-1">
                           <div>
-                            <p className="text-center fw-bold">10:00AM</p>
+                            <p className="text-center fw-bold">
+                              {moment(appointment.time).format("h:mmA")}
+                            </p>
                           </div>
                           <div className="d-flex justify-content-between w-100">
                             <div>
-                              <p className="fw-bold">John Smith</p>
+                              <p className="fw-bold">
+                                {appointment.customerName}
+                              </p>
                             </div>
                             <div>
                               <UncontrolledButtonDropdown className="float-right">
@@ -261,7 +147,7 @@ const List: React.FC<{ selectedDate: Date }> = ({ selectedDate }) => {
                                   className="btn btn-link arrow-none card-drop p-0"
                                 >
                                   <span className="badge text-bg-secondary text-white mb-1">
-                                    Pending
+                                    {appointment.status}
                                   </span>
                                 </DropdownToggle>
 
@@ -277,10 +163,10 @@ const List: React.FC<{ selectedDate: Date }> = ({ selectedDate }) => {
                           </div>
                           <div className="d-flex justify-content-between w-100">
                             <div>
-                              <p className="fw-bold">w/Albert</p>
+                              <p className="fw-bold">{appointment.staff}</p>
                             </div>
                             <div>
-                              <p className="text-dark">{appointment.title}</p>
+                              <p className="text-dark">{appointment.service}</p>
                             </div>
                           </div>
                         </div>

@@ -2,8 +2,8 @@ export interface AppointmentModel {
   id: string;
   date: string;
   time: string;
-  customer: string;
+  customerName: string;
   staff: string;
   service: string;
-  status: "Canceled";
+  status: "Pending" | "Confirmed" | "Done" | "Canceled" | "No-Show";
 }

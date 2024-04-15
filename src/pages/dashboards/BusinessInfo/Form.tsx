@@ -223,6 +223,7 @@ const Form: React.FC<{
                 className="form-control form-select custom-select"
                 id="validationCustom04"
                 required
+                defaultValue={"United States"}
               >
                 <option selected disabled value="">
                   Select...

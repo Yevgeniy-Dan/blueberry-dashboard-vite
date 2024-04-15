@@ -8,8 +8,9 @@ import Vertical from "../../../layouts/Vertical";
 import { useEffect, useState } from "react";
 import List from "./List";
 import { DateClickArg } from "@fullcalendar/interaction/index.js";
-import { useAppDispatch } from "../../../hooks/redux";
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
 import { toggleActivationSearchBar } from "../../../redux/appNavigation/slice";
+import AppointmentCards from "./Cards";
 
 const Appointments = () => {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
@@ -17,6 +18,8 @@ const Appointments = () => {
   const [showCalendar, setShowCalendar] = useState(false);
 
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
+
+  const { searchText } = useAppSelector((state) => state.navbar);
 
   const dispatch = useAppDispatch();
 
@@ -58,7 +61,7 @@ const Appointments = () => {
               <div className="col-xxl-6 col-12">
                 <div className="page-header d-flex align-items-center justify-content-between mr-bottom-30">
                   <div className="left-part">
-                    <h2 className="text-dark pt-5">My Appointments</h2>
+                    <h2 className="text-dark pt-9">My Appointments</h2>
                   </div>
 
                   <div className="d-block d-xxl-none">
@@ -82,12 +85,24 @@ const Appointments = () => {
                       onCalendarDateClick={handleCalendarDateClick}
                     />
                   ) : (
-                    <List selectedDate={selectedDate} />
+                    <>
+                      {searchText ? (
+                        <AppointmentCards customer={searchText} />
+                      ) : (
+                        <List selectedDate={selectedDate} />
+                      )}
+                    </>
                   )}
                 </div>
 
                 <div className="d-none d-xxl-block">
-                  <List selectedDate={selectedDate} />
+                  <>
+                    {searchText ? (
+                      <AppointmentCards customer={searchText} />
+                    ) : (
+                      <List selectedDate={selectedDate} />
+                    )}
+                  </>
                 </div>
               </div>
 
