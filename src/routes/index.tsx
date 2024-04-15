@@ -8,6 +8,7 @@ import {
   ANALYTICS,
   APPOINTMENTS,
   BUSINESS_INFO,
+  CANCELED_APPOINTMENTS,
   CUSTOMERS,
   ROLES,
   SERVICES,
@@ -23,6 +24,7 @@ import RoleForm from "../pages/dashboards/Roles/RoleForm";
 import AddForm from "../pages/dashboards/Appointments/AddForm";
 import Analytics from "../pages/dashboards/Analytics";
 import AllAppointments from "../pages/dashboards/Appointments/All";
+import CanceledAppointments from "../pages/dashboards/Appointments/Canceled";
 
 const SignIn = lazy(() => import("../pages/auth/SignIn"));
 const SignUp = lazy(() => import("../pages/auth/SignUp"));
@@ -79,6 +81,14 @@ const dashboardRoutes = [
     element: (
       <Suspense fallback={<Preloader />}>
         <AllAppointments />
+      </Suspense>
+    ),
+  },
+  {
+    path: CANCELED_APPOINTMENTS,
+    element: (
+      <Suspense fallback={<Preloader />}>
+        <CanceledAppointments />
       </Suspense>
     ),
   },

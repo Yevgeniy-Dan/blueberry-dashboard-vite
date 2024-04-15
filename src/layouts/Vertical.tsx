@@ -7,6 +7,7 @@ import {
   ANALYTICS,
   APPOINTMENTS,
   BUSINESS_INFO,
+  CANCELED_APPOINTMENTS,
   CUSTOMERS,
   ENABLE_PAYMENTS,
   ROLES,
@@ -70,6 +71,9 @@ const Vertical: React.FC<{
               <ul className="sub-menu">
                 <li className="menu-item">
                   <NavLink to={ALL_APPOINTMENTS}>All Appointments</NavLink>
+                </li>
+                <li className="menu-item">
+                  <NavLink to={CANCELED_APPOINTMENTS}>Canceled</NavLink>
                 </li>
               </ul>
             </li>
