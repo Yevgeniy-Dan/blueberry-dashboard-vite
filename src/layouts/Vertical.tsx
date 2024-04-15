@@ -5,7 +5,6 @@ import logoIconMin from "../assets/images/logo-icon-min.png";
 import {
   ANALYTICS,
   APPOINTMENTS,
-  BOOKING_PAGE,
   BUSINESS_INFO,
   CUSTOMERS,
   ENABLE_PAYMENTS,
@@ -22,7 +21,7 @@ const Vertical: React.FC<{
 
   return (
     //  <!-- Vertical Nav -->
-    <div className="bg-light-600 kleon-vertical-nav p-0">
+    <div className="bg-light-200 kleon-vertical-nav p-0">
       {/* <!-- Logo  --> */}
       <div className="logo d-flex align-items-center justify-content-between pt-4">
         <NavLink
@@ -47,8 +46,14 @@ const Vertical: React.FC<{
       <div className="  pt-4 h-100">
         <div className="kleon-navmenu p-4">
           <ul className="main-menu">
+            <button
+              type="button"
+              className="btn btn-primary btn-sm rounded-1 w-100"
+            >
+              Booking Page <i className="bi bi-clipboard ms-1"></i>
+            </button>
             <li
-              className={`menu-item ${
+              className={`menu-item menu-item-has-children  ${
                 location.pathname === APPOINTMENTS && "active"
               }`}
             >
@@ -61,6 +66,11 @@ const Vertical: React.FC<{
                   <span className="nav-text">My Appointments</span>
                 )}
               </NavLink>
+              <ul className="sub-menu">
+                <li className="menu-item">
+                  <a href="index.html">All Appointments</a>
+                </li>
+              </ul>
             </li>
             <li
               className={`menu-item ${
@@ -112,19 +122,6 @@ const Vertical: React.FC<{
                   <i className="bi bi-tools fs-18"></i>
                 </span>{" "}
                 {!isCollapsed && <span className="nav-text">Customers</span>}
-              </NavLink>
-            </li>
-            <li
-              className={`menu-item ${
-                location.pathname === BOOKING_PAGE && "active"
-              }`}
-            >
-              <NavLink to={BOOKING_PAGE}>
-                {" "}
-                <span className="nav-icon flex-shrink-0">
-                  <i className="bi bi-calendar2 fs-18"></i>
-                </span>{" "}
-                {!isCollapsed && <span className="nav-text">Booking Page</span>}
               </NavLink>
             </li>
             <li

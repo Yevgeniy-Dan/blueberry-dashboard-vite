@@ -4,6 +4,7 @@ import staffReducer from "./staff/slice";
 import serviceReducer from "./services/slice";
 import roleReducer from "./roles/slice";
 import appointmentReducer from "./appointment/slice";
+import navbarReducer from "./appNavigation/slice";
 
 const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ const store = configureStore({
     services: serviceReducer,
     roles: roleReducer,
     appointments: appointmentReducer,
+    navbar: navbarReducer,
   },
 });
 

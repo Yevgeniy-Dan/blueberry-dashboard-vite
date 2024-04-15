@@ -1,4 +1,3 @@
-import search from "../../../assets/images/search.svg";
 import calendarIcon from "../../../assets/images/calendar-icon.png";
 import avatar1 from "../../../assets/images/1.jpg";
 import avatar2 from "../../../assets/images/2.jpg";
@@ -6,9 +5,11 @@ import avatar3 from "../../../assets/images/3.jpg";
 import Calendar from "./Calendar";
 import Default from "../../../layouts/Default";
 import Vertical from "../../../layouts/Vertical";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import List from "./List";
 import { DateClickArg } from "@fullcalendar/interaction/index.js";
+import { useAppDispatch } from "../../../hooks/redux";
+import { toggleActivationSearchBar } from "../../../redux/appNavigation/slice";
 
 const Appointments = () => {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
@@ -16,6 +17,15 @@ const Appointments = () => {
   const [showCalendar, setShowCalendar] = useState(false);
 
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(toggleActivationSearchBar(true));
+    return () => {
+      dispatch(toggleActivationSearchBar(false));
+    };
+  }, [dispatch]);
 
   const handleCalendarDateClick = (info: DateClickArg) => {
     setSelectedDate(info.date);
@@ -46,24 +56,9 @@ const Appointments = () => {
           <div className="inner-contents">
             <div className="row">
               <div className="col-xxl-6 col-12">
-                <div className=" d-flex align-items-center d-block py-5">
-                  <div className="header-search w-100">
-                    <form className="search-form" action="search.php">
-                      <input
-                        type="text"
-                        name="search"
-                        className="keyword form-control w-100"
-                        placeholder="Search customer by name or email"
-                      />
-                      <button type="submit" className="btn">
-                        <img src={search} alt="" />
-                      </button>
-                    </form>
-                  </div>
-                </div>
                 <div className="page-header d-flex align-items-center justify-content-between mr-bottom-30">
                   <div className="left-part">
-                    <h2 className="text-dark">My Appointments</h2>
+                    <h2 className="text-dark pt-5">My Appointments</h2>
                   </div>
 
                   <div className="d-block d-xxl-none">
