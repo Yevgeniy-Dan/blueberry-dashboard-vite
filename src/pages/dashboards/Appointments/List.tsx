@@ -6,16 +6,17 @@ import {
 } from "reactstrap";
 
 import moment from "moment";
-import { useAppSelector } from "../../../hooks/redux";
-import { selectAppointmentByDate } from "../../../redux/appointment/slice";
+import { todaysAppointments, tomorrowsAppointments } from "./Data";
+// import { useAppSelector } from "../../../hooks/redux";
+// import { selectAppointmentByDate } from "../../../redux/appointment/slice";
 
 const List: React.FC<{ selectedDate: Date }> = ({ selectedDate }) => {
-  const todaysAppointments = useAppSelector((state) =>
-    selectAppointmentByDate(state)(selectedDate)
-  );
-  const tomorrowsAppointments = useAppSelector((state) =>
-    selectAppointmentByDate(state)(moment(selectedDate).add(1, "day").toDate())
-  );
+  // const todaysAppointments = useAppSelector((state) =>
+  //   selectAppointmentByDate(state)(selectedDate)
+  // );
+  // const tomorrowsAppointments = useAppSelector((state) =>
+  //   selectAppointmentByDate(state)(moment(selectedDate).add(1, "day").toDate())
+  // );
   return (
     <div className="row">
       <div className="col-xxl-12 col-12">
