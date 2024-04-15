@@ -99,225 +99,219 @@ const RoleForm = () => {
               <div className="card-body">
                 <form onSubmit={formik.handleSubmit}>
                   <div className="row">
-                    <div className="col-xxl-9">
-                      <div className="row">
-                        <div className="col-lg-4">
-                          <div className="form-group">
-                            <label className="form-label fs-16 fw-bold text-uppercase ls-1 text-gray-300">
-                              Name
-                            </label>
-                            <input
-                              type="text"
-                              className={`form-control ${
-                                formik.touched.name && formik.errors.name
-                                  ? "is-invalid"
-                                  : ""
-                              }`}
-                              name="name"
-                              value={formik.values.name}
-                              placeholder="Name"
-                              onChange={formik.handleChange}
-                              onBlur={formik.handleBlur}
-                            />
-                            {formik.touched.name && formik.errors.name && (
-                              <div className="invalid-feedback">
-                                {formik.errors.name?.toString()}
-                              </div>
-                            )}
+                    <div className="col-lg-4">
+                      <div className="form-group">
+                        <label className="form-label fs-16 fw-bold text-uppercase ls-1 text-gray-300">
+                          Name
+                        </label>
+                        <input
+                          type="text"
+                          className={`form-control ${
+                            formik.touched.name && formik.errors.name
+                              ? "is-invalid"
+                              : ""
+                          }`}
+                          name="name"
+                          value={formik.values.name}
+                          placeholder="Name"
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                        />
+                        {formik.touched.name && formik.errors.name && (
+                          <div className="invalid-feedback">
+                            {formik.errors.name?.toString()}
                           </div>
-                        </div>
+                        )}
+                      </div>
+                    </div>
 
-                        {/* Email */}
-                        <div className="col-lg-4">
-                          <div className="form-group">
-                            <label className="form-label fs-16 fw-bold text-uppercase ls-1 text-gray-300">
-                              Email
-                            </label>
-                            <input
-                              type="email"
-                              className={`form-control ${
-                                formik.touched.email && formik.errors.email
-                                  ? "is-invalid"
-                                  : ""
-                              }`}
-                              name="email"
-                              value={formik.values.email}
-                              placeholder="Email"
-                              onChange={formik.handleChange}
-                              onBlur={formik.handleBlur}
-                            />
-                            {formik.touched.email && formik.errors.email && (
-                              <div className="invalid-feedback">
-                                {formik.errors.email.toString()}
-                              </div>
-                            )}
+                    {/* Email */}
+                    <div className="col-lg-4">
+                      <div className="form-group">
+                        <label className="form-label fs-16 fw-bold text-uppercase ls-1 text-gray-300">
+                          Email
+                        </label>
+                        <input
+                          type="email"
+                          className={`form-control ${
+                            formik.touched.email && formik.errors.email
+                              ? "is-invalid"
+                              : ""
+                          }`}
+                          name="email"
+                          value={formik.values.email}
+                          placeholder="Email"
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                        />
+                        {formik.touched.email && formik.errors.email && (
+                          <div className="invalid-feedback">
+                            {formik.errors.email.toString()}
                           </div>
-                        </div>
+                        )}
+                      </div>
+                    </div>
 
-                        {/* Password */}
-                        <div className="col-lg-4">
-                          <div className="form-group">
-                            <label className="form-label fs-16 fw-bold text-uppercase ls-1 text-gray-300">
-                              Password
-                            </label>
-                            <input
-                              type="password"
-                              className={`form-control ${
-                                formik.touched.password &&
-                                formik.errors.password
-                                  ? "is-invalid"
-                                  : ""
-                              }`}
-                              name="password"
-                              value={formik.values.password}
-                              placeholder="Password"
-                              onChange={formik.handleChange}
-                              onBlur={formik.handleBlur}
-                            />
-                            {formik.touched.password &&
-                              formik.errors.password && (
-                                <div className="invalid-feedback">
-                                  {formik.errors.password.toString()}
-                                </div>
-                              )}
+                    {/* Password */}
+                    <div className="col-lg-4">
+                      <div className="form-group">
+                        <label className="form-label fs-16 fw-bold text-uppercase ls-1 text-gray-300">
+                          Password
+                        </label>
+                        <input
+                          type="password"
+                          className={`form-control ${
+                            formik.touched.password && formik.errors.password
+                              ? "is-invalid"
+                              : ""
+                          }`}
+                          name="password"
+                          value={formik.values.password}
+                          placeholder="Password"
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                        />
+                        {formik.touched.password && formik.errors.password && (
+                          <div className="invalid-feedback">
+                            {formik.errors.password.toString()}
                           </div>
-                        </div>
+                        )}
+                      </div>
+                    </div>
 
-                        <div className="col-lg-9">
-                          <div className="form-group">
-                            <label className="form-label fs-16 fw-bold text-uppercase ls-1 text-gray-300">
-                              Roles
-                            </label>
-                            <div className="row">
-                              {/* Business Info */}
-                              <div className="col-sm-4">
-                                <div className="form-check form-check-inline">
-                                  <label
-                                    className="form-label mb-0 fs-18 fw-semibold"
-                                    htmlFor="businessInfo"
-                                  >
-                                    Business Info
-                                  </label>
-                                  <input
-                                    type="checkbox"
-                                    className="form-check-input"
-                                    id="businessInfo"
-                                    name="roles.businessInfo"
-                                    checked={formik.values.roles.businessInfo}
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                  />
-                                </div>
-                              </div>
-                              {/* Staff */}
-                              <div className="col-sm-4">
-                                <div className="form-check form-check-inline">
-                                  <label
-                                    className="form-label mb-0 fs-18 fw-semibold"
-                                    htmlFor="staff"
-                                  >
-                                    Staff
-                                  </label>
-                                  <input
-                                    type="checkbox"
-                                    className="form-check-input"
-                                    id="staff"
-                                    name="roles.staff"
-                                    checked={formik.values.roles.staff}
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                  />
-                                </div>
-                              </div>
-                              {/* Services */}
-                              <div className="col-sm-4">
-                                <div className="form-check form-check-inline">
-                                  <label
-                                    className="form-label mb-0 fs-18 fw-semibold"
-                                    htmlFor="services"
-                                  >
-                                    Services
-                                  </label>
-                                  <input
-                                    type="checkbox"
-                                    className="form-check-input"
-                                    id="services"
-                                    name="roles.services"
-                                    checked={formik.values.roles.services}
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                  />
-                                </div>
-                              </div>
-                              {/* Customers */}
-                              <div className="col-sm-4">
-                                <div className="form-check form-check-inline">
-                                  <label
-                                    className="form-label mb-0 fs-18 fw-semibold"
-                                    htmlFor="customers"
-                                  >
-                                    Customers
-                                  </label>
-                                  <input
-                                    type="checkbox"
-                                    className="form-check-input"
-                                    id="customers"
-                                    name="roles.customers"
-                                    checked={formik.values.roles.customers}
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                  />
-                                </div>
-                              </div>
-                              {/* Payments */}
-                              <div className="col-sm-4">
-                                <div className="form-check form-check-inline">
-                                  <label
-                                    className="form-label mb-0 fs-18 fw-semibold"
-                                    htmlFor="payments"
-                                  >
-                                    Payments
-                                  </label>
-                                  <input
-                                    type="checkbox"
-                                    className="form-check-input"
-                                    id="payments"
-                                    name="roles.payments"
-                                    checked={formik.values.roles.payments}
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                  />
-                                </div>
-                              </div>
-                              {/* Analytics */}
-                              <div className="col-sm-4">
-                                <div className="form-check form-check-inline">
-                                  <label
-                                    className="form-label mb-0 fs-18 fw-semibold"
-                                    htmlFor="analytics"
-                                  >
-                                    Analytics
-                                  </label>
-                                  <input
-                                    type="checkbox"
-                                    className="form-check-input"
-                                    id="analytics"
-                                    name="roles.analytics"
-                                    checked={formik.values.roles.analytics}
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                  />
-                                </div>
-                              </div>
+                    <div className="col-lg-9">
+                      <div className="form-group">
+                        <label className="form-label fs-16 fw-bold text-uppercase ls-1 text-gray-300">
+                          Roles
+                        </label>
+                        <div className="row">
+                          {/* Business Info */}
+                          <div className="col-sm-4">
+                            <div className="form-check form-check-inline">
+                              <label
+                                className="form-label mb-0 fs-18 fw-semibold"
+                                htmlFor="businessInfo"
+                              >
+                                Business Info
+                              </label>
+                              <input
+                                type="checkbox"
+                                className="form-check-input"
+                                id="businessInfo"
+                                name="roles.businessInfo"
+                                checked={formik.values.roles.businessInfo}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                              />
                             </div>
-                            {/* Rendering roles error */}
-                            {formik.touched.roles && formik.errors.roles ? (
-                              <div className="text-red">
-                                {formik.errors.roles?.toString()}
-                              </div>
-                            ) : null}
+                          </div>
+                          {/* Staff */}
+                          <div className="col-sm-4">
+                            <div className="form-check form-check-inline">
+                              <label
+                                className="form-label mb-0 fs-18 fw-semibold"
+                                htmlFor="staff"
+                              >
+                                Staff
+                              </label>
+                              <input
+                                type="checkbox"
+                                className="form-check-input"
+                                id="staff"
+                                name="roles.staff"
+                                checked={formik.values.roles.staff}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                              />
+                            </div>
+                          </div>
+                          {/* Services */}
+                          <div className="col-sm-4">
+                            <div className="form-check form-check-inline">
+                              <label
+                                className="form-label mb-0 fs-18 fw-semibold"
+                                htmlFor="services"
+                              >
+                                Services
+                              </label>
+                              <input
+                                type="checkbox"
+                                className="form-check-input"
+                                id="services"
+                                name="roles.services"
+                                checked={formik.values.roles.services}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                              />
+                            </div>
+                          </div>
+                          {/* Customers */}
+                          <div className="col-sm-4">
+                            <div className="form-check form-check-inline">
+                              <label
+                                className="form-label mb-0 fs-18 fw-semibold"
+                                htmlFor="customers"
+                              >
+                                Customers
+                              </label>
+                              <input
+                                type="checkbox"
+                                className="form-check-input"
+                                id="customers"
+                                name="roles.customers"
+                                checked={formik.values.roles.customers}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                              />
+                            </div>
+                          </div>
+                          {/* Payments */}
+                          <div className="col-sm-4">
+                            <div className="form-check form-check-inline">
+                              <label
+                                className="form-label mb-0 fs-18 fw-semibold"
+                                htmlFor="payments"
+                              >
+                                Payments
+                              </label>
+                              <input
+                                type="checkbox"
+                                className="form-check-input"
+                                id="payments"
+                                name="roles.payments"
+                                checked={formik.values.roles.payments}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                              />
+                            </div>
+                          </div>
+                          {/* Analytics */}
+                          <div className="col-sm-4">
+                            <div className="form-check form-check-inline">
+                              <label
+                                className="form-label mb-0 fs-18 fw-semibold"
+                                htmlFor="analytics"
+                              >
+                                Analytics
+                              </label>
+                              <input
+                                type="checkbox"
+                                className="form-check-input"
+                                id="analytics"
+                                name="roles.analytics"
+                                checked={formik.values.roles.analytics}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                              />
+                            </div>
                           </div>
                         </div>
+                        {/* Rendering roles error */}
+                        {formik.touched.roles && formik.errors.roles ? (
+                          <div className="text-red">
+                            {formik.errors.roles?.toString()}
+                          </div>
+                        ) : null}
                       </div>
                     </div>
                   </div>

@@ -126,30 +126,6 @@ const InvoicesStatistic = () => {
     <div className="card border-0 shadow-sm">
       <div className="card-header bg-transparent border-0 p-5 pb-0 d-flex align-items-center justify-content-between gap-3 flex-wrap">
         <h4 className="mb-0">Appointment Analytics</h4>
-        <div className="d-flex align-items-center gap-3">
-          <select className="form-control">
-            <option value="0">Daily</option>
-            <option value="1">Weekly</option>
-            <option selected value="2">
-              Monthly
-            </option>
-            <option value="3">Yearly</option>
-          </select>
-
-          {/* <div className="dropdown">
-            <a href="#" data-bs-toggle="dropdown" className="fs-24 text-gray">
-              <i className="bi bi-three-dots-vertical"></i>
-            </a>
-            <div className="dropdown-menu p-0">
-              <a className="dropdown-item" href="#">
-                Download SVG
-              </a>
-              <a className="dropdown-item" href="#">
-                Download PDF
-              </a>
-            </div>
-          </div> */}
-        </div>
       </div>
 
       <div className="card-body pt-2">
@@ -166,36 +142,6 @@ const InvoicesStatistic = () => {
                 <span className="indicator bg-info"></span> Total Unpaid
               </p>
               <h4 className="fs-20 mb-0">569</h4>
-            </div>
-          </div>
-
-          <div className="d-flex align-items-center gap-4 justify-content-center flex-wrap">
-            <div className="form-switch">
-              <input
-                type="checkbox"
-                className="form-check-input border-0"
-                id="number"
-                checked
-              />
-              <label
-                className="form-label mb-0 fs-18 fw-semibold lh-32"
-                htmlFor="number"
-              >
-                Number
-              </label>
-            </div>
-            <div className="form-switch">
-              <input
-                type="checkbox"
-                className="form-check-input border-0"
-                id="analytics"
-              />
-              <label
-                className="form-label mb-0 fs-18 fw-semibold lh-32"
-                htmlFor="analytics"
-              >
-                Analytics
-              </label>
             </div>
           </div>
         </div>

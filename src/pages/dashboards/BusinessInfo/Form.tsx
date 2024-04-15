@@ -377,11 +377,13 @@ const Form: React.FC<{
               <span className="badge d-flex align-items-center text-dark rounded-0 rounded-start py-2 px-3 border border-light-200 fs-16">
                 <i className="bi bi-clock"></i>
               </span>
+
               <button
+                type="button"
                 className="btn btn-primary m-0 flex-grow-1"
                 onClick={() => handleBusinessHoursClick()}
               >
-                Set Business Hours
+                Set Business Hours <i className="bi bi-arrow-right ms-1"></i>
               </button>
             </div>
           </div>
@@ -426,7 +428,7 @@ const Form: React.FC<{
   );
 
   return (
-    <div className="col-lg-8 bg-light">
+    <div className="d-flex justify-content-center">
       <div className="card border-0 px-4 py-2">
         <div className="card-body p-0">
           {showBusinessHoursSetter ? (

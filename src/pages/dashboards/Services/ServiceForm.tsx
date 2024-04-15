@@ -66,7 +66,7 @@ const ServiceForm = () => {
       name: service ? service.name : "",
       currency: currencyCodesOptions[0],
       duration: service ? service.duration : "",
-      price: service ? service.price : 0,
+      price: service ? service.price : null,
       staffMembers: service ? service.staffMembers : [],
       isNoPreferenceEnabled: service
         ? service.isNoPreferenceEnabled
@@ -83,7 +83,7 @@ const ServiceForm = () => {
         id,
         name: values.name,
         duration: values.duration,
-        price: _.round(values.price, 2),
+        price: _.round(values.price || 0, 2),
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-expect-error
         staffMembers: values.staffMembers.map((m) => m.label),
@@ -123,7 +123,7 @@ const ServiceForm = () => {
                 <h2 className="text-dark">Add Service</h2>
               </div>
             </div>
-            <div className="col-lg-8  bg-light">
+            <div className="d-flex justify-content-center">
               <div className="card overflow-visible border-0 px-5 py-2">
                 <div className="card-body p-0">
                   <form onSubmit={formik.handleSubmit}>
@@ -242,7 +242,7 @@ const ServiceForm = () => {
                                 }`}
                                 id="price"
                                 name="price"
-                                value={formik.values.price}
+                                value={formik.values.price || ""}
                                 placeholder="Price"
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}

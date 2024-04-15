@@ -97,7 +97,7 @@ const StaffForm = () => {
                 <h2 className="text-dark">Add Staff</h2>
               </div>
             </div>
-            <div className="col-lg-8  bg-light">
+            <div className="d-flex justify-content-center">
               <div className="card border-0 px-5 py-2">
                 <div className="card-body p-0">
                   <form onSubmit={formik.handleSubmit}>

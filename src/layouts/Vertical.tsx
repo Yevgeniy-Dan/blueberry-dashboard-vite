@@ -27,7 +27,7 @@ const Vertical: React.FC<{
       {/* <!-- Logo  --> */}
       <div className="logo d-flex align-items-center justify-content-between pt-4">
         <NavLink
-          to={"./"}
+          to={APPOINTMENTS}
           className="d-flex align-items-center gap-3 flex-shrink-0"
         >
           <img src={`${isCollapsed ? logoIconMin : logo}`} alt="logo" />

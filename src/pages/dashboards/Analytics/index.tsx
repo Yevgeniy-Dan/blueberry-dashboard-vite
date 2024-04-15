@@ -40,7 +40,7 @@ const Analytics = () => {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    Dropdown
+                    Sort
                   </button>
                   <ul
                     className={`dropdown-menu ${

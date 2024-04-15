@@ -38,6 +38,7 @@
     "react-select": "^5.8.0",
     "react-select-country-list": "^2.2.3",
     "react-time-picker": "^6.6.0",
+    "reactstrap": "^9.2.2",
     "yup": "^1.4.0"
   },
   "devDependencies": {

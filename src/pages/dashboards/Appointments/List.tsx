@@ -3,6 +3,13 @@ const currentDay = currentDate.getDate();
 currentDate.setDate(currentDay + 1);
 const tomorrowDay = currentDate.getDate();
 
+import {
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
+  UncontrolledButtonDropdown,
+} from "reactstrap";
+
 import moment from "moment";
 
 const todaysAppointments = [
@@ -155,30 +162,43 @@ const List: React.FC<{ selectedDate: Date }> = ({ selectedDate }) => {
                 <div className="dropdown-wrapper">
                   <ul className="notification-board calendar-schedule list-unstyled">
                     {todaysAppointments.map((appointment) => (
-                      <li className="author-online has-new-message bg-light-200 d-flex align-items-center justify-content-between gap-3">
-                        <div className="d-flex align-items-center gap-3">
-                          <div className="calendar-date bg-soft-primary text-center d-flex flex-column justify-content-center">
-                            <h5 className="text-primary ff-heading fs-18 fw-bold lh-18 mb-0">
-                              {appointment.day}
-                            </h5>
-                            <p className="fs-14 mb-0">{appointment.month}</p>
+                      <li className="author-online has-new-message bg-light-200 d-flex  align-items-center justify-content-between">
+                        <div className="flex-grow-1">
+                          <div>
+                            <p className="text-center fw-bold">10:00AM</p>
                           </div>
-                          <div className="user-message">
-                            <h6 className="message mb-1">
-                              <a
-                                href="#"
-                                className="text-dark d-inline-block text-truncate"
-                                style={{ maxWidth: "100px" }}
-                              >
-                                {appointment.title}
-                              </a>
-                            </h6>
-                            <p className="message-footer d-flex align-items-center justify-content-between">
-                              <span>
-                                <i className="bi bi-clock-fill"></i>{" "}
-                                {appointment.time}
-                              </span>
-                            </p>
+                          <div className="d-flex justify-content-between w-100">
+                            <div>
+                              <p className="fw-bold">John Smith</p>
+                            </div>
+                            <div>
+                              <UncontrolledButtonDropdown className="float-right">
+                                <DropdownToggle
+                                  tag="button"
+                                  className="btn btn-link arrow-none card-drop p-0"
+                                >
+                                  <span className="badge text-bg-primary text-white mb-1">
+                                    Pending
+                                  </span>
+                                </DropdownToggle>
+
+                                <DropdownMenu right>
+                                  <DropdownItem>Pending</DropdownItem>
+                                  <DropdownItem>Confirmed</DropdownItem>
+                                  <DropdownItem>Done</DropdownItem>
+                                  <DropdownItem>Canceled</DropdownItem>
+                                  <DropdownItem>No-Show</DropdownItem>
+                                </DropdownMenu>
+                              </UncontrolledButtonDropdown>
+                            </div>
+                          </div>
+                          <div className="d-flex justify-content-between w-100">
+                            <div>
+                              <p className="fw-bold">w/Albert</p>
+                            </div>
+                            <div>
+                              <p className="text-dark">{appointment.title}</p>
+                            </div>
                           </div>
                         </div>
                         <div>
@@ -225,30 +245,43 @@ const List: React.FC<{ selectedDate: Date }> = ({ selectedDate }) => {
                 <div className="dropdown-wrapper">
                   <ul className="notification-board calendar-schedule list-unstyled">
                     {tomorrowsAppointments.map((appointment) => (
-                      <li className="author-online has-new-message bg-light-200 d-flex align-items-center justify-content-between gap-3">
-                        <div className="d-flex align-items-center gap-3">
-                          <div className="calendar-date bg-soft-primary text-center d-flex flex-column justify-content-center">
-                            <h5 className="text-primary ff-heading fs-18 fw-bold lh-18 mb-0">
-                              {appointment.day}
-                            </h5>
-                            <p className="fs-14 mb-0">{appointment.month}</p>
+                      <li className="author-online has-new-message bg-light-200 d-flex  align-items-center justify-content-between">
+                        <div className="flex-grow-1">
+                          <div>
+                            <p className="text-center fw-bold">10:00AM</p>
                           </div>
-                          <div className="user-message">
-                            <h6 className="message mb-1">
-                              <a
-                                href="#"
-                                className="text-dark d-inline-block text-truncate"
-                                style={{ maxWidth: "100px" }}
-                              >
-                                {appointment.title}
-                              </a>
-                            </h6>
-                            <p className="message-footer d-flex align-items-center justify-content-between">
-                              <span>
-                                <i className="bi bi-clock-fill"></i>{" "}
-                                {appointment.time}
-                              </span>
-                            </p>
+                          <div className="d-flex justify-content-between w-100">
+                            <div>
+                              <p className="fw-bold">John Smith</p>
+                            </div>
+                            <div>
+                              <UncontrolledButtonDropdown className="float-right">
+                                <DropdownToggle
+                                  tag="button"
+                                  className="btn btn-link arrow-none card-drop p-0"
+                                >
+                                  <span className="badge text-bg-secondary text-white mb-1">
+                                    Pending
+                                  </span>
+                                </DropdownToggle>
+
+                                <DropdownMenu right>
+                                  <DropdownItem>Pending</DropdownItem>
+                                  <DropdownItem>Confirmed</DropdownItem>
+                                  <DropdownItem>Done</DropdownItem>
+                                  <DropdownItem>Canceled</DropdownItem>
+                                  <DropdownItem>No-Show</DropdownItem>
+                                </DropdownMenu>
+                              </UncontrolledButtonDropdown>
+                            </div>
+                          </div>
+                          <div className="d-flex justify-content-between w-100">
+                            <div>
+                              <p className="fw-bold">w/Albert</p>
+                            </div>
+                            <div>
+                              <p className="text-dark">{appointment.title}</p>
+                            </div>
                           </div>
                         </div>
                         <div>
