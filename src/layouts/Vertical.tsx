@@ -3,6 +3,7 @@ import logo from "../assets/images/logo.png";
 import logoIconMin from "../assets/images/logo-icon-min.png";
 
 import {
+  ALL_APPOINTMENTS,
   ANALYTICS,
   APPOINTMENTS,
   BUSINESS_INFO,
@@ -68,7 +69,7 @@ const Vertical: React.FC<{
               </NavLink>
               <ul className="sub-menu">
                 <li className="menu-item">
-                  <a href="index.html">All Appointments</a>
+                  <NavLink to={ALL_APPOINTMENTS}>All Appointments</NavLink>
                 </li>
               </ul>
             </li>

@@ -5,4 +5,5 @@ export interface AppointmentModel {
   customer: string;
   staff: string;
   service: string;
+  status: "Canceled";
 }

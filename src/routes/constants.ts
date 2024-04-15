@@ -1,4 +1,5 @@
 export const APPOINTMENTS = "/dashboard/appointments";
+export const ALL_APPOINTMENTS = "/dashboard/appointments/all";
 export const BUSINESS_INFO = "/dashboard/business-info";
 export const STAFF = "/dashboard/staff";
 export const SERVICES = "/dashboard/services";
