@@ -23,7 +23,7 @@ const Vertical: React.FC<{
 
   return (
     //  <!-- Vertical Nav -->
-    <div className="bg-light-200 kleon-vertical-nav p-0">
+    <div className="bg-white kleon-vertical-nav p-0">
       {/* <!-- Logo  --> */}
       <div className="logo d-flex align-items-center justify-content-between pt-4">
         <NavLink
@@ -50,7 +50,7 @@ const Vertical: React.FC<{
           <ul className="main-menu">
             <button
               type="button"
-              className="btn btn-primary btn-sm rounded-1 w-100"
+              className="btn btn-primary btn-sm rounded-1 w-100 text-center"
             >
               Booking Page <i className="bi bi-clipboard ms-1"></i>
             </button>

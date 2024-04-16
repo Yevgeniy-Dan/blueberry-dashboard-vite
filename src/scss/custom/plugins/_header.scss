@@ -5,3 +5,18 @@
     width: 50%;
   }
 }
+
+.kleon-vertical-nav ul.main-menu li ul li a::before {
+  background-color: $black !important;
+}
+
+.kleon-vertical-nav ul.main-menu li ul li a:hover::before {
+  background-color: $primary !important;
+}
+
+.kleon-vertical-nav ul.main-menu li ul li a {
+  color: $black !important;
+}
+.kleon-vertical-nav ul.main-menu li ul li a:hover {
+  color: $primary !important;
+}

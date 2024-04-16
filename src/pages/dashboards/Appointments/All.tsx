@@ -18,6 +18,7 @@ import {
 import { AppointmentModel } from "../../../redux/appointment/model";
 import { getFacetedUniqueValues } from "@tanstack/react-table";
 import { rankItem } from "@tanstack/match-sorter-utils";
+import Flatpickr from "react-flatpickr";
 
 const AllAppointments = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -128,41 +129,31 @@ const AllAppointments = () => {
         <div className="container-fluid">
           <div className="inner-contents">
             <div className="row">
-              <div className="col-xxl-6 col-12">
-                <div className="page-header d-flex align-items-center justify-content-between mr-bottom-30">
-                  <div className="left-part">
-                    <h2 className="text-dark pt-5">All Appointments</h2>
+              <div className="page-header d-flex align-items-center justify-content-between mr-bottom-30 pt-5">
+                <div className="left-part d-flex align-items-center gap-3 ">
+                  <div>
+                    <h2 className="text-dark ">All Appointments</h2>
                   </div>
+                  <Flatpickr
+                    className={`form-control form-select bg-white`}
+                    options={{
+                      mode: "range",
+                      dateFormat: "Y-m-d",
+                    }}
+                  />
+                </div>
+                <div>
+                  <a
+                    href=""
+                    className="btn btn-primary rounded-2 ff-heading fs-18 fw-bold py-4"
+                    download
+                  >
+                    <i className="bi bi-pie-chart-fill me-1"></i> Download
+                    Report
+                  </a>
                 </div>
               </div>
               <div className="p-5">
-                <div className="row">
-                  <div className="col-lg-6">
-                    <h4 className="pb-5">Appointments</h4>
-                  </div>
-                  <div className="col-lg-6 d-flex justify-content-end">
-                    <div className="dropdown">
-                      <a
-                        href="#"
-                        data-bs-toggle="dropdown"
-                        className="fs-24 text-gray"
-                      >
-                        <i className="bi bi-three-dots-vertical"></i>
-                      </a>
-                      <div className="dropdown-menu p-0">
-                        <a className="dropdown-item" href="#">
-                          View
-                        </a>
-                        <a className="dropdown-item" href="#">
-                          Edit
-                        </a>
-                        <a className="dropdown-item text-danger" href="#">
-                          Delete
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
                 <div className="row">
                   <div className="col-lg-6 d-flex justify-content-start align-items-center gap-3 w-50">
                     <label>Show</label>

@@ -98,11 +98,7 @@ const Analytics = () => {
 
             <div className="row">
               <div className="col-xxl-6 col-lg-12">
-                <div className="row">
-                  <div className="col col-12">
-                    <TotalBalance />
-                  </div>
-                </div>
+                <TotalBalance />
               </div>
               <div className="col-xxl-6 col-lg-12">
                 <InvoicesStatistic />

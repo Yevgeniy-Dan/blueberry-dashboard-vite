@@ -9,16 +9,16 @@ const TotalBalance = () => {
       width: 180,
       type: "radialBar",
     },
-    colors: ["#924AEF"],
+    colors: ["#ffffff"],
     plotOptions: {
       radialBar: {
         hollow: {
           size: "65%",
           margin: 15,
-          background: "#F5F5F5",
+          background: "#ffffff",
         },
         track: {
-          background: "#F5F5F5",
+          background: "#ffffff",
         },
         dataLabels: {
           name: {
@@ -52,10 +52,10 @@ const TotalBalance = () => {
               hollow: {
                 size: "70%",
                 margin: 10,
-                background: "#F5F5F5",
+                background: "#ffffff",
               },
               track: {
-                background: "#F5F5F5",
+                background: "#ffffff",
               },
               dataLabels: {
                 name: {
@@ -84,7 +84,7 @@ const TotalBalance = () => {
   };
 
   return (
-    <div className="card border-0 shadow-sm py-3">
+    <div className="card border-0 shadow-sm py-2 bg-primary">
       <div className="card-body py-0">
         <div className="d-flex align-items-center justify-content-between gap-2 flex-wrap">
           <div className="d-flex align-items-center gap-0 flex-wrap">
@@ -96,8 +96,8 @@ const TotalBalance = () => {
               width={180}
             />
             <div>
-              <h4 className="mb-3">Today’s Balance</h4>
-              <h2 className="fs-38 mb-0">$21,560.57</h2>
+              <h4 className="mb-3  text-white">Total Revenue</h4>
+              <h2 className="fs-38 mb-0  text-white">$21,560.57</h2>
             </div>
           </div>
         </div>

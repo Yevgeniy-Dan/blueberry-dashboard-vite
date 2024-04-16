@@ -64,9 +64,9 @@ const Appointments = () => {
           <div className="inner-contents">
             <div className="row">
               <div className="col-xxl-6 col-12">
-                <div className="page-header d-flex align-items-center justify-content-between mr-bottom-30">
+                <div className="page-header d-flex align-items-center justify-content-between mr-bottom-30  pt-6">
                   <div className="left-part">
-                    <h2 className="text-dark pt-6">My Appointments</h2>
+                    <h2 className="text-dark">My Appointments</h2>
                   </div>
 
                   <div className="d-block d-xxl-none">
@@ -78,6 +78,19 @@ const Appointments = () => {
                       Calendar
                     </button>
                   </div>
+
+                  {showCalendar && (
+                    <div>
+                      <button
+                        type="submit"
+                        className="btn btn-primary"
+                        color="secondary"
+                        onClick={toggleView}
+                      >
+                        X
+                      </button>
+                    </div>
+                  )}
                 </div>
 
                 <div

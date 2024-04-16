@@ -7,6 +7,8 @@ import {
 
 import moment from "moment";
 import { todaysAppointments, tomorrowsAppointments } from "./Data";
+import { ALL_APPOINTMENTS } from "../../../routes/constants";
+import { useNavigate } from "react-router-dom";
 // import { useAppSelector } from "../../../hooks/redux";
 // import { selectAppointmentByDate } from "../../../redux/appointment/slice";
 
@@ -14,6 +16,7 @@ const List: React.FC<{ selectedDate: Date; onCardViewList: () => void }> = ({
   selectedDate,
   onCardViewList,
 }) => {
+  const navigate = useNavigate();
   // const todaysAppointments = useAppSelector((state) =>
   //   selectAppointmentByDate(state)(selectedDate)
   // );
@@ -36,6 +39,7 @@ const List: React.FC<{ selectedDate: Date; onCardViewList: () => void }> = ({
                     <button
                       className="btn btn-sm btn-primary rounded-pill text-white border-white"
                       type="button"
+                      onClick={() => navigate(ALL_APPOINTMENTS)}
                     >
                       <i className="bi bi-eye"></i> View
                     </button>
@@ -119,6 +123,7 @@ const List: React.FC<{ selectedDate: Date; onCardViewList: () => void }> = ({
                     <button
                       className="btn btn-sm btn-secondary rounded-pill text-white border border-white"
                       type="button"
+                      onClick={() => navigate(ALL_APPOINTMENTS)}
                     >
                       <i className="bi bi-eye"></i> View
                     </button>

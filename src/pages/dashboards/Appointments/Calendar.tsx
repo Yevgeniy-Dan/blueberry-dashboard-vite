@@ -35,7 +35,7 @@ const Calendar: React.FC<{
   };
 
   return (
-    <div>
+    <div className="bg-transparent">
       <div className="d-flex justify-content-center w-100 mb-3">
         <div>
           <button
