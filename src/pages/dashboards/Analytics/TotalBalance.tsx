@@ -3,7 +3,7 @@ import Chart from "react-apexcharts";
 
 const TotalBalance = () => {
   const options: ApexOptions = {
-    series: [75],
+    series: [100],
     chart: {
       height: 180,
       width: 180,
@@ -24,14 +24,14 @@ const TotalBalance = () => {
           name: {
             show: true,
             fontFamily: "'Cairo' Sans-serif",
-            fontSize: "18px",
+            fontSize: "9px",
             fontWeight: 700,
             color: "#333333",
           },
           value: {
-            offsetY: 15,
+            offsetY: 10,
             fontFamily: "'Cairo' Sans-serif",
-            fontSize: "28px",
+            fontSize: "18px",
             fontWeight: 700,
             color: "#333333",
             formatter: function (val: number) {
@@ -61,7 +61,7 @@ const TotalBalance = () => {
                 name: {
                   show: true,
                   fontFamily: "'Cairo' Sans-serif",
-                  fontSize: "18px",
+                  fontSize: "9px",
                   fontWeight: 700,
                   color: "#333333",
                 },

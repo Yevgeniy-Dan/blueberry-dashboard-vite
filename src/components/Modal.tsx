@@ -58,14 +58,6 @@ const AppModal: React.FC<{
               </div>
             </div>
             <div className="row  mb-3">
-              <div className="col-lg-4 d-flex align-items-center gap-3 py-2">
-                <div>
-                  <button className="btn btn-secondary text-white">
-                    Cancel
-                  </button>
-                </div>
-              </div>
-
               <div className="col-lg-4 d-flex align-items-center gap-3 py-2 rounded-2">
                 <div className="fs-20 text-primary">
                   <i className="bi bi-telephone-fill"></i>
@@ -81,6 +73,14 @@ const AppModal: React.FC<{
                 </div>
                 <div>
                   <p className="mb-0">ron@gmail.com</p>
+                </div>
+              </div>
+
+              <div className="col-lg-4 d-flex align-items-center gap-3 py-2">
+                <div>
+                  <button className="btn btn-secondary text-white">
+                    Cancel
+                  </button>
                 </div>
               </div>
             </div>

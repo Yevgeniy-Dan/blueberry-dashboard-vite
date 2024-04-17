@@ -79,18 +79,13 @@ const Appointments = () => {
                     </button>
                   </div>
 
-                  {showCalendar && (
-                    <div>
-                      <button
-                        type="submit"
-                        className="btn btn-primary"
-                        color="secondary"
-                        onClick={toggleView}
-                      >
-                        X
-                      </button>
-                    </div>
-                  )}
+                  <div className="d-block d-xxl-none">
+                    {showCalendar && (
+                      <div className="fs-60 text-black" onClick={toggleView}>
+                        <i className="bi bi-x"></i>
+                      </div>
+                    )}
+                  </div>
                 </div>
 
                 <div

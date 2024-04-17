@@ -51,7 +51,7 @@ const List: React.FC<{ selectedDate: Date; onCardViewList: () => void }> = ({
                       <li className="author-online has-new-message bg-light-200 d-flex align-items-center justify-content-between mw-100">
                         <div className="flex-grow-1 mw-100">
                           <div>
-                            <p className="text-center fw-bold">
+                            <p className="text-center fw-bold fs-18">
                               {moment(appointment.time).format("h:mmA")}
                             </p>
                           </div>
@@ -135,7 +135,7 @@ const List: React.FC<{ selectedDate: Date; onCardViewList: () => void }> = ({
                       <li className="author-online has-new-message bg-light-200 d-flex align-items-center justify-content-between mw-100">
                         <div className="flex-grow-1 mw-100">
                           <div>
-                            <p className="text-center fw-bold">
+                            <p className="text-center fw-bold fs-18">
                               {moment(appointment.time).format("h:mmA")}
                             </p>
                           </div>
