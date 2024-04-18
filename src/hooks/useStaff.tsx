@@ -24,16 +24,16 @@ const removeStaff = async (staff: IStaff): Promise<IStaff> => {
   return axios.delete(`${API_URL}/${staff.id}`);
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const useStaffQuery = <T,>() => {
+// const useStaffQuery = <T,>() => {
+const useStaffQuery = () => {
   return useQuery({
     queryKey: ["staff"],
     queryFn: getStaff,
   });
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const useStaffMutation = <T,>() => {
+// const useStaffMutation = <T,>() => {
+const useStaffMutation = () => {
   return useMutation({
     mutationFn: (data: { method: HttpMethod; staff: IStaff }) => {
       const { method, staff } = data;

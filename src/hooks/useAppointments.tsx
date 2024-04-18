@@ -30,16 +30,16 @@ const removeAppointment = async (
   return axios.delete(`${API_URL}/${appointment.id}`);
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const useAppointmentQuery = <T,>() => {
+// const useAppointmentQuery = <T,>() => {
+const useAppointmentQuery = () => {
   return useQuery({
     queryKey: ["appointments"],
     queryFn: getAppointments,
   });
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const useAppointmentMutation = <T,>() => {
+// const useAppointmentMutation = <T,>() => {
+const useAppointmentMutation = () => {
   return useMutation({
     mutationFn: (data: { method: HttpMethod; appointment: IAppointment }) => {
       const { method, appointment } = data;

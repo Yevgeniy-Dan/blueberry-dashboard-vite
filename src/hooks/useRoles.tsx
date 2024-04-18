@@ -24,16 +24,16 @@ const removeRole = async (role: IRole): Promise<IRole> => {
   return axios.delete(`${API_URL}/${role.id}`);
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const useRoleQuery = <T,>() => {
+// const useRoleQuery = <T,>() => {
+const useRoleQuery = () => {
   return useQuery({
     queryKey: ["roles"],
     queryFn: getRoles,
   });
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const useRoleMutation = <T,>() => {
+// const useRoleMutation = <T,>() => {
+const useRoleMutation = () => {
   return useMutation({
     mutationFn: (data: { method: HttpMethod; role: IRole }) => {
       const { method, role } = data;

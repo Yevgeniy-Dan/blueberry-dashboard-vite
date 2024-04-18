@@ -27,16 +27,16 @@ const removeService = async (service: IService): Promise<IService> => {
   return axios.delete(`${API_URL}/${service.id}`);
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const useServiceQuery = <T,>() => {
+// const useServiceQuery = <T,>() => {
+const useServiceQuery = () => {
   return useQuery({
     queryKey: ["services"],
     queryFn: getServices,
   });
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const useServiceMutation = <T,>() => {
+// const useServiceMutation = <T,>() => {
+const useServiceMutation = () => {
   return useMutation({
     mutationFn: (data: { method: HttpMethod; service: IService }) => {
       const { method, service } = data;
