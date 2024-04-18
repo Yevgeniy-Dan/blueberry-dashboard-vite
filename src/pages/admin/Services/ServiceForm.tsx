@@ -46,9 +46,10 @@ const ServiceForm = () => {
   const { data: services } = useServiceQuery();
   const { mutate } = useServiceMutation();
 
-  const service = services?.find((service) => service.id === id);
+  const randomId = useId();
 
-  const id = useId();
+  const id = serviceId || randomId;
+  const service = services?.find((service) => service.id === id);
 
   const navigate = useNavigate();
 

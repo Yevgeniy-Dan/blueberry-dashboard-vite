@@ -11,12 +11,13 @@ const RoleForm = () => {
 
   const { roleId } = useParams();
 
+  const randomId = useId();
+
+  const id = roleId || randomId;
   const role = roles?.find((role) => role.id === id);
   const { mutate } = useRoleMutation();
 
   const navigate = useNavigate();
-
-  const id = useId();
 
   const formik = useFormik({
     initialValues: {

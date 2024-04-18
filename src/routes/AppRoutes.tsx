@@ -1,6 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { allRoutes } from "./index";
-import DashboardWrapper from "../layouts/DashboardWrapper";
+import AdminWrapper from "../layouts/AdminWrapper";
 import { APPOINTMENTS } from "./constants";
 import { isUserAuthenticated } from "../heplers/authUtils";
 import { lazy } from "react";
@@ -17,7 +17,7 @@ const AppRoutes = () => {
   const getLayout = () => {
     if (!isAuthenticated) return AuthLayout;
 
-    const layoutCls = DashboardWrapper;
+    const layoutCls = AdminWrapper;
 
     return layoutCls;
   };

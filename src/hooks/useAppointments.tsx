@@ -2,7 +2,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { IAppointment } from "../interfaces/appointment.interface";
 
-export const API_URL = "http://localhost:3000/api/appointments";
+export const API_URL = `${import.meta.env.VITE_PUBLIC_API_URL}/appointments`;
 
 export type HttpMethod = "put" | "delete" | "post";
 

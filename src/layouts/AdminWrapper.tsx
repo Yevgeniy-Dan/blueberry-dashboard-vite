@@ -4,7 +4,7 @@ import Default from "./Default";
 import Vertical from "./Vertical";
 import Preloader from "../pages/Preloader";
 
-const DashboardWrapper: React.FC<{ children: React.ReactNode }> = ({
+const AdminWrapper: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [isCollapsed, setIsCollapsed] = React.useState<boolean>(false);
@@ -36,4 +36,4 @@ const DashboardWrapper: React.FC<{ children: React.ReactNode }> = ({
   );
 };
 
-export default DashboardWrapper;
+export default AdminWrapper;

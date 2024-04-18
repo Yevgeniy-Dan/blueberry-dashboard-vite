@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from "react";
-import Appointments from "../pages/dashboards/Appointments";
-import BusinessInfo from "../pages/dashboards/BusinessInfo";
+import Appointments from "../pages/admin/Appointments";
+import BusinessInfo from "../pages/admin/BusinessInfo";
 
 import Preloader from "../pages/Preloader";
 import {
@@ -14,17 +14,17 @@ import {
   SERVICES,
   STAFF,
 } from "./constants";
-import Staff from "../pages/dashboards/Staff";
-import StaffForm from "../pages/dashboards/Staff/StaffForm";
-import Services from "../pages/dashboards/Services";
-import ServiceForm from "../pages/dashboards/Services/ServiceForm";
-import Customers from "../pages/dashboards/Customers";
-import Roles from "../pages/dashboards/Roles";
-import RoleForm from "../pages/dashboards/Roles/RoleForm";
-import AddForm from "../pages/dashboards/Appointments/AddForm";
-import Analytics from "../pages/dashboards/Analytics";
-import AllAppointments from "../pages/dashboards/Appointments/All";
-import CanceledAppointments from "../pages/dashboards/Appointments/Canceled";
+import Staff from "../pages/admin/Staff";
+import StaffForm from "../pages/admin/Staff/StaffForm";
+import Services from "../pages/admin/Services";
+import ServiceForm from "../pages/admin/Services/ServiceForm";
+import Customers from "../pages/admin/Customers";
+import Roles from "../pages/admin/Roles";
+import RoleForm from "../pages/admin/Roles/RoleForm";
+import AddForm from "../pages/admin/Appointments/AddForm";
+import Analytics from "../pages/admin/Analytics";
+import AllAppointments from "../pages/admin/Appointments/All";
+import CanceledAppointments from "../pages/admin/Appointments/Canceled";
 import { isUserAuthenticated } from "../heplers/authUtils";
 import { Navigate } from "react-router-dom";
 

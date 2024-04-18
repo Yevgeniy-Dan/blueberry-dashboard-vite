@@ -14,9 +14,10 @@ const StaffForm = () => {
 
   const { mutate } = useStaffMutation();
 
-  const staff = staffList?.find((staff) => staff.id === id);
+  const randomId = useId();
+  const id = userId || randomId;
 
-  const id = useId();
+  const staff = staffList?.find((staff) => staff.id === id);
 
   const navigate = useNavigate();
 

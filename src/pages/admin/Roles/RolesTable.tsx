@@ -1,11 +1,15 @@
 import {
+  RankingInfo,
+  compareItems,
+  rankItem,
+} from "@tanstack/match-sorter-utils";
+import {
   ColumnDef,
   FilterFn,
   SortingFn,
   flexRender,
   getCoreRowModel,
   getFacetedMinMaxValues,
-  getFacetedRowModel,
   getFacetedUniqueValues,
   getFilteredRowModel,
   getPaginationRowModel,
@@ -13,25 +17,22 @@ import {
   sortingFns,
   useReactTable,
 } from "@tanstack/react-table";
-import { DebouncedInput } from "./DebounceInput";
-import {
-  RankingInfo,
-  compareItems,
-  rankItem,
-} from "@tanstack/match-sorter-utils";
-
 import { useEffect, useMemo, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { SERVICES } from "../../../routes/constants";
+import { ROLES } from "../../../routes/constants";
+import { getFacetedRowModel } from "@tanstack/react-table";
+// import { DebouncedInput } from "../Services/DebounceInput";
 
 import sortAscPng from "../../../assets/images/sort_asc.png";
 import sortDescPng from "../../../assets/images/sort_desc.png";
 import sortBothPng from "../../../assets/images/sort_both.png";
-import { IService } from "../../../interfaces/service.interface";
 import {
-  useServiceMutation,
-  useServiceQuery,
-} from "../../../hooks/useServices";
+  IRole,
+  IRolesList,
+  roleKeyValueMap,
+} from "../../../interfaces/role.interface";
+import { useRoleMutation, useRoleQuery } from "../../../hooks/useRoles";
+import { useQueryClient } from "@tanstack/react-query";
 
 declare module "@tanstack/react-table" {
   interface FilterFns {
@@ -42,7 +43,11 @@ declare module "@tanstack/react-table" {
   }
 }
 
-const Table = () => {
+const RolesTable = () => {
+  const queryClient = useQueryClient();
+
+  queryClient.invalidateQueries({ queryKey: ["roles"] });
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const fuzzyFilter: FilterFn<any> = (row, columnId, value, addMeta) => {
     // Rank the item
@@ -75,20 +80,21 @@ const Table = () => {
     return dir === 0 ? sortingFns.alphanumeric(rowA, rowB, columnId) : dir;
   };
 
-  const { data: services } = useServiceQuery();
-  const { mutate } = useServiceMutation();
+  const { data: roles } = useRoleQuery();
 
-  const removeServiceHandler = useMemo(() => {
-    return (service: IService) => {
+  const { mutate } = useRoleMutation();
+
+  const removeRoleHandler = useMemo(() => {
+    return (role: IRole) => {
       mutate({
         method: "delete",
-        service,
+        role,
       });
     };
   }, [mutate]);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const columns = useMemo<ColumnDef<IService, any>[]>(
+  const columns = useMemo<ColumnDef<IRole, any>[]>(
     () => [
       {
         accessorKey: "name",
@@ -96,55 +102,47 @@ const Table = () => {
         sortingFn: fuzzySort,
       },
       {
-        accessorKey: "duration",
-        header: "Duration",
+        accessorKey: "email",
+        header: "Email",
         enableSorting: false,
       },
       {
-        accessorKey: "price",
-        header: "Price",
+        accessorKey: "roles",
+        header: "Roles",
+        enableSorting: false,
         cell: ({ row }) => {
-          const price: string = row.getValue("price");
-          const currencyCode = row.original.currencyCode;
-          return (
-            <span>
-              {currencyCode} {price}
-            </span>
-          );
+          const roles: IRolesList = row.getValue("roles");
+          const checkedRoles = Object.entries(roles)
+            .filter(([, value]) => value === true)
+            .map(
+              ([role]) => (roleKeyValueMap as { [key: string]: string })[role]
+            );
+
+          return checkedRoles.join(", ");
         },
-      },
-      {
-        accessorKey: "staffMembers",
-        header: "Staff",
-        enableSorting: false,
       },
       {
         header: "Actions",
         cell: ({ row }) => (
           <div>
-            <NavLink to="/" className="action-icon">
-              {" "}
-              <i className="bi bi-eye"></i>
-            </NavLink>
             <NavLink
-              to={`${SERVICES}/add/${row.original.id}`}
+              to={`${ROLES}/add/${row.original.id}`}
               className="action-icon"
             >
               {" "}
               <i className="bi bi-pencil-square"></i>
             </NavLink>
             <button
-              onClick={() => removeServiceHandler(row.original)}
+              onClick={() => removeRoleHandler(row.original)}
               className="btn p-0 btn-link"
             >
-              {" "}
               <i className="bi bi-trash"></i>
             </button>
           </div>
         ),
       },
     ],
-    [removeServiceHandler]
+    [removeRoleHandler]
   );
 
   const [pagination, setPagination] = useState({
@@ -155,8 +153,9 @@ const Table = () => {
   const [globalFilter, setGlobalFilter] = useState("");
 
   const table = useReactTable({
+    debugAll: false,
     columns,
-    data: services || [],
+    data: roles || [],
     filterFns: {
       fuzzy: fuzzyFilter,
     },
@@ -209,14 +208,14 @@ const Table = () => {
           </select>
           <label>entries</label>
         </div>
-        <div className="col-lg-6 d-flex justify-content-end">
+        {/* <div className="col-lg-6 d-flex justify-content-end">
           <DebouncedInput
             value={globalFilter ?? ""}
             onChange={(value) => setGlobalFilter(String(value))}
             className="form-control"
             placeholder="Search all columns..."
           />
-        </div>
+        </div> */}
       </div>
       <table className="dataTable">
         <thead>
@@ -340,4 +339,4 @@ const Table = () => {
   );
 };
 
-export default Table;
+export default RolesTable;
