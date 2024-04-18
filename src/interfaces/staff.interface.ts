@@ -1,4 +1,4 @@
-export interface StaffModel {
+export interface IStaff {
   id: string;
   name: string;
   email: string;

@@ -1,12 +1,12 @@
-// import { StaffModel } from "../staff/models";
+// import { IStaff } from "./staff.interface";
 
-export interface ServiceModel {
+export interface IService {
   id: string;
   name: string;
   duration: string;
   price: number;
   currencyCode: string;
-  // staffMembers: StaffModel[];
+  // staffMembers: IStaff[];
   staffMembers: string[];
   isNoPreferenceEnabled: boolean;
 }

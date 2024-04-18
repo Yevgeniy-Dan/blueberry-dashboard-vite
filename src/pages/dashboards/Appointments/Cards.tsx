@@ -1,16 +1,16 @@
 import React from "react";
-import { useAppSelector } from "../../../hooks/redux";
-import { selectAppointmentByCustomer } from "../../../redux/appointment/slice";
+import { IAppointment } from "../../../interfaces/appointment.interface";
+import { useAppointmentQuery } from "../../../hooks/useAppointments";
 
 const AppointmentCards: React.FC<{ customer: string }> = ({ customer }) => {
-  const appts = useAppSelector((state) =>
-    selectAppointmentByCustomer(state)(customer)
-  );
+  const { data: appts } = useAppointmentQuery<IAppointment[]>();
+
+  const filterAppts = appts?.filter((appt) => appt.customerName === customer);
 
   return (
     <>
       <div className="row">
-        {appts.map(({ customerName }) => (
+        {filterAppts?.map(({ customerName }) => (
           <div className="col-lg-6">
             <div className="card border-0 shadow-sm">
               <div className="card-body">

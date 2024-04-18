@@ -1,8 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
+import { useAppDispatch } from "../../../hooks/redux";
 import { toggleActivationSearchBar } from "../../../redux/appNavigation/slice";
-import Default from "../../../layouts/Default";
-import Vertical from "../../../layouts/Vertical";
 import {
   ColumnDef,
   FilterFn,
@@ -15,10 +13,11 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { AppointmentModel } from "../../../redux/appointment/model";
 import { getFacetedUniqueValues } from "@tanstack/react-table";
 import { rankItem } from "@tanstack/match-sorter-utils";
 import Flatpickr from "react-flatpickr";
+import { IAppointment } from "../../../interfaces/appointment.interface";
+import { useAppointmentQuery } from "../../../hooks/useAppointments";
 
 const CanceledAppointments = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -35,9 +34,6 @@ const CanceledAppointments = () => {
     return itemRank.passed;
   };
 
-  const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
-  const [isMobileCollapsed, setIsMobileCollapsed] = useState<boolean>(false);
-
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -48,7 +44,7 @@ const CanceledAppointments = () => {
   }, [dispatch]);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const columns = useMemo<ColumnDef<AppointmentModel, any>[]>(
+  const columns = useMemo<ColumnDef<IAppointment, any>[]>(
     () => [
       {
         accessorKey: "name",
@@ -84,11 +80,11 @@ const CanceledAppointments = () => {
     pageSize: 10, //default page size
   });
 
-  const { items: appointments } = useAppSelector((state) => state.appointments);
+  const { data: appointments } = useAppointmentQuery();
 
   const table = useReactTable({
     columns,
-    data: appointments,
+    data: appointments || [],
     filterFns: {
       fuzzy: fuzzyFilter,
     },
@@ -111,181 +107,161 @@ const CanceledAppointments = () => {
   });
 
   return (
-    <div
-      className={`bg-white has-right-panel ${
-        isCollapsed && "kleon-vertical-nav--collapse"
-      } ${isMobileCollapsed && "kleon-vertical-nav--active"}`}
-    >
-      <Default
-        isCollapsed={isMobileCollapsed}
-        onToggleCollapse={() => setIsMobileCollapsed(!isMobileCollapsed)}
-      />
-      <Vertical
-        isCollapsed={isCollapsed}
-        onToggleCollapse={() => setIsCollapsed(!isCollapsed)}
-      />
+    <div>
+      <div className="row">
+        <div className="page-header d-flex align-items-center justify-content-between mr-bottom-30">
+          <div className="left-part">
+            <h2 className="text-dark pt-5">Canceled Appointments</h2>
+          </div>
+          <div className="w-25">
+            <Flatpickr
+              className={`form-control form-select bg-white`}
+              options={{
+                mode: "range",
+                dateFormat: "Y-m-d",
+              }}
+            />
+          </div>
+        </div>
 
-      <main className="main-wrapper ">
-        <div className="container-fluid">
-          <div className="inner-contents">
-            <div className="row">
-              <div className="page-header d-flex align-items-center justify-content-between mr-bottom-30">
-                <div className="left-part">
-                  <h2 className="text-dark pt-5">Canceled Appointments</h2>
-                </div>
-                <div className="w-25">
-                  <Flatpickr
-                    className={`form-control form-select bg-white`}
-                    options={{
-                      mode: "range",
-                      dateFormat: "Y-m-d",
-                    }}
-                  />
-                </div>
-              </div>
+        <div className="p-5">
+          <div className="row">
+            <div className="col-lg-6 d-flex justify-content-start align-items-center gap-3 w-50">
+              <label>Show</label>
 
-              <div className="p-5">
-                <div className="row">
-                  <div className="col-lg-6 d-flex justify-content-start align-items-center gap-3 w-50">
-                    <label>Show</label>
-
-                    <select
-                      className="form-select w-auto pe-6"
-                      value={table.getState().pagination.pageSize}
-                      onChange={(e) => {
-                        table.setPageSize(Number(e.target.value));
-                      }}
-                    >
-                      {[10, 25, 50, 100].map((pageSize) => (
-                        <option key={pageSize} value={pageSize}>
-                          {pageSize}
-                        </option>
-                      ))}
-                    </select>
-                    <label>entries</label>
-                  </div>
-                </div>
-                <table className="dataTable">
-                  <thead>
-                    {table.getHeaderGroups().map((headerGroup) => (
-                      <tr key={headerGroup.id}>
-                        {headerGroup.headers.map((header) => (
-                          <th key={header.id}>
-                            {header.isPlaceholder ? null : (
-                              <>
-                                <div
-                                  {...{
-                                    style: { cursor: "pointer" },
-                                    className: header.column.getCanSort()
-                                      ? "select-none"
-                                      : "",
-                                    onClick:
-                                      header.column.getToggleSortingHandler(),
-                                  }}
-                                >
-                                  {flexRender(
-                                    header.column.columnDef.header,
-                                    header.getContext()
-                                  )}
-                                </div>
-                              </>
-                            )}
-                          </th>
-                        ))}
-                      </tr>
-                    ))}
-                  </thead>
-                  <tbody>
-                    {table.getRowModel().rows.map((row) => (
-                      <tr key={row.id}>
-                        {row.getVisibleCells().map((cell) => (
-                          <td key={cell.id}>
-                            {flexRender(
-                              cell.column.columnDef.cell,
-                              cell.getContext()
-                            )}
-                          </td>
-                        ))}
-                      </tr>
-                    ))}
-                  </tbody>
-                  <tfoot>
-                    {table.getFooterGroups().map((footerGroup) => (
-                      <tr key={footerGroup.id}>
-                        {footerGroup.headers.map((header) => (
-                          <th key={header.id}>
-                            {header.isPlaceholder
-                              ? null
-                              : flexRender(
-                                  header.column.columnDef.footer,
-                                  header.getContext()
-                                )}
-                          </th>
-                        ))}
-                      </tr>
-                    ))}
-                  </tfoot>
-                </table>
-                <div className="row">
-                  <div className="col">
-                    <p className="fw-bold">
-                      {table.getRowCount() === 0 ? (
-                        "No entries to show"
-                      ) : (
+              <select
+                className="form-select w-auto pe-6"
+                value={table.getState().pagination.pageSize}
+                onChange={(e) => {
+                  table.setPageSize(Number(e.target.value));
+                }}
+              >
+                {[10, 25, 50, 100].map((pageSize) => (
+                  <option key={pageSize} value={pageSize}>
+                    {pageSize}
+                  </option>
+                ))}
+              </select>
+              <label>entries</label>
+            </div>
+          </div>
+          <table className="dataTable">
+            <thead>
+              {table.getHeaderGroups().map((headerGroup) => (
+                <tr key={headerGroup.id}>
+                  {headerGroup.headers.map((header) => (
+                    <th key={header.id}>
+                      {header.isPlaceholder ? null : (
                         <>
-                          Showing from{" "}
-                          {table.getState().pagination.pageIndex *
-                            table.getState().pagination.pageSize +
-                            1}{" "}
-                          to{" "}
-                          {Math.min(
-                            (table.getState().pagination.pageIndex + 1) *
-                              table.getState().pagination.pageSize,
-                            table.getRowCount()
-                          )}{" "}
-                          of {table.getRowCount().toLocaleString()} Entries
+                          <div
+                            {...{
+                              style: { cursor: "pointer" },
+                              className: header.column.getCanSort()
+                                ? "select-none"
+                                : "",
+                              onClick: header.column.getToggleSortingHandler(),
+                            }}
+                          >
+                            {flexRender(
+                              header.column.columnDef.header,
+                              header.getContext()
+                            )}
+                          </div>
                         </>
                       )}
-                    </p>
-                  </div>
-                  <div className="col d-flex align-items-center justify-content-end gap-3">
-                    <div>
-                      <button
-                        className="btn btn-primary"
-                        onClick={() => table.previousPage()}
-                        disabled={!table.getCanPreviousPage()}
-                      >
-                        {"<"}
-                      </button>
-                      <button
-                        className="btn btn-primary"
-                        onClick={() => table.nextPage()}
-                        disabled={!table.getCanNextPage()}
-                      >
-                        {">"}
-                      </button>
-                    </div>
-                    <div>
-                      <p className="m-0">
-                        Page{" "}
-                        <strong>
-                          {table.getPageCount() === 0
-                            ? 0
-                            : table.getState().pagination.pageIndex + 1}{" "}
-                          of{" "}
-                          {table.getPageCount() === 0
-                            ? 0
-                            : table.getPageCount().toLocaleString()}
-                        </strong>
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                    </th>
+                  ))}
+                </tr>
+              ))}
+            </thead>
+            <tbody>
+              {table.getRowModel().rows.map((row) => (
+                <tr key={row.id}>
+                  {row.getVisibleCells().map((cell) => (
+                    <td key={cell.id}>
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+            <tfoot>
+              {table.getFooterGroups().map((footerGroup) => (
+                <tr key={footerGroup.id}>
+                  {footerGroup.headers.map((header) => (
+                    <th key={header.id}>
+                      {header.isPlaceholder
+                        ? null
+                        : flexRender(
+                            header.column.columnDef.footer,
+                            header.getContext()
+                          )}
+                    </th>
+                  ))}
+                </tr>
+              ))}
+            </tfoot>
+          </table>
+          <div className="row">
+            <div className="col">
+              <p className="fw-bold">
+                {table.getRowCount() === 0 ? (
+                  "No entries to show"
+                ) : (
+                  <>
+                    Showing from{" "}
+                    {table.getState().pagination.pageIndex *
+                      table.getState().pagination.pageSize +
+                      1}{" "}
+                    to{" "}
+                    {Math.min(
+                      (table.getState().pagination.pageIndex + 1) *
+                        table.getState().pagination.pageSize,
+                      table.getRowCount()
+                    )}{" "}
+                    of {table.getRowCount().toLocaleString()} Entries
+                  </>
+                )}
+              </p>
+            </div>
+            <div className="col d-flex align-items-center justify-content-end gap-3">
+              <div>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => table.previousPage()}
+                  disabled={!table.getCanPreviousPage()}
+                >
+                  {"<"}
+                </button>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => table.nextPage()}
+                  disabled={!table.getCanNextPage()}
+                >
+                  {">"}
+                </button>
+              </div>
+              <div>
+                <p className="m-0">
+                  Page{" "}
+                  <strong>
+                    {table.getPageCount() === 0
+                      ? 0
+                      : table.getState().pagination.pageIndex + 1}{" "}
+                    of{" "}
+                    {table.getPageCount() === 0
+                      ? 0
+                      : table.getPageCount().toLocaleString()}
+                  </strong>
+                </p>
               </div>
             </div>
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 };

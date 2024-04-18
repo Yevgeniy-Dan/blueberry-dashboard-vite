@@ -2,8 +2,20 @@ import logo from "../../assets/images/logo.png";
 import company from "../../assets/images/company.jpg";
 import { NavLink } from "react-router-dom";
 import { APPOINTMENTS } from "../../routes/constants";
+import { setSession } from "../../heplers/authUtils";
+import { useQueryClient } from "@tanstack/react-query";
 
 const SignIn = () => {
+  const queryClient = useQueryClient();
+
+  const handleSignIn = () => {
+    setSession({
+      id: "1",
+      email: "fakeemail@fake.com",
+    });
+    queryClient.invalidateQueries({ queryKey: ["isAuthenticated"] });
+  };
+
   return (
     <div className="bg-primary">
       <div className="row">
@@ -95,6 +107,7 @@ const SignIn = () => {
                   <NavLink
                     to={APPOINTMENTS}
                     className="btn btn-secondary w-100 text-uppercase text-white rounded-2 lh-34 ff-heading fw-bold shadow"
+                    onClick={handleSignIn}
                   >
                     Login
                   </NavLink>

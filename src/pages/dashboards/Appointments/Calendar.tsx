@@ -11,13 +11,6 @@ const Calendar: React.FC<{
 }> = ({ selectedDate, onCalendarDateClick }) => {
   const navigate = useNavigate();
 
-  // const customButtons = {
-  //   addAppointment: {
-  //     text: "+ Add Appointment",
-  //     click: () => {},
-  //   },
-  // };
-
   function handleDateClick(info: DateClickArg): void {
     onCalendarDateClick(info);
   }

@@ -13,7 +13,7 @@ const BusinessHoursSetter: React.FC<{
   onShowBusinessHoursSetter,
 }) => {
   return (
-    <div>
+    <>
       <button
         className="btn btn-primary "
         onClick={() => onShowBusinessHoursSetter(false)}
@@ -87,7 +87,7 @@ const BusinessHoursSetter: React.FC<{
           </button>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

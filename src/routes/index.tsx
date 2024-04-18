@@ -1,4 +1,4 @@
-import { Suspense, lazy } from "react";
+import React, { Suspense, lazy } from "react";
 import Appointments from "../pages/dashboards/Appointments";
 import BusinessInfo from "../pages/dashboards/BusinessInfo";
 
@@ -25,36 +25,68 @@ import AddForm from "../pages/dashboards/Appointments/AddForm";
 import Analytics from "../pages/dashboards/Analytics";
 import AllAppointments from "../pages/dashboards/Appointments/All";
 import CanceledAppointments from "../pages/dashboards/Appointments/Canceled";
+import { isUserAuthenticated } from "../heplers/authUtils";
+import { Navigate } from "react-router-dom";
 
-const SignIn = lazy(() => import("../pages/auth/SignIn"));
-const SignUp = lazy(() => import("../pages/auth/SignUp"));
-const ForgetPassword = lazy(() => import("../pages/auth/ForgetPassword"));
-const Logout = lazy(() => import("../pages/auth/Logout"));
+export const SignIn = lazy(() => import("../pages/auth/SignIn"));
+export const SignUp = lazy(() => import("../pages/auth/SignUp"));
+export const ForgetPassword = lazy(
+  () => import("../pages/auth/ForgetPassword")
+);
+export const Logout = lazy(() => import("../pages/auth/Logout"));
+
+export const PrivateRoute: React.FC<{
+  children: React.ReactNode;
+}> = ({ children }) => {
+  if (!isUserAuthenticated()) {
+    // Not logged in, redirect to signin page with the return URL
+    return <Navigate to="/account/sign-in" replace />;
+  }
+
+  // Authorized, render the component
+  return children;
+};
+
+export const PublicRoute: React.FC<{
+  children: React.ReactNode;
+}> = ({ children }) => {
+  if (isUserAuthenticated()) {
+    return <Navigate to="/" replace />;
+  }
+
+  return children;
+};
 
 // auth
 const authRoutes = [
   {
     path: "/account/sign-in",
     element: (
-      <Suspense fallback={<Preloader />}>
-        <SignIn />
-      </Suspense>
+      <PublicRoute>
+        <Suspense fallback={<Preloader />}>
+          <SignIn />
+        </Suspense>
+      </PublicRoute>
     ),
   },
   {
     path: "/account/sign-up",
     element: (
-      <Suspense fallback={<Preloader />}>
-        <SignUp />
-      </Suspense>
+      <PublicRoute>
+        <Suspense fallback={<Preloader />}>
+          <SignUp />
+        </Suspense>
+      </PublicRoute>
     ),
   },
   {
     path: "/account/forget-password",
     element: (
-      <Suspense fallback={<Preloader />}>
-        <ForgetPassword />
-      </Suspense>
+      <PublicRoute>
+        <Suspense fallback={<Preloader />}>
+          <ForgetPassword />
+        </Suspense>
+      </PublicRoute>
     ),
   },
   {
@@ -71,129 +103,161 @@ const dashboardRoutes = [
   {
     path: APPOINTMENTS,
     element: (
-      <Suspense fallback={<Preloader />}>
-        <Appointments />
-      </Suspense>
+      <PrivateRoute>
+        <Suspense fallback={<Preloader />}>
+          <Appointments />
+        </Suspense>
+      </PrivateRoute>
     ),
   },
   {
     path: ALL_APPOINTMENTS,
     element: (
-      <Suspense fallback={<Preloader />}>
-        <AllAppointments />
-      </Suspense>
+      <PrivateRoute>
+        <Suspense fallback={<Preloader />}>
+          <AllAppointments />
+        </Suspense>
+      </PrivateRoute>
     ),
   },
   {
     path: CANCELED_APPOINTMENTS,
     element: (
-      <Suspense fallback={<Preloader />}>
-        <CanceledAppointments />
-      </Suspense>
+      <PrivateRoute>
+        <Suspense fallback={<Preloader />}>
+          <CanceledAppointments />
+        </Suspense>
+      </PrivateRoute>
     ),
   },
   {
     path: `${APPOINTMENTS}/add`,
     element: (
-      <Suspense fallback={<Preloader />}>
-        <AddForm />
-      </Suspense>
+      <PrivateRoute>
+        <Suspense fallback={<Preloader />}>
+          <AddForm />
+        </Suspense>
+      </PrivateRoute>
     ),
   },
   {
     path: BUSINESS_INFO,
     element: (
-      <Suspense fallback={<Preloader />}>
-        <BusinessInfo />
-      </Suspense>
+      <PrivateRoute>
+        <Suspense fallback={<Preloader />}>
+          <BusinessInfo />
+        </Suspense>
+      </PrivateRoute>
     ),
   },
   {
     path: STAFF,
     element: (
-      <Suspense fallback={<Preloader />}>
-        <Staff />
-      </Suspense>
+      <PrivateRoute>
+        <Suspense fallback={<Preloader />}>
+          <Staff />
+        </Suspense>
+      </PrivateRoute>
     ),
   },
   {
     path: `${STAFF}/add`,
     element: (
-      <Suspense fallback={<Preloader />}>
-        <StaffForm />
-      </Suspense>
+      <PrivateRoute>
+        <Suspense fallback={<Preloader />}>
+          <StaffForm />
+        </Suspense>
+      </PrivateRoute>
     ),
   },
   {
     path: `${STAFF}/add/:userId`,
     element: (
-      <Suspense fallback={<Preloader />}>
-        <StaffForm />
-      </Suspense>
+      <PrivateRoute>
+        <Suspense fallback={<Preloader />}>
+          <StaffForm />
+        </Suspense>
+      </PrivateRoute>
     ),
   },
   {
     path: SERVICES,
     element: (
-      <Suspense fallback={<Preloader />}>
-        <Services />
-      </Suspense>
+      <PrivateRoute>
+        <Suspense fallback={<Preloader />}>
+          <Services />
+        </Suspense>
+      </PrivateRoute>
     ),
   },
   {
     path: `${SERVICES}/add`,
     element: (
-      <Suspense fallback={<Preloader />}>
-        <ServiceForm />
-      </Suspense>
+      <PrivateRoute>
+        <Suspense fallback={<Preloader />}>
+          <ServiceForm />
+        </Suspense>
+      </PrivateRoute>
     ),
   },
   {
     path: `${SERVICES}/add/:serviceId`,
     element: (
-      <Suspense fallback={<Preloader />}>
-        <ServiceForm />
-      </Suspense>
+      <PrivateRoute>
+        <Suspense fallback={<Preloader />}>
+          <ServiceForm />
+        </Suspense>
+      </PrivateRoute>
     ),
   },
   {
     path: CUSTOMERS,
     element: (
-      <Suspense fallback={<Preloader />}>
-        <Customers />
-      </Suspense>
+      <PrivateRoute>
+        <Suspense fallback={<Preloader />}>
+          <Customers />
+        </Suspense>
+      </PrivateRoute>
     ),
   },
   {
     path: ROLES,
     element: (
-      <Suspense fallback={<Preloader />}>
-        <Roles />
-      </Suspense>
+      <PrivateRoute>
+        <Suspense fallback={<Preloader />}>
+          <Roles />
+        </Suspense>
+      </PrivateRoute>
     ),
   },
   {
     path: `${ROLES}/add`,
     element: (
-      <Suspense fallback={<Preloader />}>
-        <RoleForm />
-      </Suspense>
+      <PrivateRoute>
+        <Suspense fallback={<Preloader />}>
+          <RoleForm />
+        </Suspense>
+      </PrivateRoute>
     ),
   },
   {
     path: `${ROLES}/add/:roleId`,
     element: (
-      <Suspense fallback={<Preloader />}>
-        <RoleForm />
-      </Suspense>
+      <PrivateRoute>
+        <Suspense fallback={<Preloader />}>
+          <RoleForm />
+        </Suspense>
+      </PrivateRoute>
     ),
   },
   {
     path: `${ANALYTICS}`,
     element: (
-      <Suspense fallback={<Preloader />}>
-        <Analytics />
-      </Suspense>
+      <PrivateRoute>
+        <Suspense fallback={<Preloader />}>
+          <Analytics />
+        </Suspense>
+      </PrivateRoute>
     ),
   },
 ];

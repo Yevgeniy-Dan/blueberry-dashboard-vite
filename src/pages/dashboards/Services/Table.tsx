@@ -1,4 +1,3 @@
-import { ServiceModel } from "../../../redux/services/models";
 import {
   ColumnDef,
   FilterFn,
@@ -21,15 +20,18 @@ import {
   rankItem,
 } from "@tanstack/match-sorter-utils";
 
-import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
 import { useEffect, useMemo, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { SERVICES } from "../../../routes/constants";
-import { removeService } from "../../../redux/services/slice";
 
 import sortAscPng from "../../../assets/images/sort_asc.png";
 import sortDescPng from "../../../assets/images/sort_desc.png";
 import sortBothPng from "../../../assets/images/sort_both.png";
+import { IService } from "../../../interfaces/service.interface";
+import {
+  useServiceMutation,
+  useServiceQuery,
+} from "../../../hooks/useServices";
 
 declare module "@tanstack/react-table" {
   interface FilterFns {
@@ -73,18 +75,20 @@ const Table = () => {
     return dir === 0 ? sortingFns.alphanumeric(rowA, rowB, columnId) : dir;
   };
 
-  const { items: services } = useAppSelector((state) => state.services);
-
-  const dispatch = useAppDispatch();
+  const { data: services } = useServiceQuery();
+  const { mutate } = useServiceMutation();
 
   const removeServiceHandler = useMemo(() => {
-    return (id: string) => {
-      dispatch(removeService(id));
+    return (service: IService) => {
+      mutate({
+        method: "delete",
+        service,
+      });
     };
-  }, [dispatch]);
+  }, [mutate]);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const columns = useMemo<ColumnDef<ServiceModel, any>[]>(
+  const columns = useMemo<ColumnDef<IService, any>[]>(
     () => [
       {
         accessorKey: "name",
@@ -130,7 +134,7 @@ const Table = () => {
               <i className="bi bi-pencil-square"></i>
             </NavLink>
             <button
-              onClick={() => removeServiceHandler(row.original.id)}
+              onClick={() => removeServiceHandler(row.original)}
               className="btn p-0 btn-link"
             >
               {" "}
@@ -152,7 +156,7 @@ const Table = () => {
 
   const table = useReactTable({
     columns,
-    data: services,
+    data: services || [],
     filterFns: {
       fuzzy: fuzzyFilter,
     },

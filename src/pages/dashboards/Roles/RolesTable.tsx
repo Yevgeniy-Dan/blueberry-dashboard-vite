@@ -17,9 +17,7 @@ import {
   sortingFns,
   useReactTable,
 } from "@tanstack/react-table";
-import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
 import { useEffect, useMemo, useState } from "react";
-import { removeRole } from "../../../redux/roles/slice";
 import { NavLink } from "react-router-dom";
 import { ROLES } from "../../../routes/constants";
 import { getFacetedRowModel } from "@tanstack/react-table";
@@ -28,7 +26,12 @@ import { getFacetedRowModel } from "@tanstack/react-table";
 import sortAscPng from "../../../assets/images/sort_asc.png";
 import sortDescPng from "../../../assets/images/sort_desc.png";
 import sortBothPng from "../../../assets/images/sort_both.png";
-import { RoleModel, Roles, roleKeyValueMap } from "../../../redux/roles/model";
+import {
+  IRole,
+  IRolesList,
+  roleKeyValueMap,
+} from "../../../interfaces/role.interface";
+import { useRoleMutation, useRoleQuery } from "../../../hooks/useRoles";
 
 declare module "@tanstack/react-table" {
   interface FilterFns {
@@ -72,18 +75,21 @@ const RolesTable = () => {
     return dir === 0 ? sortingFns.alphanumeric(rowA, rowB, columnId) : dir;
   };
 
-  const { items: roles } = useAppSelector((state) => state.roles);
+  const { data: roles } = useRoleQuery();
 
-  const dispatch = useAppDispatch();
+  const { mutate } = useRoleMutation();
 
   const removeRoleHandler = useMemo(() => {
-    return (id: string) => {
-      dispatch(removeRole(id));
+    return (role: IRole) => {
+      mutate({
+        method: "delete",
+        role,
+      });
     };
-  }, [dispatch]);
+  }, [mutate]);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const columns = useMemo<ColumnDef<RoleModel, any>[]>(
+  const columns = useMemo<ColumnDef<IRole, any>[]>(
     () => [
       {
         accessorKey: "name",
@@ -100,7 +106,7 @@ const RolesTable = () => {
         header: "Roles",
         enableSorting: false,
         cell: ({ row }) => {
-          const roles: Roles = row.getValue("roles");
+          const roles: IRolesList = row.getValue("roles");
           console.log(roles);
           const checkedRoles = Object.entries(roles)
             .filter(([, value]) => value === true)
@@ -123,7 +129,7 @@ const RolesTable = () => {
               <i className="bi bi-pencil-square"></i>
             </NavLink>
             <button
-              onClick={() => removeRoleHandler(row.original.id)}
+              onClick={() => removeRoleHandler(row.original)}
               className="btn p-0 btn-link"
             >
               <i className="bi bi-trash"></i>
@@ -144,7 +150,7 @@ const RolesTable = () => {
 
   const table = useReactTable({
     columns,
-    data: roles,
+    data: roles || [],
     filterFns: {
       fuzzy: fuzzyFilter,
     },
