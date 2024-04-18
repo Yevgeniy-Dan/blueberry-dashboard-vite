@@ -3,11 +3,11 @@
 // import bell from "../assets/images/bell.svg";
 // import settings from "../assets/images/settings.svg";
 import logo from "../assets/images/logo.png";
-import search from "../assets/images/search.svg";
+// import search from "../assets/images/search.svg";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
-import { useAppDispatch, useAppSelector } from "../hooks/redux";
-import { onSearchText } from "../redux/appNavigation/slice";
+import { useAppSelector } from "../hooks/redux";
+import AppointmentSearchBar from "../components/AppointmentSearchBar";
 
 const Default: React.FC<{
   onToggleCollapse: () => void;
@@ -19,11 +19,9 @@ const Default: React.FC<{
   const [showUserProfileMobileDropdown, setShowUserProfileMobileDropdown] =
     useState<boolean>(false);
 
-  const { isActivateSearchBar, searchText } = useAppSelector(
+  const { isActivateAppointmentSearchBar } = useAppSelector(
     (state) => state.navbar
   );
-
-  const dispatch = useAppDispatch();
 
   return (
     // <!-- Default Nav -->
@@ -32,21 +30,7 @@ const Default: React.FC<{
         <div className="header-inner d-flex align-items-center justify-content-around justify-content-xl-between flex-wrap flex-xl-nowrap gap-3 gap-xl-5">
           <div className="header-left-part d-flex align-items-center w-50">
             <div className="header-search w-100">
-              {isActivateSearchBar && (
-                <form className="search-form" action="search.php">
-                  <input
-                    type="text"
-                    name="search"
-                    className="keyword form-control w-100 bg-muted"
-                    placeholder="Search customer by name or email"
-                    value={searchText}
-                    onChange={(e) => dispatch(onSearchText(e.target.value))}
-                  />
-                  <button type="submit" className="btn">
-                    <img src={search} alt="" />
-                  </button>
-                </form>
-              )}
+              {isActivateAppointmentSearchBar && <AppointmentSearchBar />}
             </div>
           </div>
 

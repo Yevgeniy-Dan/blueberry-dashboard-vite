@@ -7,8 +7,8 @@ import { useEffect, useState } from "react";
 import List from "./List";
 import { DateClickArg } from "@fullcalendar/interaction/index.js";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
-import { toggleActivationSearchBar } from "../../../redux/appNavigation/slice";
-import AppointmentCards from "./Cards";
+import { toggleActivationAppointmentSearchBar } from "../../../redux/appNavigation/slice";
+import AppointmentSearchTable from "./AppointmentSearchTable";
 import AppModal from "../../../components/Modal";
 
 const Appointments = () => {
@@ -25,9 +25,9 @@ const Appointments = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(toggleActivationSearchBar(true));
+    dispatch(toggleActivationAppointmentSearchBar(true));
     return () => {
-      dispatch(toggleActivationSearchBar(false));
+      dispatch(toggleActivationAppointmentSearchBar(false));
     };
   }, [dispatch]);
 
@@ -80,7 +80,7 @@ const Appointments = () => {
             ) : (
               <>
                 {searchText ? (
-                  <AppointmentCards customer={searchText} />
+                  <AppointmentSearchTable />
                 ) : (
                   <List selectedDate={selectedDate} onCardViewList={toggle} />
                 )}
@@ -91,7 +91,7 @@ const Appointments = () => {
           <div className="d-none d-xxl-block">
             <>
               {searchText ? (
-                <AppointmentCards customer={searchText} />
+                <AppointmentSearchTable />
               ) : (
                 <List selectedDate={selectedDate} onCardViewList={toggle} />
               )}

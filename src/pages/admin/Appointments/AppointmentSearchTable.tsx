@@ -1,25 +1,25 @@
-import { useEffect, useMemo, useState } from "react";
-import { useAppDispatch } from "../../../hooks/redux";
-import { toggleActivationAppointmentSearchBar } from "../../../redux/appNavigation/slice";
+import React, { useMemo, useState } from "react";
+import { useAppointmentQuery } from "../../../hooks/useAppointments";
 import {
   ColumnDef,
   FilterFn,
   getCoreRowModel,
   getFacetedMinMaxValues,
   getFacetedRowModel,
+  getFacetedUniqueValues,
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { getFacetedUniqueValues } from "@tanstack/react-table";
-import { rankItem } from "@tanstack/match-sorter-utils";
-import Flatpickr from "react-flatpickr";
 import { IAppointment } from "../../../interfaces/appointment.interface";
-import { useAppointmentQuery } from "../../../hooks/useAppointments";
+import { rankItem } from "@tanstack/match-sorter-utils";
 import ReusableAppointmentTable from "./ReusableAppointmentTable";
+import { useAppSelector } from "../../../hooks/redux";
 
-const CanceledAppointments = () => {
+const AppointmentSearchTable = () => {
+  const { data: appts } = useAppointmentQuery();
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const fuzzyFilter: FilterFn<any> = (row, columnId, value, addMeta) => {
     // Rank the item
@@ -33,15 +33,6 @@ const CanceledAppointments = () => {
     // Return if the item should be filtered in/out
     return itemRank.passed;
   };
-
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(toggleActivationAppointmentSearchBar(true));
-    return () => {
-      dispatch(toggleActivationAppointmentSearchBar(false));
-    };
-  }, [dispatch]);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const columns = useMemo<ColumnDef<IAppointment, any>[]>(
@@ -80,16 +71,17 @@ const CanceledAppointments = () => {
     pageSize: 10, //default page size
   });
 
-  const { data: appointments } = useAppointmentQuery();
+  const searchText = useAppSelector((state) => state.navbar.searchText);
 
   const table = useReactTable({
     columns,
-    data: appointments || [],
+    data: appts || [],
     filterFns: {
       fuzzy: fuzzyFilter,
     },
     state: {
       pagination,
+      globalFilter: searchText,
     },
     onPaginationChange: setPagination,
     // onGlobalFilterChange: setGlobalFilter,
@@ -101,35 +93,10 @@ const CanceledAppointments = () => {
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
     getFacetedMinMaxValues: getFacetedMinMaxValues(),
-    debugTable: true,
-    debugHeaders: true,
-    debugColumns: false,
+    debugAll: false,
   });
 
-  return (
-    <div>
-      <div className="row">
-        <div className="page-header d-flex align-items-center justify-content-between mr-bottom-30">
-          <div className="left-part">
-            <h2 className="text-dark pt-5">Canceled Appointments</h2>
-          </div>
-          <div className="w-25">
-            <Flatpickr
-              className={`form-control form-select bg-white`}
-              options={{
-                mode: "range",
-                dateFormat: "Y-m-d",
-              }}
-            />
-          </div>
-        </div>
-
-        <div className="p-5">
-          <ReusableAppointmentTable table={table} />
-        </div>
-      </div>
-    </div>
-  );
+  return <ReusableAppointmentTable table={table} />;
 };
 
-export default CanceledAppointments;
+export default AppointmentSearchTable;

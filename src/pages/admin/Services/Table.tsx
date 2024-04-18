@@ -13,7 +13,7 @@ import {
   sortingFns,
   useReactTable,
 } from "@tanstack/react-table";
-import { DebouncedInput } from "./DebounceInput";
+import { DebouncedInput } from "../../../components/DebounceInput";
 import {
   RankingInfo,
   compareItems,

@@ -14,12 +14,19 @@ import {
   SERVICES,
   STAFF,
 } from "../routes/constants";
+import { useState } from "react";
 
 const Vertical: React.FC<{
   onToggleCollapse: () => void;
   isCollapsed: boolean;
 }> = ({ onToggleCollapse, isCollapsed }) => {
   const location = useLocation();
+
+  const [apptsToggle, setApptsToggle] = useState<boolean>(false);
+
+  const handleAppointmentsMenuToggleCollapse = () => {
+    setApptsToggle(!apptsToggle);
+  };
 
   return (
     //  <!-- Vertical Nav -->
@@ -56,23 +63,39 @@ const Vertical: React.FC<{
             </button>
             <li
               className={`menu-item menu-item-has-children  ${
-                location.pathname === APPOINTMENTS && "active"
+                apptsToggle && "active"
               }`}
             >
-              <NavLink to={APPOINTMENTS}>
+              <a
+                onClick={() => handleAppointmentsMenuToggleCollapse()}
+                className="cursor-pointer"
+              >
                 {" "}
                 <span className="nav-icon flex-shrink-0">
                   <i className="bi bi-calendar-check fs-18"></i>
                 </span>{" "}
-                {!isCollapsed && (
-                  <span className="nav-text">My Appointments</span>
-                )}
-              </NavLink>
+                {!isCollapsed && <span className="nav-text">Appointments</span>}
+              </a>
               <ul className="sub-menu">
-                <li className="menu-item">
+                <li
+                  className={`menu-item ${
+                    location.pathname === APPOINTMENTS && "active"
+                  } `}
+                >
+                  <NavLink to={APPOINTMENTS}>My Appointments</NavLink>
+                </li>
+                <li
+                  className={`menu-item ${
+                    location.pathname === ALL_APPOINTMENTS && "active"
+                  } `}
+                >
                   <NavLink to={ALL_APPOINTMENTS}>All Appointments</NavLink>
                 </li>
-                <li className="menu-item">
+                <li
+                  className={`menu-item ${
+                    location.pathname === CANCELED_APPOINTMENTS && "active"
+                  } `}
+                >
                   <NavLink to={CANCELED_APPOINTMENTS}>Canceled</NavLink>
                 </li>
               </ul>

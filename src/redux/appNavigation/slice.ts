@@ -1,12 +1,12 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 type InitialState = {
-  isActivateSearchBar: boolean;
+  isActivateAppointmentSearchBar: boolean;
   searchText: string;
 };
 
 const initialState: InitialState = {
-  isActivateSearchBar: false,
+  isActivateAppointmentSearchBar: false,
   searchText: "",
 };
 
@@ -14,8 +14,11 @@ const navbarSlice = createSlice({
   name: "appNavigation",
   initialState,
   reducers: {
-    toggleActivationSearchBar: (state, action: PayloadAction<boolean>) => {
-      state.isActivateSearchBar = action.payload;
+    toggleActivationAppointmentSearchBar: (
+      state,
+      action: PayloadAction<boolean>
+    ) => {
+      state.isActivateAppointmentSearchBar = action.payload;
     },
     onSearchText: (state, action: PayloadAction<string>) => {
       state.searchText = action.payload;
@@ -23,6 +26,7 @@ const navbarSlice = createSlice({
   },
 });
 
-export const { toggleActivationSearchBar, onSearchText } = navbarSlice.actions;
+export const { toggleActivationAppointmentSearchBar, onSearchText } =
+  navbarSlice.actions;
 
 export default navbarSlice.reducer;

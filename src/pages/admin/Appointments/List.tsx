@@ -6,23 +6,29 @@ import {
 } from "reactstrap";
 
 import moment from "moment";
-import { todaysAppointments, tomorrowsAppointments } from "./Data";
 import { ALL_APPOINTMENTS } from "../../../routes/constants";
 import { useNavigate } from "react-router-dom";
-// import { useAppSelector } from "../../../hooks/redux";
-// import { selectAppointmentByDate } from "../../../redux/appointment/slice";
+import { useAppointmentQuery } from "../../../hooks/useAppointments";
 
 const List: React.FC<{ selectedDate: Date; onCardViewList: () => void }> = ({
   selectedDate,
   onCardViewList,
 }) => {
   const navigate = useNavigate();
-  // const todaysAppointments = useAppSelector((state) =>
-  //   selectAppointmentByDate(state)(selectedDate)
-  // );
-  // const tomorrowsAppointments = useAppSelector((state) =>
-  //   selectAppointmentByDate(state)(moment(selectedDate).add(1, "day").toDate())
-  // );
+
+  const { data: appointments } = useAppointmentQuery();
+
+  const todaysAppointments = appointments?.filter((appointment) => {
+    return moment(appointment.date).isSame(new Date(), "day");
+  });
+
+  const tomorrowsAppointments = appointments?.filter((appointment) => {
+    return moment(appointment.date).isSame(
+      moment(new Date()).add(1, "day"),
+      "day"
+    );
+  });
+
   return (
     <div className="row">
       <div className="col-xxl-12 col-12">
@@ -47,7 +53,7 @@ const List: React.FC<{ selectedDate: Date; onCardViewList: () => void }> = ({
                 </div>
                 <div className="dropdown-wrapper ">
                   <ul className="notification-board calendar-schedule list-unstyled">
-                    {todaysAppointments.map((appointment) => (
+                    {todaysAppointments?.map((appointment) => (
                       <li className="author-online has-new-message bg-light-200 d-flex align-items-center justify-content-between mw-100">
                         <div className="flex-grow-1 mw-100">
                           <div>
@@ -131,7 +137,7 @@ const List: React.FC<{ selectedDate: Date; onCardViewList: () => void }> = ({
                 </div>
                 <div className="dropdown-wrapper">
                   <ul className="notification-board calendar-schedule list-unstyled">
-                    {tomorrowsAppointments.map((appointment) => (
+                    {tomorrowsAppointments?.map((appointment) => (
                       <li className="author-online has-new-message bg-light-200 d-flex align-items-center justify-content-between mw-100">
                         <div className="flex-grow-1 mw-100">
                           <div>
