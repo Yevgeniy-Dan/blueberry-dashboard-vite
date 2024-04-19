@@ -108,17 +108,10 @@ const AllAppointments = () => {
     <div>
       <div className="row">
         <div className="page-header d-flex align-items-center justify-content-between mr-bottom-30 pt-5">
-          <div className="left-part d-flex align-items-center gap-3 ">
+          <div className="left-part d-flex align-items-center ">
             <div>
               <h2 className="text-dark ">All Appointments</h2>
             </div>
-            <Flatpickr
-              className={`form-control form-select bg-white`}
-              options={{
-                mode: "range",
-                dateFormat: "Y-m-d",
-              }}
-            />
           </div>
           <div>
             <a
@@ -128,6 +121,15 @@ const AllAppointments = () => {
             >
               <i className="bi bi-pie-chart-fill me-1"></i> Download Report
             </a>
+          </div>
+          <div className="col-lg-4 col-md-6 col-sm-12">
+            <Flatpickr
+              className={`form-control form-select bg-primary text-white`}
+              options={{
+                mode: "range",
+                dateFormat: "F j, Y",
+              }}
+            />
           </div>
         </div>
         <div className="p-5">

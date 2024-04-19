@@ -90,7 +90,7 @@ const List: React.FC<{ selectedDate: Date; onCardViewList: () => void }> = ({
                           </div>
                           <div className="d-flex justify-content-between">
                             <div>
-                              <p className="fw-bold">{appointment.staff}</p>
+                              <p className="fw-bold">w/ {appointment.staff}</p>
                             </div>
                             <div>
                               <p className="text-dark">{appointment.service}</p>
@@ -171,7 +171,7 @@ const List: React.FC<{ selectedDate: Date; onCardViewList: () => void }> = ({
                             </UncontrolledButtonDropdown>
                           </div>
                           <div className="d-flex justify-content-between">
-                            <p className="fw-bold">{appointment.staff}</p>
+                            <p className="fw-bold">w/ {appointment.staff}</p>
                             <p className="text-dark">{appointment.service}</p>
                           </div>
                         </div>
