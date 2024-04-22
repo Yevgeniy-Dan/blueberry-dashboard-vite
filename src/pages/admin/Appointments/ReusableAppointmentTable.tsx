@@ -6,7 +6,7 @@ const ReusableAppointmentTable: React.FC<{ table: Table<IAppointment> }> = ({
   table,
 }) => {
   return (
-    <div className="row overflow-auto">
+    <div className="row overflow-auto p-2">
       <div className="row">
         <div className="col-lg-6 d-flex justify-content-start align-items-center gap-3 w-50">
           <label>Show</label>
