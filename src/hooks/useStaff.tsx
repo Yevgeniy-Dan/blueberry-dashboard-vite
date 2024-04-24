@@ -2,7 +2,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { IStaff } from "../interfaces/staff.interface";
 
-export const API_URL = `${import.meta.env.VITE_PUBLIC_API_URL}/staff`;
+export const API_URL = `${import.meta.env.VITE_API_BASE_URL}/staff`;
 
 export type HttpMethod = "put" | "delete" | "post";
 

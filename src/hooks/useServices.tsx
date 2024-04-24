@@ -2,8 +2,8 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { IService } from "../interfaces/service.interface";
 
-export const API_URL = `${import.meta.env.VITE_PUBLIC_API_URL}/services`;
-console.log(import.meta.env.VITE_PUBLIC_API_URL);
+export const API_URL = `${import.meta.env.VITE_API_BASE_URL}/services`;
+console.log(import.meta.env.VITE_API_BASE_URL);
 
 export type HttpMethod = "put" | "delete" | "post";
 

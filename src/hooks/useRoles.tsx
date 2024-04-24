@@ -2,7 +2,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { IRole } from "../interfaces/role.interface";
 
-export const API_URL = `${import.meta.env.VITE_PUBLIC_API_URL}/roles`;
+export const API_URL = `${import.meta.env.VITE_API_BASE_URL}/roles`;
 
 export type HttpMethod = "put" | "delete" | "post";
 

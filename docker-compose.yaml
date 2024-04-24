@@ -5,6 +5,8 @@ services:
     build:
       context: ./dist
       dockerfile: Dockerfile
+      args:
+        - VITE_API_BASE_URL=https://my-json-server.typicode.com/Yevgeniy-Dan/blueberry-dashboard-vite
     container_name: cmp
     image: oredata/cmp
     ports:

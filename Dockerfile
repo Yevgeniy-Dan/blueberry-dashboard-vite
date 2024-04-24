@@ -1,4 +1,8 @@
 FROM node:lts as frontend
+
+ARG VITE_API_BASE_URL
+ENV VITE_API_BASE_URL=$VITE_API_BASE_URL
+
 WORKDIR /app
 COPY . /app
 RUN npm install && npm run build
