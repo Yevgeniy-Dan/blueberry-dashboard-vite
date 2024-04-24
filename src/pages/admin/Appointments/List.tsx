@@ -8,7 +8,8 @@ import {
 import moment from "moment";
 import { ALL_APPOINTMENTS } from "../../../routes/constants";
 import { useNavigate } from "react-router-dom";
-import { useAppointmentQuery } from "../../../hooks/useAppointments";
+import { todays, tomorrows } from "./Data";
+// import { useAppointmentQuery } from "../../../hooks/useAppointments";
 
 const List: React.FC<{ selectedDate: Date; onCardViewList: () => void }> = ({
   selectedDate,
@@ -16,18 +17,21 @@ const List: React.FC<{ selectedDate: Date; onCardViewList: () => void }> = ({
 }) => {
   const navigate = useNavigate();
 
-  const { data: appointments } = useAppointmentQuery();
+  // const { data: appointments } = useAppointmentQuery();
 
-  const todaysAppointments = appointments?.filter((appointment) => {
-    return moment(appointment.date).isSame(new Date(), "day");
-  });
+  // const todaysAppointments = appointments?.filter((appointment) => {
+  //   return moment(appointment.date).isSame(new Date(), "day");
+  // });
 
-  const tomorrowsAppointments = appointments?.filter((appointment) => {
-    return moment(appointment.date).isSame(
-      moment(new Date()).add(1, "day"),
-      "day"
-    );
-  });
+  // const tomorrowsAppointments = appointments?.filter((appointment) => {
+  //   return moment(appointment.date).isSame(
+  //     moment(new Date()).add(1, "day"),
+  //     "day"
+  //   );
+  // });
+
+  const todaysAppointments = todays;
+  const tomorrowsAppointments = tomorrows;
 
   return (
     <div className="row">
