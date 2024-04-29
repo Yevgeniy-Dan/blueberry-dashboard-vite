@@ -4,12 +4,40 @@ import interactionPlugin, { DateClickArg } from "@fullcalendar/interaction";
 import BootstrapTheme from "@fullcalendar/bootstrap5";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
+import { useEffect, useRef } from "react";
+import { onChangeCalendarSize } from "../../../redux/calendar/slice";
 
 const Calendar: React.FC<{
   selectedDate: Date;
   onCalendarDateClick: (info: DateClickArg) => void;
 }> = ({ selectedDate, onCalendarDateClick }) => {
   const navigate = useNavigate();
+
+  const calendar = useRef<FullCalendar | null>(null);
+
+  const { isSizeChanged } = useAppSelector((state) => state.calendar);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    let intervalId: ReturnType<typeof setInterval> | undefined;
+    if (calendar.current && !isSizeChanged) {
+      console.log(isSizeChanged);
+      intervalId = setInterval(() => {
+        if (calendar.current && !isSizeChanged) {
+          console.log("calendar size changed");
+          calendar.current.getApi().updateSize();
+          dispatch(onChangeCalendarSize(true));
+        }
+      }, 500);
+    }
+
+    return () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+    };
+  }, [isSizeChanged, dispatch]);
 
   function handleDateClick(info: DateClickArg): void {
     onCalendarDateClick(info);
@@ -40,6 +68,8 @@ const Calendar: React.FC<{
         </div>
       </div>
       <FullCalendar
+        ref={calendar}
+        windowResizeDelay={2000}
         initialView="dayGridMonth"
         themeSystem="bootstrap5"
         plugins={[BootstrapTheme, dayGridPlugin, interactionPlugin]}
