@@ -105,7 +105,7 @@ const Vertical: React.FC<{
                 location.pathname === BUSINESS_INFO && "active"
               }`}
             >
-              <NavLink to={BUSINESS_INFO}>
+              <NavLink to={BUSINESS_INFO} onClick={() => setApptsToggle(false)}>
                 {" "}
                 <span className="nav-icon flex-shrink-0">
                   <i className="bi bi-bank fs-18"></i>
@@ -118,7 +118,7 @@ const Vertical: React.FC<{
             <li
               className={`menu-item ${location.pathname === STAFF && "active"}`}
             >
-              <NavLink to={STAFF}>
+              <NavLink to={STAFF} onClick={() => setApptsToggle(false)}>
                 {" "}
                 <span className="nav-icon flex-shrink-0">
                   <i className="bi bi-people fs-18"></i>
@@ -131,7 +131,7 @@ const Vertical: React.FC<{
                 location.pathname === SERVICES && "active"
               }`}
             >
-              <NavLink to={SERVICES}>
+              <NavLink to={SERVICES} onClick={() => setApptsToggle(false)}>
                 {" "}
                 <span className="nav-icon flex-shrink-0">
                   <i className="bi bi-tools fs-18"></i>
@@ -144,7 +144,7 @@ const Vertical: React.FC<{
                 location.pathname === CUSTOMERS && "active"
               }`}
             >
-              <NavLink to={CUSTOMERS}>
+              <NavLink to={CUSTOMERS} onClick={() => setApptsToggle(false)}>
                 {" "}
                 <span className="nav-icon flex-shrink-0">
                   <i className="bi bi-tools fs-18"></i>
@@ -157,7 +157,7 @@ const Vertical: React.FC<{
                 location.pathname === ANALYTICS && "active"
               }`}
             >
-              <NavLink to={ANALYTICS}>
+              <NavLink to={ANALYTICS} onClick={() => setApptsToggle(false)}>
                 {" "}
                 <span className="nav-icon flex-shrink-0">
                   <i className="bi bi-graph-up fs-18"></i>
@@ -168,7 +168,7 @@ const Vertical: React.FC<{
             <li
               className={`menu-item ${location.pathname === ROLES && "active"}`}
             >
-              <NavLink to={ROLES}>
+              <NavLink to={ROLES} onClick={() => setApptsToggle(false)}>
                 {" "}
                 <span className="nav-icon flex-shrink-0">
                   <i className="bi bi-shield-check fs-18"></i>
@@ -181,7 +181,10 @@ const Vertical: React.FC<{
                 location.pathname === ENABLE_PAYMENTS && "active"
               }`}
             >
-              <NavLink to={ENABLE_PAYMENTS}>
+              <NavLink
+                to={ENABLE_PAYMENTS}
+                onClick={() => setApptsToggle(false)}
+              >
                 {" "}
                 <span className="nav-icon flex-shrink-0">
                   <i className="bi bi-credit-card fs-18"></i>

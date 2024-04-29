@@ -58,14 +58,19 @@ const List: React.FC<{ selectedDate: Date; onCardViewList: () => void }> = ({
                 <div className="dropdown-wrapper ">
                   <ul className="notification-board calendar-schedule list-unstyled">
                     {todaysAppointments?.map((appointment) => (
-                      <li className="author-online has-new-message bg-light-200 d-flex align-items-center justify-content-between mw-100">
+                      <li
+                        className="author-online has-new-message bg-light-200 d-flex align-items-center justify-content-between mw-100"
+                        style={{
+                          maxHeight: "215px",
+                        }}
+                      >
                         <div className="flex-grow-1 mw-100">
                           <div>
                             <p className="text-center fw-bold fs-18">
                               {moment(appointment.time).format("h:mmA")}
                             </p>
                           </div>
-                          <div className="d-flex justify-content-between">
+                          <div className="d-flex justify-content-between align-items-center">
                             <p
                               className="fw-bold d-inline-block text-truncate"
                               style={{
@@ -92,16 +97,24 @@ const List: React.FC<{ selectedDate: Date; onCardViewList: () => void }> = ({
                               </DropdownMenu>
                             </UncontrolledButtonDropdown>
                           </div>
-                          <div className="d-flex justify-content-between">
+                          <div className="d-flex justify-content-between align-items-center">
                             <div>
-                              <p className="fw-bold">w/ {appointment.staff}</p>
+                              <p className="fw-bold">w/ </p>
+                            </div>
+                            <div>
+                              <p className="text-dark"></p>
+                            </div>
+                          </div>
+                          <div className="d-flex justify-content-between align-items-center">
+                            <div>
+                              <p>{appointment.staff}</p>
                             </div>
                             <div>
                               <p className="text-dark">{appointment.service}</p>
                             </div>
                           </div>
                         </div>
-                        <UncontrolledButtonDropdown className="float-right align-self-start">
+                        <UncontrolledButtonDropdown className="float-right align-self-start uncontrolled-btn-dropdown">
                           <DropdownToggle
                             tag="a"
                             className="fs-24 text-gray cursor-pointer"
@@ -142,14 +155,19 @@ const List: React.FC<{ selectedDate: Date; onCardViewList: () => void }> = ({
                 <div className="dropdown-wrapper">
                   <ul className="notification-board calendar-schedule list-unstyled">
                     {tomorrowsAppointments?.map((appointment) => (
-                      <li className="author-online has-new-message bg-light-200 d-flex align-items-center justify-content-between mw-100">
+                      <li
+                        className="author-online has-new-message bg-light-200 d-flex align-items-center justify-content-between mw-100"
+                        style={{
+                          maxHeight: "215px",
+                        }}
+                      >
                         <div className="flex-grow-1 mw-100">
                           <div>
                             <p className="text-center fw-bold fs-18">
                               {moment(appointment.time).format("h:mmA")}
                             </p>
                           </div>
-                          <div className="d-flex justify-content-between">
+                          <div className="d-flex justify-content-between align-items-center">
                             <p
                               className="fw-bold d-inline-block text-truncate"
                               style={{ width: "150px" }}
@@ -174,12 +192,20 @@ const List: React.FC<{ selectedDate: Date; onCardViewList: () => void }> = ({
                               </DropdownMenu>
                             </UncontrolledButtonDropdown>
                           </div>
-                          <div className="d-flex justify-content-between">
-                            <p className="fw-bold">w/ {appointment.staff}</p>
+                          <div className="d-flex justify-content-between align-items-center">
+                            <div>
+                              <p className="fw-bold">w/ </p>
+                            </div>
+                            <div>
+                              <p className="text-dark"></p>
+                            </div>
+                          </div>
+                          <div className="d-flex justify-content-between align-items-center">
+                            <p>{appointment.staff}</p>
                             <p className="text-dark">{appointment.service}</p>
                           </div>
                         </div>
-                        <UncontrolledButtonDropdown className="float-right align-self-start">
+                        <UncontrolledButtonDropdown className="float-right align-self-start uncontrolled-btn-dropdown">
                           <DropdownToggle
                             tag="a"
                             className="fs-24 text-gray cursor-pointer"

@@ -8,3 +8,8 @@
 .header-dropdown {
   transform: translateX(-75%) !important;
 }
+
+.uncontrolled-btn-dropdown a {
+  position: absolute;
+  right: -15px;
+}
