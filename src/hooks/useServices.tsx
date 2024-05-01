@@ -3,14 +3,11 @@ import axios from "axios";
 import { IService } from "../interfaces/service.interface";
 
 export const API_URL = `${import.meta.env.VITE_API_BASE_URL}/services`;
-console.log(import.meta.env.VITE_API_BASE_URL);
 
 export type HttpMethod = "put" | "delete" | "post";
 
 const getServices = async (): Promise<IService[]> => {
   const response = await axios.get(`${API_URL}`);
-
-  console.log(response.data);
 
   return response.data;
 };

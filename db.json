@@ -106,11 +106,7 @@
       "duration": "3 Hours",
       "price": 24,
       "currencyCode": "USD",
-      "staffMembers": [
-        "Tiara Johnston",
-        "Tommie Durgan-Gottlieb",
-        "Tillman Ratke"
-      ],
+      "staffMembers": ["John Smith", "Emma Johnson", "Sophia Jones"],
       "isNoPreferenceEnabled": false
     },
     {
@@ -119,7 +115,7 @@
       "duration": "2 Hours",
       "price": 11,
       "currencyCode": "USD",
-      "staffMembers": ["Una Durgan", "Presley Skiles", "Roger Fadel"],
+      "staffMembers": ["William Brown", "Olivia Davis", "James Miller"],
       "isNoPreferenceEnabled": true
     },
     {
@@ -128,7 +124,7 @@
       "duration": "1.5 Hours",
       "price": 39,
       "currencyCode": "USD",
-      "staffMembers": ["Evelyn Wolf", "Zaria Leffler", "Alexander Schultz"],
+      "staffMembers": ["Olivia Davis", "Michael Williams", "Alexander Moore"],
       "isNoPreferenceEnabled": true
     },
     {
@@ -137,7 +133,7 @@
       "duration": "45 Mins",
       "price": 10,
       "currencyCode": "USD",
-      "staffMembers": ["Carlo Keebler", "Rosamond Rodriguez", "Ethel Funk"],
+      "staffMembers": ["Ava Wilson", "Isabella Taylor", "James Miller"],
       "isNoPreferenceEnabled": false
     },
     {
@@ -146,7 +142,7 @@
       "duration": "1.5 Hours",
       "price": 15,
       "currencyCode": "USD",
-      "staffMembers": ["Llewellyn Hoeger", "Vanessa Effertz", "Oswaldo Feest"],
+      "staffMembers": ["Ava Wilson", "Sophia Jones", "John Smith"],
       "isNoPreferenceEnabled": true
     }
   ],

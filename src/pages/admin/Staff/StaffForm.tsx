@@ -5,8 +5,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { IStaff } from "../../../interfaces/staff.interface";
 import { useStaffMutation, useStaffQuery } from "../../../hooks/useStaff";
-
-const days = ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"];
+import { days } from "./data";
 
 const StaffForm = () => {
   const { userId } = useParams();
@@ -18,6 +17,7 @@ const StaffForm = () => {
   const id = userId || randomId;
 
   const staff = staffList?.find((staff) => staff.id === id);
+  console.log(staff);
 
   const navigate = useNavigate();
 
@@ -223,30 +223,21 @@ const StaffForm = () => {
                           <input
                             className={`form-check-input`}
                             type="checkbox"
-                            id={`checkbox_${day}`}
-                            value={day}
-                            checked={formik.values.selectedDays.includes(day)}
+                            id={`checkbox_${day.value}`}
+                            value={day.value}
+                            checked={formik.values.selectedDays.includes(
+                              day.value
+                            )}
                             onChange={handleDayCheckboxChange}
                           />
-                          <label className="form-check-label" htmlFor={day}>
-                            {day}
+                          <label
+                            className="form-check-label"
+                            htmlFor={day.label}
+                          >
+                            {day.label}
                           </label>
                         </div>
                       ))}
-                      {/* <span className="badge d-flex align-items-center text-dark rounded-0 rounded-start py-2 px-3 border border-light-200 fs-16">
-                              <i className="bi bi-telephone"></i>
-                            </span>
-                            <ReactSelect
-                              name="daysOff"
-                              closeMenuOnSelect={false}
-                              isMulti
-                              options={days}
-                              onChange={(days) => {
-                                const values = days.map((day) => day.value);
-                                setSelectedDays(values);
-                              }}
-                              className="form-control"
-                            /> */}
                     </div>
                   </div>
                 </div>

@@ -58,7 +58,7 @@ const ServiceForm = () => {
   const formik = useFormik({
     initialValues: {
       name: service ? service.name : "",
-      currency: currencyCodesOptions[0],
+      currency: service?.currencyCode || currencyCodesOptions[0],
       duration: service ? service.duration : "",
       price: service ? service.price : null,
       staffMembers: service ? service.staffMembers : [],
@@ -184,9 +184,7 @@ const ServiceForm = () => {
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                       >
-                        <option selected disabled value="">
-                          Select...
-                        </option>
+                        <option disabled>Select...</option>
                         {timeOptions.map((state, index) => (
                           <option key={index}>{state.label}</option>
                         ))}
@@ -219,10 +217,9 @@ const ServiceForm = () => {
                           id="currency"
                           name="currency"
                           onChange={formik.handleChange}
+                          defaultValue={service?.currencyCode}
                         >
-                          <option selected disabled value="">
-                            Select...
-                          </option>
+                          <option disabled>Select...</option>
                           {currencyCodesOptions.map((state, index) => (
                             <option key={index}>{state}</option>
                           ))}
@@ -284,11 +281,18 @@ const ServiceForm = () => {
                         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                         // @ts-expect-error
                         options={staffDummyData}
-                        value={formik.values.staffMembers}
+                        value={formik.values.staffMembers.map((option) => {
+                          return {
+                            value: staffDummyData.find(
+                              (s) => s.label === option
+                            ),
+                            label: option,
+                          };
+                        })}
                         onChange={(selectedOptions) => {
                           formik.setFieldValue(
                             "staffMembers",
-                            selectedOptions.map((option) => option)
+                            selectedOptions.map((option) => option.label)
                           );
                         }}
                         onBlur={formik.handleBlur}
