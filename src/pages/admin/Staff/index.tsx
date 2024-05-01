@@ -1,18 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import { IStaff } from "../../../interfaces/staff.interface";
-import { useStaffMutation, useStaffQuery } from "../../../hooks/useStaff";
+import Table from "./Table";
 
 const Staff = () => {
-  const { data: staffList } = useStaffQuery();
-  const { mutate } = useStaffMutation();
-
   const navigate = useNavigate();
-  function removeStaffHandler(staff: IStaff): void {
-    mutate({
-      method: "delete",
-      staff,
-    });
-  }
 
   return (
     <div>
@@ -35,55 +25,7 @@ const Staff = () => {
             </button>
           </div>
           <div className="card-body">
-            <div className="tab-content">
-              <div
-                // className="tab-pane fade active show"
-                id="result1"
-                role="tabpanel"
-              >
-                <table className="table" style={{ minWidth: "500px" }}>
-                  <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Name</th>
-                      <th scope="col">Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {staffList?.map((staffItem, index) => (
-                      <tr>
-                        <th scope="row">{index + 1}</th>
-                        <td>{staffItem.name}</td>
-                        <td>
-                          <div className="d-flex gap-3">
-                            <button
-                              type="button"
-                              className="btn p-0  btn-link"
-                              onClick={() => {
-                                navigate(`./add/${staffItem.id}`);
-                              }}
-                            >
-                              <span className="py-2 fs-20">
-                                <i className="bi bi-pencil-square"></i>
-                              </span>
-                            </button>
-                            <button
-                              type="button"
-                              className="btn p-0 btn-link"
-                              onClick={() => removeStaffHandler(staffItem)}
-                            >
-                              <span className="py-2 fs-20">
-                                <i className="bi bi-trash"></i>
-                              </span>
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
+            <Table />
           </div>
         </div>
       </section>

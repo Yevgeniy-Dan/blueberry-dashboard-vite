@@ -5,9 +5,16 @@
 import logo from "../assets/images/logo.png";
 // import search from "../assets/images/search.svg";
 import { NavLink } from "react-router-dom";
+import {
+  DropdownMenu,
+  DropdownToggle,
+  UncontrolledButtonDropdown,
+} from "reactstrap";
+
 import { useState } from "react";
 import { useAppSelector } from "../hooks/redux";
 import AppointmentSearchBar from "../components/AppointmentSearchBar";
+import { NOTIFICATIONS } from "../routes/constants";
 
 const Default: React.FC<{
   onToggleCollapse: () => void;
@@ -37,90 +44,92 @@ const Default: React.FC<{
           <div className="header-right-part d-flex align-items-center flex-shrink-0">
             <ul className="nav-elements d-flex align-items-center list-unstyled m-0 p-0">
               <li className="nav-item nav-notification dropdown">
-                <a
-                  href="#"
-                  className="nav-toggler"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <i className="bi bi-bell-fill text-secondary"></i>
-                  <div className="badge rounded-circle bg-secondary">12</div>
-                </a>
-                <div className="dropdown-widget dropdown-menu p-0">
-                  <div className="dropdown-wrapper pd-50">
-                    <div className="dropdown-wrapper--title">
-                      <h4 className="d-flex align-items-center justify-content-between">
-                        Notifications <a href="#">View All</a>
-                      </h4>
+                <UncontrolledButtonDropdown>
+                  <DropdownToggle
+                    tag="a"
+                    className="nav-toggler cursor-pointer"
+                  >
+                    <i className="bi bi-bell-fill text-primary"></i>
+                    <div className="badge rounded-circle bg-primary text-secondary">
+                      12
                     </div>
-                    <ul className="notification-board list-unstyled">
-                      <li className="author-online has-new-message d-flex gap-3">
-                        <div className="media bg-primary text-white">
-                          <i className="bi bi-lightning"></i>
-                        </div>
-                        <div className="user-message">
-                          <h6 className="message">
-                            <a href="#">Jackie Kun</a> mentioned you at{" "}
-                            <a href="#">Blueberry Projects</a>
-                          </h6>
-                          <p className="message-footer d-flex align-items-center justify-content-between">
-                            {" "}
-                            <span className="fs-14 text-gray fw-normal">
-                              2m ago
-                            </span>{" "}
-                            <span>Mark as read</span>
-                          </p>
-                        </div>
-                      </li>
-                      <li className="author-online has-new-message d-flex gap-3">
-                        <div className="media bg-secondary text-white">
-                          <i className="bi bi-lightning"></i>
-                        </div>
-                        <div className="user-message">
-                          <h6 className="message">
-                            <a href="#">Olivia Johanna</a> has created new task
-                            at <a href="#">Blueberry Projects</a>
-                          </h6>
-                          <p className="message-footer d-flex align-items-center justify-content-between">
-                            {" "}
-                            <span className="fs-14 text-gray fw-normal">
-                              2m ago
-                            </span>{" "}
-                            <span>Mark as read</span>
-                          </p>
-                        </div>
-                      </li>
-                      <li className="author-online has-new-message d-flex gap-3">
-                        <div className="media media-outline-red text-red">
-                          <i className="bi bi-clock-fill"></i>
-                        </div>
-                        <div className="user-message">
-                          <h6 className="message">
-                            [REMINDER] Due date of{" "}
-                            <a href="#">Highspeed Studios Projects</a> te task
-                            will be coming
-                          </h6>
-                          <p className="message-footer d-flex align-items-center justify-content-between">
-                            {" "}
-                            <span className="fs-14 text-gray fw-normal">
-                              2m ago
-                            </span>{" "}
-                            <span>Mark as read</span>
-                          </p>
-                        </div>
-                      </li>
-                    </ul>
-                    <h6 className="all-notifications">
-                      {" "}
-                      <a
-                        href="#"
-                        className="btn bg-muted text-primary w-100 fw-bold mt-3 ff-heading px-0"
-                      >
-                        View All Notifications
-                      </a>{" "}
-                    </h6>
-                  </div>
-                </div>
+                  </DropdownToggle>
+                  <DropdownMenu className="dropdown-widget dropdown-menu  p-0">
+                    <div className="dropdown-wrapper pd-50">
+                      <div className="dropdown-wrapper--title">
+                        <h4 className="d-flex align-items-center justify-content-between">
+                          Notifications <a href="#">View All</a>
+                        </h4>
+                      </div>
+                      <ul className="notification-board list-unstyled">
+                        <li className="author-online has-new-message d-flex gap-3">
+                          <div className="media bg-primary text-white">
+                            <i className="bi bi-lightning"></i>
+                          </div>
+                          <div className="user-message">
+                            <h6 className="message">
+                              <a href="#">Jackie Kun</a> mentioned you at{" "}
+                              <a href="#">Blueberry Projects</a>
+                            </h6>
+                            <p className="message-footer d-flex align-items-center justify-content-between">
+                              {" "}
+                              <span className="fs-14 text-gray fw-normal">
+                                2m ago
+                              </span>{" "}
+                              <span>Mark as read</span>
+                            </p>
+                          </div>
+                        </li>
+                        <li className="author-online has-new-message d-flex gap-3">
+                          <div className="media bg-secondary text-white">
+                            <i className="bi bi-lightning"></i>
+                          </div>
+                          <div className="user-message">
+                            <h6 className="message">
+                              <a href="#">Olivia Johanna</a> has created new
+                              task at <a href="#">Blueberry Projects</a>
+                            </h6>
+                            <p className="message-footer d-flex align-items-center justify-content-between">
+                              {" "}
+                              <span className="fs-14 text-gray fw-normal">
+                                2m ago
+                              </span>{" "}
+                              <span>Mark as read</span>
+                            </p>
+                          </div>
+                        </li>
+                        <li className="author-online has-new-message d-flex gap-3">
+                          <div className="media media-outline-red text-red">
+                            <i className="bi bi-clock-fill"></i>
+                          </div>
+                          <div className="user-message">
+                            <h6 className="message">
+                              [REMINDER] Due date of{" "}
+                              <a href="#">Highspeed Studios Projects</a> te task
+                              will be coming
+                            </h6>
+                            <p className="message-footer d-flex align-items-center justify-content-between">
+                              {" "}
+                              <span className="fs-14 text-gray fw-normal">
+                                2m ago
+                              </span>{" "}
+                              <span>Mark as read</span>
+                            </p>
+                          </div>
+                        </li>
+                      </ul>
+                      <h6 className="all-notifications">
+                        {" "}
+                        <NavLink
+                          to={NOTIFICATIONS}
+                          className="btn bg-muted text-primary w-100 fw-bold mt-3 ff-heading px-0"
+                        >
+                          View All Notifications
+                        </NavLink>{" "}
+                      </h6>
+                    </div>
+                  </DropdownMenu>
+                </UncontrolledButtonDropdown>
               </li>
 
               <li className="nav-item nav-author">
@@ -259,90 +268,92 @@ const Default: React.FC<{
                 </button>
               </li>
               <li className="nav-item nav-notification dropdown">
-                <a
-                  href="#"
-                  className="nav-toggler"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <i className="bi bi-bell-fill text-primary"></i>
-                  <div className="badge rounded-circle bg-primary">12</div>
-                </a>
-                <div className="dropdown-widget dropdown-menu p-0">
-                  <div className="dropdown-wrapper pd-50">
-                    <div className="dropdown-wrapper--title">
-                      <h4 className="d-flex align-items-center justify-content-between">
-                        Notifications <a href="#">View All</a>
-                      </h4>
+                <UncontrolledButtonDropdown>
+                  <DropdownToggle
+                    tag="a"
+                    className="nav-toggler cursor-pointer"
+                  >
+                    <i className="bi bi-bell-fill text-primary"></i>
+                    <div className="badge rounded-circle bg-primary text-secondary">
+                      12
                     </div>
-                    <ul className="notification-board list-unstyled">
-                      <li className="author-online has-new-message d-flex gap-3">
-                        <div className="media bg-primary text-white">
-                          <i className="bi bi-lightning"></i>
-                        </div>
-                        <div className="user-message">
-                          <h6 className="message">
-                            <a href="#">Jackie Kun</a> mentioned you at{" "}
-                            <a href="#">Blueberry Projects</a>
-                          </h6>
-                          <p className="message-footer d-flex align-items-center justify-content-between">
-                            {" "}
-                            <span className="fs-14 text-gray fw-normal">
-                              2m ago
-                            </span>{" "}
-                            <span>Mark as read</span>
-                          </p>
-                        </div>
-                      </li>
-                      <li className="author-online has-new-message d-flex gap-3">
-                        <div className="media bg-secondary text-white">
-                          <i className="bi bi-lightning"></i>
-                        </div>
-                        <div className="user-message">
-                          <h6 className="message">
-                            <a href="#">Olivia Johanna</a> has created new task
-                            at <a href="#">Blueberry Projects</a>
-                          </h6>
-                          <p className="message-footer d-flex align-items-center justify-content-between">
-                            {" "}
-                            <span className="fs-14 text-gray fw-normal">
-                              2m ago
-                            </span>{" "}
-                            <span>Mark as read</span>
-                          </p>
-                        </div>
-                      </li>
-                      <li className="author-online has-new-message d-flex gap-3">
-                        <div className="media media-outline-red text-red">
-                          <i className="bi bi-clock-fill"></i>
-                        </div>
-                        <div className="user-message">
-                          <h6 className="message">
-                            [REMINDER] Due date of{" "}
-                            <a href="#">Highspeed Studios Projects</a> te task
-                            will be coming
-                          </h6>
-                          <p className="message-footer d-flex align-items-center justify-content-between">
-                            {" "}
-                            <span className="fs-14 text-gray fw-normal">
-                              2m ago
-                            </span>{" "}
-                            <span>Mark as read</span>
-                          </p>
-                        </div>
-                      </li>
-                    </ul>
-                    <h6 className="all-notifications">
-                      {" "}
-                      <a
-                        href="#"
-                        className="btn bg-muted text-primary w-100 fw-bold mt-3 ff-heading px-0"
-                      >
-                        View All Notifications
-                      </a>{" "}
-                    </h6>
-                  </div>
-                </div>
+                  </DropdownToggle>
+                  <DropdownMenu className="dropdown-widget dropdown-menu  p-0">
+                    <div className="dropdown-wrapper pd-50">
+                      <div className="dropdown-wrapper--title">
+                        <h4 className="d-flex align-items-center justify-content-between">
+                          Notifications <a href="#">View All</a>
+                        </h4>
+                      </div>
+                      <ul className="notification-board list-unstyled">
+                        <li className="author-online has-new-message d-flex gap-3">
+                          <div className="media bg-primary text-white">
+                            <i className="bi bi-lightning"></i>
+                          </div>
+                          <div className="user-message">
+                            <h6 className="message">
+                              <a href="#">Jackie Kun</a> mentioned you at{" "}
+                              <a href="#">Blueberry Projects</a>
+                            </h6>
+                            <p className="message-footer d-flex align-items-center justify-content-between">
+                              {" "}
+                              <span className="fs-14 text-gray fw-normal">
+                                2m ago
+                              </span>{" "}
+                              <span>Mark as read</span>
+                            </p>
+                          </div>
+                        </li>
+                        <li className="author-online has-new-message d-flex gap-3">
+                          <div className="media bg-secondary text-white">
+                            <i className="bi bi-lightning"></i>
+                          </div>
+                          <div className="user-message">
+                            <h6 className="message">
+                              <a href="#">Olivia Johanna</a> has created new
+                              task at <a href="#">Blueberry Projects</a>
+                            </h6>
+                            <p className="message-footer d-flex align-items-center justify-content-between">
+                              {" "}
+                              <span className="fs-14 text-gray fw-normal">
+                                2m ago
+                              </span>{" "}
+                              <span>Mark as read</span>
+                            </p>
+                          </div>
+                        </li>
+                        <li className="author-online has-new-message d-flex gap-3">
+                          <div className="media media-outline-red text-red">
+                            <i className="bi bi-clock-fill"></i>
+                          </div>
+                          <div className="user-message">
+                            <h6 className="message">
+                              [REMINDER] Due date of{" "}
+                              <a href="#">Highspeed Studios Projects</a> te task
+                              will be coming
+                            </h6>
+                            <p className="message-footer d-flex align-items-center justify-content-between">
+                              {" "}
+                              <span className="fs-14 text-gray fw-normal">
+                                2m ago
+                              </span>{" "}
+                              <span>Mark as read</span>
+                            </p>
+                          </div>
+                        </li>
+                      </ul>
+                      <h6 className="all-notifications">
+                        {" "}
+                        <NavLink
+                          to={NOTIFICATIONS}
+                          className="btn bg-muted text-primary w-100 fw-bold mt-3 ff-heading px-0"
+                        >
+                          View All Notifications
+                        </NavLink>{" "}
+                      </h6>
+                    </div>
+                  </DropdownMenu>
+                </UncontrolledButtonDropdown>
               </li>
 
               <li className="nav-item nav-settings">

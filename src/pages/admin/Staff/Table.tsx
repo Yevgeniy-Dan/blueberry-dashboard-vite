@@ -22,18 +22,15 @@ import {
 
 import { useEffect, useMemo, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { SERVICES } from "../../../routes/constants";
+import { STAFF } from "../../../routes/constants";
 
 import sortAscPng from "../../../assets/images/sort_asc.png";
 import sortDescPng from "../../../assets/images/sort_desc.png";
 import sortBothPng from "../../../assets/images/sort_both.png";
-import { IService } from "../../../interfaces/service.interface";
-import {
-  useServiceMutation,
-  useServiceQuery,
-} from "../../../hooks/useServices";
+
 import { useQueryClient } from "@tanstack/react-query";
-import getSymbolFromCurrency from "currency-symbol-map";
+import { useStaffMutation, useStaffQuery } from "../../../hooks/useStaff";
+import { IStaff } from "../../../interfaces/staff.interface";
 
 declare module "@tanstack/react-table" {
   interface FilterFns {
@@ -81,20 +78,20 @@ const Table = () => {
     return dir === 0 ? sortingFns.alphanumeric(rowA, rowB, columnId) : dir;
   };
 
-  const { data: services } = useServiceQuery();
-  const { mutate } = useServiceMutation();
+  const { data: staff } = useStaffQuery();
+  const { mutate } = useStaffMutation();
 
-  const removeServiceHandler = useMemo(() => {
-    return (service: IService) => {
+  const removeStaffHandler = useMemo(() => {
+    return (staff: IStaff) => {
       mutate({
         method: "delete",
-        service,
+        staff,
       });
     };
   }, [mutate]);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const columns = useMemo<ColumnDef<IService, any>[]>(
+  const columns = useMemo<ColumnDef<IStaff, any>[]>(
     () => [
       {
         accessorKey: "name",
@@ -102,46 +99,32 @@ const Table = () => {
         sortingFn: fuzzySort,
       },
       {
-        accessorKey: "duration",
-        header: "Duration",
+        accessorKey: "phoneNumber",
+        header: "Phone Number",
         enableSorting: false,
       },
       {
-        accessorKey: "price",
-        header: "Price",
-        cell: ({ row }) => {
-          const price: string = row.getValue("price");
-          const currencyCode = row.original.currencyCode;
-          return (
-            <span>
-              {getSymbolFromCurrency(currencyCode)}
-              {parseFloat(price).toFixed(2)}
-            </span>
-          );
-        },
+        accessorKey: "email",
+        header: "Email",
       },
       {
-        accessorKey: "staffMembers",
-        header: "Staff",
+        accessorKey: "daysOff",
+        header: "Days Off",
         enableSorting: false,
       },
       {
         header: "Actions",
         cell: ({ row }) => (
           <div>
-            <NavLink to="/" className="action-icon">
-              {" "}
-              <i className="bi bi-eye"></i>
-            </NavLink>
             <NavLink
-              to={`${SERVICES}/add/${row.original.id}`}
+              to={`${STAFF}/add/${row.original.id}`}
               className="action-icon"
             >
               {" "}
               <i className="bi bi-pencil-square"></i>
             </NavLink>
             <button
-              onClick={() => removeServiceHandler(row.original)}
+              onClick={() => removeStaffHandler(row.original)}
               className="btn p-0 btn-link"
             >
               {" "}
@@ -151,7 +134,7 @@ const Table = () => {
         ),
       },
     ],
-    [removeServiceHandler]
+    [removeStaffHandler]
   );
 
   const [pagination, setPagination] = useState({
@@ -164,7 +147,7 @@ const Table = () => {
   const table = useReactTable({
     debugAll: false,
     columns,
-    data: services || [],
+    data: staff || [],
     filterFns: {
       fuzzy: fuzzyFilter,
     },

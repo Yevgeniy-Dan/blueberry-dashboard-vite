@@ -10,6 +10,7 @@ import {
   BUSINESS_INFO,
   CANCELED_APPOINTMENTS,
   CUSTOMERS,
+  NOTIFICATIONS,
   ROLES,
   SERVICES,
   STAFF,
@@ -27,6 +28,7 @@ import AllAppointments from "../pages/admin/Appointments/All";
 import CanceledAppointments from "../pages/admin/Appointments/Canceled";
 import { isUserAuthenticated } from "../heplers/authUtils";
 import { Navigate } from "react-router-dom";
+import Notifications from "../pages/admin/AppNotifications";
 
 export const SignIn = lazy(() => import("../pages/auth/SignIn"));
 export const SignUp = lazy(() => import("../pages/auth/SignUp"));
@@ -256,6 +258,16 @@ const dashboardRoutes = [
       <PrivateRoute>
         <Suspense fallback={<Preloader />}>
           <Analytics />
+        </Suspense>
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: `${NOTIFICATIONS}`,
+    element: (
+      <PrivateRoute>
+        <Suspense fallback={<Preloader />}>
+          <Notifications />
         </Suspense>
       </PrivateRoute>
     ),

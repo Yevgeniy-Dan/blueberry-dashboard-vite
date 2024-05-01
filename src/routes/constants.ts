@@ -8,3 +8,4 @@ export const CUSTOMERS = "/dashboard/customers";
 export const ANALYTICS = "/dashboard/analytics";
 export const ROLES = "/dashboard/roles";
 export const ENABLE_PAYMENTS = "/dashboard/enable-payments";
+export const NOTIFICATIONS = "/dashboard/notifications";
