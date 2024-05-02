@@ -3,7 +3,7 @@ const Notifications = () => {
     <div>
       <div className="page-header d-flex align-items-center justify-content-between mr-bottom-30">
         <div className="left-part">
-          <h2 className="text-dark">Notification list</h2>
+          <h2 className="text-dark">Notifications</h2>
         </div>
       </div>
 

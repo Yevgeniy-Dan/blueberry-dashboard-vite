@@ -96,8 +96,9 @@ const TotalBalance = () => {
               width={180}
             /> */}
             {/* <div> */}
-            <h4 className="mb-3  text-white text-center">Total Revenue</h4>
-            <h2 className="fs-38 mb-0  text-white">$21,560.57</h2>
+            <h2 className="fs-38 mb-0  text-white lh-base">
+              Total Revenue: $21,560.57
+            </h2>
             {/* </div> */}
           </div>
         </div>

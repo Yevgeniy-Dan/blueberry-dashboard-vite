@@ -68,3 +68,11 @@
   font-weight: bold;
   color: $white;
 }
+
+.flatpickr-month .flatpickr-current-month .flatpickr-monthDropdown-months {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-align: center;
+  margin: 0;
+}

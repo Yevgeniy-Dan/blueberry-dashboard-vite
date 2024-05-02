@@ -15,10 +15,16 @@ import DaysOfWeek from "./DaysOfWeek";
 
 const Analytics = () => {
   const [showCustomDatePicker, setShowCustomDatePicker] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("today");
 
   function handleDateClick(/*arg: DateClickArg*/): void {
     setShowCustomDatePicker(false);
+    handleOptionSelect("custom");
   }
+
+  const handleOptionSelect = (option: string) => {
+    setSelectedOption(option);
+  };
 
   return (
     <div>
@@ -44,11 +50,34 @@ const Analytics = () => {
             </DropdownToggle>
 
             <DropdownMenu right>
-              <DropdownItem>Today</DropdownItem>
-              <DropdownItem>Yesterday</DropdownItem>
-              <DropdownItem>Weekly</DropdownItem>
-              <DropdownItem>Monthly</DropdownItem>
-              <DropdownItem onClick={() => setShowCustomDatePicker(true)}>
+              <DropdownItem
+                active={selectedOption === "today"}
+                onClick={() => handleOptionSelect("today")}
+              >
+                Today
+              </DropdownItem>
+              <DropdownItem
+                active={selectedOption === "yesterday"}
+                onClick={() => handleOptionSelect("yesterday")}
+              >
+                Yesterday
+              </DropdownItem>
+              <DropdownItem
+                active={selectedOption === "weekly"}
+                onClick={() => handleOptionSelect("weekly")}
+              >
+                Weekly
+              </DropdownItem>
+              <DropdownItem
+                active={selectedOption === "monthly"}
+                onClick={() => handleOptionSelect("monthly")}
+              >
+                Monthly
+              </DropdownItem>
+              <DropdownItem
+                active={selectedOption === "custom"}
+                onClick={() => setShowCustomDatePicker(true)}
+              >
                 Custom
               </DropdownItem>
             </DropdownMenu>

@@ -125,10 +125,11 @@ const AllAppointments = () => {
           <div className="col-lg-3 col-md-4 col-sm-4">
             <Flatpickr
               placeholder="Select Date Range"
-              className={`form-control  flatpickr-input bg-primary text-white fs-18 fw-bold`}
+              className={`form-control  flatpickr-input bg-primary text-center text-white fs-18 fw-bold`}
               options={{
                 mode: "range",
                 dateFormat: "F j, Y",
+                position: "auto center",
               }}
             />
           </div>
