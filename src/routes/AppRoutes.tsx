@@ -24,7 +24,7 @@ const AppRoutes = () => {
   const Layout = getLayout();
 
   return (
-    <BrowserRouter basename={"/admin"}>
+    <BrowserRouter basename={"/"}>
       <Layout>
         <Routes>
           {allRoutes.map((route, index) => (
