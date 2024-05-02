@@ -50,7 +50,7 @@ const Default: React.FC<{
                     className="nav-toggler cursor-pointer"
                   >
                     <i className="bi bi-bell-fill text-primary"></i>
-                    <div className="badge rounded-circle bg-primary text-secondary">
+                    <div className="badge rounded-circle bg-secondary text-primary">
                       12
                     </div>
                   </DropdownToggle>
@@ -274,7 +274,7 @@ const Default: React.FC<{
                     className="nav-toggler cursor-pointer"
                   >
                     <i className="bi bi-bell-fill text-primary"></i>
-                    <div className="badge rounded-circle bg-primary text-secondary">
+                    <div className="badge rounded-circle bg-secondary text-primary">
                       12
                     </div>
                   </DropdownToggle>

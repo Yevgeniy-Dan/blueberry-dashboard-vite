@@ -122,10 +122,10 @@ const AllAppointments = () => {
               <i className="bi bi-pie-chart-fill me-1"></i> Download Report
             </a>
           </div>
-          <div className="col-lg-4 col-md-6 col-sm-12">
+          <div className="col-lg-3 col-md-4 col-sm-4">
             <Flatpickr
               placeholder="Select Date Range"
-              className={`form-control  flatpickr-input bg-primary text-white`}
+              className={`form-control  flatpickr-input bg-primary text-white fs-18 fw-bold`}
               options={{
                 mode: "range",
                 dateFormat: "F j, Y",

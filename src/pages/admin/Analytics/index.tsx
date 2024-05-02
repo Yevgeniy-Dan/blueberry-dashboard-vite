@@ -11,6 +11,7 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import BootstrapTheme from "@fullcalendar/bootstrap5";
+import DaysOfWeek from "./DaysOfWeek";
 
 const Analytics = () => {
   const [showCustomDatePicker, setShowCustomDatePicker] = useState(false);
@@ -77,6 +78,9 @@ const Analytics = () => {
         </div>
         <div className="col-xxl-6 col-lg-12">
           <InvoicesStatistic />
+        </div>
+        <div className="col-xxl-12 col-lg-12">
+          <DaysOfWeek />
         </div>
       </div>
     </div>

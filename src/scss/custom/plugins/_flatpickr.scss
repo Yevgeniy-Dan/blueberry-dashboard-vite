@@ -64,5 +64,7 @@
 }
 
 .flatpickr-input::placeholder {
+  font-size: 1rem;
+  font-weight: bold;
   color: $white;
 }

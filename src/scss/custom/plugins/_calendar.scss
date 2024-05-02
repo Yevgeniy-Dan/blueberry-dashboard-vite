@@ -20,6 +20,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: transparent !important;
+}
+
+.fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-top .fc-daygrid-day-number {
+  width: 130px;
 }
 
 .fc .fc-dayGridMonth-button {
@@ -72,21 +77,21 @@
   cursor: pointer;
 }
 
-.fc .fc-daygrid-day-number.today {
-  color: $primary;
+.not-selected.today {
+  color: $primary !important;
+  background-color: transparent !important;
+  height: 30px;
+  width: 30px;
 }
 
-/* Add a new style to highlight the selected date */
+/*
+ Add a new style to highlight the selected date */
 .fc .fc-daygrid-day-number.selected,
 .fc .fc-daygrid-day-number.selected.today {
   background-color: $secondary !important;
   border-radius: 50% !important;
-  height: 30px;
-  width: 30px;
+  height: 30px !important;
+  width: 30px !important;
   text-align: center;
   color: $white;
-}
-
-.fc-daygrid-day-number {
-  background-color: transparent !important;
 }

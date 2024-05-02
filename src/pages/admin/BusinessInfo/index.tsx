@@ -10,6 +10,7 @@ const BusinessInfo = () => {
         <div className="page-header d-flex align-items-center justify-content-between mr-bottom-30">
           <div className="left-part">
             <h2 className="text-dark">Business Info</h2>
+            <p>Your business info displays on your booking page</p>
           </div>
         </div>
       )}

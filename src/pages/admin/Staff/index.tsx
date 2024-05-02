@@ -9,6 +9,9 @@ const Staff = () => {
       <div className="page-header d-flex align-items-center justify-content-between mr-bottom-30">
         <div className="left-part">
           <h2 className="text-dark">Staff</h2>
+          <p>
+            Your staff members and availability displays on your booking page
+          </p>
         </div>
       </div>
       <section className="col-lg-8 mb-5 w-100">

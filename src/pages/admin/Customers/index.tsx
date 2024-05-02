@@ -41,6 +41,9 @@ const Customers = () => {
       <div className="page-header d-flex align-items-center justify-content-between mr-bottom-30">
         <div className="left-part">
           <h2 className="text-dark">Customers</h2>
+          <p>
+            Customer records displays after an appointment has been scheduled
+          </p>
         </div>
       </div>
       <div>

@@ -49,9 +49,9 @@ const Calendar: React.FC<{
     const isSelected = selectedDate
       ? cellDate.isSame(selectedDate, "day")
       : false;
-    const classNames = `fc-daygrid-day-number${isSelected ? " selected" : ""}${
-      isToday ? " today" : ""
-    }`;
+    const classNames = `fc-daygrid-day-number${
+      isSelected ? " selected" : " not-selected"
+    }${isToday ? " today" : ""}`;
     return <div className={classNames}>{cellDate.format("D")}</div>;
   };
 
